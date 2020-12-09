@@ -347,7 +347,28 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 
 ## Section 24. Adding CORS support in the API
 
+- CORS is a security machanism, (Cross Origin Resource Sharing)
+
+- Startup.cs 的 ConfigureService 加入支援
+
+```csharp
+services.AddCors();
+```
+
+- Configure function 也要加, 而且順序很重要
+
+```csharp
+app.UseRouting();
+
+//app.UseCors();
+app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
+
+app.UseAuthorization();
+```
+
 ## Section 25. Displaying the fetched users in the browser
+
+- 在 html 裡面打 ngFor, 顯示目前的資料
 
 ## Section 26. Adding bootstrap and font-awesome
 

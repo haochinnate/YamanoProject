@@ -1,2 +1,6 @@
 <h1>Yamano Project</h1>
 <h1>{{title}}</h1>
+
+<ul>
+    <li *ngFor="let manufacturer of carmanufacturers">{{manufacturer.id}}-{{manufacturer.name}}-{{manufacturer.chineseName}}</li>
+</ul>
