@@ -370,11 +370,93 @@ app.UseAuthorization();
 
 - 在 html 裡面打 ngFor, 顯示目前的資料
 
+```html
+<ul>
+    <li *ngFor="let manufacturer of carmanufacturers">{{manufacturer.id}}-{{manufacturer.name}}-{{manufacturer.chineseName}}</li>
+</ul>
+
+```
+
 ## Section 26. Adding bootstrap and font-awesome
+
+- [bootstrap](https://getbootstrap.com/), 
+
+- jQuery 和 Angular 混用 有可能會產生 conflict?, 都會處理DOM
+
+- 安裝 [ngx-bootstrap](https://valor-software.com/ngx-bootstrap/#/), 會自己安裝 boot-strap
+
+```cmd
+cd client
+ng add ngx-bootstrap
+```
+
+- package.json, angular.json, app.module.ts 會更新
+
+- 安裝 font-aweson
+
+```cmd
+cd client
+npm install font-awesome
+```
 
 ## Section 27. Using HTTPS in angular - MAC
 
 ## Section 28. Using HTTPS in angular - WINDOWS
+
+- 在 \StudentAssets\generateTrustedSSL 中, 參照 Instructions.txt 步驟 
+
+- 安裝完憑證後, 在 \client\ 底下建立新的資料夾 ssl, 並將憑證+key放入
+
+- 告訴 Angular 要使用這個憑證, 在 Angular.json 檔案中
+
+```json
+{
+"serve": {
+  "builder": "@angular-devkit/build-angular:dev-server",
+  "options": {
+    "sslKey": "./ssl/server.key",
+    "sslCert": "./ssl/server.crt",
+    "ssl": true,
+    "browserTarget": "client:build"
+    }
+  }
+}
+```
+
+- 重新執行 api & client, 可能要再執行一次 dotnet dev-certs https --trust // 安裝憑證
+
+- https://localhost:4200
+
+# Section 4: Authentication basics
+
+## Section 32. Safe storage of passwords
+
+## Section 33. Updating the user entity
+
+## Section 34. Creating a base API controller
+
+## Section 35. Creating an Account Controller with a register endpoint
+
+## Section 36. Using the debugger
+
+## Section 37. Using DTOs
+
+## Section 38. Adding validation
+
+## Section 39. Adding a login endpoint
+
+## Section 40. JSON web tokens 
+
+## Section 41. Adding a token service
+
+## Section 42. Adding the create token logic
+
+## Section 43. Creating a User DTO and returning the token
+
+## Section 44. Adding the authentication middleware
+
+## Section 45. Adding extension methods
+
 
 ## Angular 
 
@@ -382,12 +464,6 @@ app.UseAuthorization();
 > Alt + O 從 value.component.ts 移到 value.component.html
   Alt + I 移到 value.component.css
   Alt + U 移到 value.component.ts
-> Go to file: Ctrl + P (again)
-> -SPA and .API 兩個都要執行
-
-> BootStrap
-  cd testdotnetapp-spa
-  npm install bootstrap font-awesome
 
 
 # Section 3: Security
