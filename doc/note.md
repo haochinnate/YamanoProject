@@ -431,11 +431,25 @@ npm install font-awesome
 
 ## Section 32. Safe storage of passwords
 
+- Hashing a password, password -> SHA512 -> #$@#$#@ (not secure)
+- Hashing and Salting a password, password -> Hash+Salt -> #$#$#!@#!@
+
 ## Section 33. Updating the user entity
+
+- User class 加入 PasswordHash 和 PasswordSalt property
+
+```cmd
+dotnet ef migrations add UserPasswordAdded
+dotnet ef database update
+```
 
 ## Section 34. Creating a base API controller
 
+- 建立 BaseApiController class, 把 attribute 放在這邊, 後面建立的 controller 都繼承這個 class
+
 ## Section 35. Creating an Account Controller with a register endpoint
+
+
 
 ## Section 36. Using the debugger
 
@@ -468,9 +482,6 @@ npm install font-awesome
 
 # Section 3: Security
 
-Hashing a password, password -> SHA512 -> #$@#$#@ (not secure)
-Hashing and Salting a password, password -> Hash+Salt -> #$#$#!@#!@
- 
 model and datacontext changed  
 
 ```powershell
