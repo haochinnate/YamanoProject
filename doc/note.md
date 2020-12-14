@@ -449,13 +449,61 @@ dotnet ef database update
 
 ## Section 35. Creating an Account Controller with a register endpoint
 
+- method 中, 參數前面可以加 [FromBody] 等 attribute 來指定要從 http request 中的哪個部分取得資料
 
+```csharp
+[HttpPost("register")]
+public async Task<ActionResult<User>> Register(string username, string password)
+{
+    using var hmac = new HMACSHA512();
+
+    var user = new User {
+        UserName = username,
+        PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password)),
+        PasswordSalt = hmac.Key
+    };
+
+    _context.Users.Add(user);
+
+    await _context.SaveChangesAsync();
+
+    return user;
+}
+```
+
+- 如果是從 body 傳入參數, 會有 500 exception, 但是在 query string 的話, 可以正常產生 (回傳 200)
+
+- Body 選擇 raw & JSON 
 
 ## Section 36. Using the debugger
 
+1. 設定中斷點
+2. 在 solution 底下的 .vscode 資料夾, 有 launch.json 和 tasks.json 檔案
+  - 如果沒有的話, 可以在指令那邊 找 ".NET: Generate Assets for Build and Debug"
+3. 到 Debug 視窗, 選擇 .NET Core Attach, 按下 play button
+4. 然後再搜尋 API.exe
+5. 回 postman 再送一次 http request
+6. 從 body 傳的 user name, password 都是 null, 無法變成兩個參數傳入, 所以要改用 DTO
+
 ## Section 37. Using DTOs
 
+- 在 \API\ 底下 建立 DTOs 資料夾, 並建立 RegisterDto 類別
+
+```csharp
+public class RegisterDto
+{
+    public string Username { get; set; }
+    public string Password { get; set; }
+}
+```
+
+- 然後修改 register function 的參數型式
+
 ## Section 38. Adding validation
+
+- 多個地方都可以加入 validation, ex: database, entity, DTO
+
+- 這邊在 DTO 做, 在 API 層就檢查, 加上 DataAnnotation
 
 ## Section 39. Adding a login endpoint
 
@@ -481,23 +529,6 @@ dotnet ef database update
 
 
 # Section 3: Security
-
-model and datacontext changed  
-
-```powershell
-dotnet ef migrations add AddedUserEntity # create new migration
-  # go to migrations folder to see create result 
-dotnet ef database update // update the migrations
-```
-
-*  debug 要先產生 launch.json, 按debug後 選擇 TestDotnetApp.API.exe
-
-*  http://localhost:5000/api/auth/register Postman中, Body 選擇 raw & JSON 
-  輸入參數
-  {
-	"username": "",
-	"password": ""
-  }
 
   public async Task<IActionResult> Register([FromBody]UserForRegisterDto userForRegisterDto)
   沒有用 [ApiController] 的話 要用 if(!ModelState.IsValid) return BadRequest(ModelState) 處理
