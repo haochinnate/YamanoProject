@@ -8,7 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    public class CarManufacturersController : BaseApiController
+    [ApiController]
+    [Route("api/cars")]
+    public class CarManufacturersController : ControllerBase
     {
         private readonly DataContext _context;
         public CarManufacturersController(DataContext context)

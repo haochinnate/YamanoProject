@@ -3,6 +3,9 @@
 - 打開 terminal: Ctrl + Shift + `
 - Show all commands: Ctrl + Shift + P
 - Go to file: Ctrl + P
+- Alt + O 從 value.component.ts 移到 value.component.html
+- Alt + I 移到 value.component.css
+- Alt + U 移到 value.component.ts
 
 # Section 1: Introduction
 
@@ -53,7 +56,6 @@ Ctrl + C // 結束執行
 dotnet dev-certs https --trust // 安裝憑證
 
 dotnet watch run // file watcher, 看檔案有沒有更改過
-
 ```
 
 - https://localhost:5001/weatherforecast 可以看到目前的結果
@@ -499,19 +501,95 @@ public class RegisterDto
 
 - 然後修改 register function 的參數型式
 
+```csharp
+public async Task<IActionResult> Register([FromBody]UserForRegisterDto userForRegisterDto)
+```
+- 沒有用 [ApiController] 的話 要用 if(!ModelState.IsValid) return BadRequest(ModelState) 處理, 並參數搭配 [FromBody] attribute: 
+
 ## Section 38. Adding validation
 
 - 多個地方都可以加入 validation, ex: database, entity, DTO
 
-- 這邊在 DTO 做, 在 API 層就檢查, 加上 DataAnnotation
+- 這邊在 DTO 做, 在 API 層就檢查, 加上 DataAnnotation [Required]
+
+- 如果 body RAW json 是空字串, call API時, 就直接會回傳錯誤
 
 ## Section 39. Adding a login endpoint
 
+- 新增一個 method, endpoint 在 AccountController: login
+
+```cmd
+dotnet ef database drop
+dotnet ef database update // 參考 migrations, 建立新的 database
+```
+
 ## Section 40. JSON web tokens 
+
+- how we authenticate to an API?
+
+- Token Authentication: JSON Web Tokens (JWTs)
+- Industry Standard for tokens (RFC 7519) 
+- Self-contained and can contain:
+  - Credentials
+  - Claims
+  - Other information
+  
+- 不用再去data store 驗證一次user, 直接用token驗證 看是否能用 api
+
+- JWT Structure, 分三個部分, 並用 "." 區隔
+  - HEADER
+  - PAYLOAD(放Claims, Credentials)
+    - name identifier
+    - role
+    - etc...
+  - VERIFY SIGNATURE
+
+- often use browser storage to hold tokens, so that we can then send the JWT with every single request
+
+- Benefits of JWT
+  - No sessions to manage - JWTs are self contained tokens
+  - Potable - A single token can be used with multiple backends
+  - No Cookies required - mobile friendly
+  - Performance - Once a token is issued, there is no need to make a database request to verify a users authentication
 
 ## Section 41. Adding a token service
 
+- 建立 \API\Interfaces 資料夾, 並建立 ITokenService 介面
+
+```csharp
+public interface ITokenService
+{
+    string CreateToken(User user);
+}
+```
+
+- 建立 \API\Services 資料夾, 和 TokenSevice 類別
+
+- 在 Startup class 中, 將 services 加入 dependency injection container
+  - AddSingleton, 建立之後, 要app 停止才砍掉
+  - AddScoped, scoped to lifetime of the HTTP request, 因為在API controller 中使用
+  - AddTransient, service is going to be created and destroyed as soon as the method is finished
+
+```csharp
+services.AddScoped<ITokenService, TokenService>();
+```
+
 ## Section 42. Adding the create token logic
+
+- 安裝 packages, ctrl+shift+p, open nuget gallery
+  - System.IdentityModel.Tokens.Jwt 6.8.0
+  - 跟 package Microsoft.IdentityModel.Tokens 有相依
+
+- 實作 TokenService
+
+```csharp
+public TokenService(IConfiguration config)
+{
+    _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
+}
+```
+
+- TokenKey 會加在 config file 內
 
 ## Section 43. Creating a User DTO and returning the token
 
@@ -520,27 +598,10 @@ public class RegisterDto
 ## Section 45. Adding extension methods
 
 
-## Angular 
-
-
-> Alt + O 從 value.component.ts 移到 value.component.html
-  Alt + I 移到 value.component.css
-  Alt + U 移到 value.component.ts
-
-
 # Section 3: Security
 
-  public async Task<IActionResult> Register([FromBody]UserForRegisterDto userForRegisterDto)
-  沒有用 [ApiController] 的話 要用 if(!ModelState.IsValid) return BadRequest(ModelState) 處理
-  並參數搭配 [FromBody] attribute: 
-  
-*  Token Authentication 
-  JSON Web Tokens (JWTs) 
-  self-contained and can contain: credentials, claims, other information
-  不用再去data store 驗證一次user, 直接用token驗證 看是否能用 api
 
-* 安裝 Microsoft.IdentityModel.Tokens 5.6.0
-       System.IdentityModel.Tokens.Jwt 5.6.0
+
 
 * injection IConfiguration 
   使用 _config.GetSection("AppSettings:Token").Value
@@ -575,10 +636,6 @@ input 項目裡面 則用 [(ngModel)]="model.username" 來binding
   [()] 是雙向binding?
 
 * <pre> 可以放一些不合法的值時候的樣式
-
-* testdotnetapp.api 執行 dotnet watch run 
-
-* testdotnetapp-spa 執行 ng serve
 
 # Section 5: Error Handling
 
