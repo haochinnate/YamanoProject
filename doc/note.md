@@ -593,28 +593,71 @@ public TokenService(IConfiguration config)
 
 ## Section 43. Creating a User DTO and returning the token
 
+- 在 login, register 時, 回傳 DTO with token, 而不是 User class
+
+```csharp
+var returnUserDto = new UserDto
+{
+    Username = user.UserName,
+    Token = _tokenService.CreateToken(user)
+};
+return returnUserDto;
+```
+
+- 先暫時在 appsettings.Development.json 裡面加入 TokenKey
+
+```json
+"TokenKey": "Super secret ungessable key",
+```
+
+- 再登入一次就可以得到 {username, token}
+
+- JWT.io 可以觀看 tokens decoded的內容
+
 ## Section 44. Adding the authentication middleware
 
+- to authenticate user request
+
+- using Microsoft.AspNetCore.Authorization
+
+- Attribute: [Authorize], [AllowAnonymous]
+
+- 安裝 package: Microsoft.AspNetCore.Authentication.JwtBearer 3.1.10, 要注意版本
+
+- Authentication Middleware, 在Startup.cs裡面 要設定一些東西
+  還有controller 要加 attribute
+
+```csharp
+services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options => {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey= new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"])),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
+
+app.UseAuthentication();
+app.UseAuthorization();
+```
+
+- 加好之後, 再送一次 request, 回應會變成 401 Unauthorized
+
 ## Section 45. Adding extension methods
+
+
+
+
+
+
 
 
 # Section 3: Security
 
 
 
-
-* injection IConfiguration 
-  使用 _config.GetSection("AppSettings:Token").Value
-  要在 appsettings.json 新增 "AppSettings" :{"Token": "super secret key"}
-
-* JWT.io 可以觀看 tokens decoded的內容
-
-* 安裝 Microsoft.AspNetCore.Authentication.JwtBearer 3.0.0
-* Authentication Middleware, 在Startup.cs裡面 要設定一些東西
-  還有controller 要加 attribute
-
-* appsettings.json 不要上傳到github比較好
-  git rm appsettings.json --cached
 
 * on production: using environment variables
   或是使用 dotnet user-secrets (only for development?)
