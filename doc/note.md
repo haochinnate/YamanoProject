@@ -639,33 +639,66 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
 ```
 
-- 加好之後, 再送一次 request, 回應會變成 401 Unauthorized
+- 加好之後, 再送一次 request, 回應會變成 401 Unauthorized, 因為 request 需要加上 token 
+  1. 複製 token
+  2. 在 request 的 header 中, 有 "Authorization" Key, 取代裡面的值
+  3. "Bearer " + token
 
 ## Section 45. Adding extension methods
 
+- 在 \API\ 建立新資料夾 "Extensions", 並建立新類別 ApplicationServiceExtensions 和 IdentityServiceExtensions
+
+- 增加 extenstion method, refactor ConfigureServices method in Startup
+
+- 一個負責增加 application 內部使用的 DI, 一個負責 identity 相關的 DI
 
 
+# Section 5: Client side login and register
+
+## Section 48. Creating a nav bar
+
+- 用 angular CLI 來建立 component
+
+```cmd
+ng g -h
+cd src/app
+ng g c nav --skip-tests
+```
+
+- 會建立 nav.component.html, nav.component.ts, nav.component.css 在 /src/app/nav 底下, 並更新 app.module.ts
+
+## Section 49. Introduction to Angular template forms
+
+## Section 50. Introduction to Angular services
+
+## Section 51. Injection services into components
+
+## Section 52. Using conditionals to show and remove content 
+
+## Section 53. Using the angular bootstrap components - dropdown
+
+## Section 54. Introduction to observables
+
+## Section 55. Persisting the login 
+
+## Section 56. Using the async pipe 
+
+## Section 57. Adding a home page 
+
+## Section 58. Adding a register form 
+
+## Section 59. Parent to child communication
+
+## Section 60. Child to parent communication
+
+## Section 61. Hooking up the register method to the service
 
 
-
-
-
-# Section 3: Security
-
-
-
-
-* on production: using environment variables
-  或是使用 dotnet user-secrets (only for development?)
-  設定語法: dotnet user-secrets set "AppSettings:Tokens" "super secret key"
-  觀看語法: dotnet user-secrets list
-
-
-# Section 4: Client side login and register
 
 * 在 app.module.ts 中 import FormsModule
   > import {FormsModule} from '@angular/forms';
