@@ -6,6 +6,7 @@
 - Alt + O 從 value.component.ts 移到 value.component.html
 - Alt + I 移到 value.component.css
 - Alt + U 移到 value.component.ts
+- Reformat: Shift + Alt + F
 
 # Section 1: Introduction
 
@@ -672,7 +673,18 @@ ng g c nav --skip-tests
 
 - 會建立 nav.component.html, nav.component.ts, nav.component.css 在 /src/app/nav 底下, 並更新 app.module.ts
 
+- 要在其他地方使用 nav component, 要用 <app-nav>
+```typescript
+@Component({
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.css']
+})
+```
+
 ## Section 49. Introduction to Angular template forms
+
+
 
 ## Section 50. Introduction to Angular services
 
