@@ -6,30 +6,10 @@
     <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button> -->
-
-    <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown link
-          </a>
-      <!-- <button
-        class="btn btn-secondary dropdown-toggle"
-        type="button"
-        id="dropdownMenuButton"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        ##汽車
-      </button> -->
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
-    </div>
-
-    <ul class="navbar-nav mr-auto">
+   
+    <!-- <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Find Car</a>
+        <a class="nav-link" href="#">Find Cars</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">News</a>
@@ -40,7 +20,53 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Ptt format</a>
       </li>
-    </ul>
+    </ul> -->
+
+    <div dropdown class="navbar-nav">
+      <li class="nav-item">
+        <a id="car-basic-link" dropdownToggle (click)="false" class="nav-link"
+         aria-controls="car-basic-link-dropdown">##Car</a>
+      </li>
+
+      <ul id="car-basic-link-dropdown" *dropdownMenu class="dropdown-menu" role="menu" 
+          aria-labelledby="car-basic-link">
+        <li>
+          <a class="dropdown-item" href="#">Find Cars</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">News</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">Compare</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">Ptt format</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Course -->
+    <div dropdown class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a id="course-basic-link" dropdownToggle (click)="false" class="nav-link"
+         aria-controls="course-basic-link-dropdown">##Course</a>
+      </li>
+
+      <ul id="course-basic-link-dropdown" *dropdownMenu class="dropdown-menu" role="menu" 
+          aria-labelledby="course-basic-link">
+          <!-- aria-labelledby="course-basic-link"> -->
+        <li>
+          <a class="dropdown-item" href="#">Matches</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">Lists</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">Messages</a>
+        </li>
+      </ul>
+    </div>
+
     <form class="form-inline mt-2 mt-md-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Username" />
       <input
