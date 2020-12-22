@@ -21,7 +21,7 @@ export class AppComponent implements OnInit{
   }
 
   getCarManufacturers(): void {
-    this.http.get('https://localhost:5001/api/carmanufacturers').subscribe(
+    this.http.get('https://localhost:5001/api/cars').subscribe(
       response => {
         this.carmanufacturers = response;
       }, error => {
