@@ -779,11 +779,81 @@ login() {
 
 ## Section 52. Using conditionals to show and remove content
 
+- 以 loggedIn 這個 property 決定要不要顯示 component
+
+```html
+*ngIf="loggedIn" // 這個是完全沒有, 
+
+// 如果要隱藏的話, 則是用
+[hidden]
+```
+
 ## Section 53. Using the angular bootstrap components - dropdown
+
+- BsDropdownModule.forRoot() 的意思是 有 some services or components that it needs to initialize along with the roots
 
 ## Section 54. Introduction to observables
 
+- New standard for managing async data included in ES7(ES2016)
+
+- Observables are lazy collections of multiple values over time
+
+- RxJS, want to transform that data before we pass it onto the subscriber
+
+- 用 **pipe** method on to the request or onto the observable
+
+- 在 pipe 裡面, 對傳回來的資料作處理
+
+- 用 **map** 來 transform
+
+```typescript
+getMembers() {
+  return this.http.get('api/users').pipe(
+    map(members => {
+      console.log(member.id);
+      return member.id;
+    })
+  );
+}
+```
+
+- subscribe
+  1. what to do next with data (ex: assign to property)
+  2. what to do if there is an error (200以外都是)
+  3. what to do when complete
+
+```typescript
+getMembers() {
+  this.service.getMembers().subscribe(members => {
+    this.members = members
+  }, error => {
+    console.log(error);
+  } () => {
+    console.log('completed');
+  });
+}
+
+```
+
+- ToPromise(), do activate this request, 這邊不會用
+
+```typescript
+getMembers() {
+  return this.http.get('api/users').toPromise();
+}
+```
+
+- 用 angular function 來取得 observable: **Async Pipe**
+- automatically subscribes/unsubscribes from the Observable
+
+```html
+<li *ngFor='let member of service.getMembers() | async'>
+  {{member.username}}
+</li>
+```
+
 ## Section 55. Persisting the login
+
 
 ## Section 56. Using the async pipe
 
