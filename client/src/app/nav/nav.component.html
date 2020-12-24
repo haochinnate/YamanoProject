@@ -21,7 +21,7 @@
         <a class="nav-link" href="#">Ptt format</a>
       </li>
     </ul> -->
-    <ul class="navbar-nav mr-auto" *ngIf="loggedIn" >
+    <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$ | async" >
       <li class="nav-item" dropdown container="body">
         <a id="car-link" dropdownToggle (click)="(false)" class="nav-link dropdown-toggle"
           aria-controls="car-link-dropdown">##Car
@@ -50,7 +50,7 @@
       </li>
     </ul>
 
-    <div class="dropdown" *ngIf="loggedIn" dropdown>
+    <div class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
       <a class="dropdown-toggle text-light" dropdownToggle>Welcome user</a>
       <div class="dropdown-menu mt-3" *dropdownMenu>
         <a class="dropdown-item">Edit Profile</a>
@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <form *ngIf="!loggedIn" #loginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="login()"
+    <form *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="login()"
         autocomplete="off">
       <input name="username"
         [(ngModel)]="model.username"

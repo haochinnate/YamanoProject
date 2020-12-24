@@ -854,10 +854,83 @@ getMembers() {
 
 ## Section 55. Persisting the login
 
+- 要用 map function, 要 import { map } from 'rxjs/operators' 
 
+- 將取回來的 response 變成 JSON 存在 localStorage
+
+```typescript
+// account.service.ts 
+
+login(model: any) {
+  // the return value of this API is UserDto in backend
+  return this.http.post(this.baseUrl + 'account/login', model)
+    .pipe(
+      map((response: User) => {
+        const user = response;
+        if (user) {
+          localStorage.setItem('user', JSON.stringify(user));
+        }
+      })
+  );
+}
+```
+
+- 建立 _models 資料夾, 並建立 user.ts, interface 是設定 type
+
+```typescript
+export interface User {
+    username: string;
+    token: string;
+}
+```
+
+- 建立一個 observable 來儲存 user in, ReplaySubject is kind of buffer object, is going to store the value inside 
+
+```typescript
+private currentUserSource = new ReplaySubject<User>(1);
+currentUser$ = this.currentUserSource.asObservable();
+```
+
+- 瀏覽器/Debug Tool/Application/Local Storage
+
+- 程式流程說明
+  1. AppComponent 藉由DI 可以使用 AccountService
+  2. AppComponent method: setCurrentUser, 先嘗試從 localStorage 取得看看有沒有現有登入的 user, 並呼叫 AccountService 的 setCurrentUser method來設定, 如果沒有就是設定成 null
+  3. NavComponent 在 ngOnInit 呼叫自己的 getCurrentUser method, 這個 method 會註冊 AccountService 的 currentUser observable property, 有更改時會loggedIn屬性
+  4. NavComponent 中的 login, logout method 則是呼叫 AccountService 中對應的 method, 裡面會對 localStorage 儲存/刪除
+  
 ## Section 56. Using the async pipe
 
+- 直接在 NavComponent 中, 建立一個 currentUser observable property, assign 到 AccountService 的currentUser$, 就可以把 loggedIn 這個 boolean property 移除
+
+- 在 html 的部分, 也做修改, 用 currentUser$ 判斷
+
+```html
+*ngIf="loggedIn"
+
+*ngIf="currentUser$ | async"
+
+*ngIf="!loggedIn"
+
+*ngIf="(currentUser$ | async) === null"
+```
+
+- 再把 NavComponent 的 currentUser observable property 拿掉, 直接使用 AccountService 的, 但是 accountService 要設定為 public 
+
+- 在 html 中變成用 accountService.currentUser$ 存取
+
+- 因為有用 async pipe, 所以當 NavComponent 不見時, 會自動 unsubscribe
+
 ## Section 57. Adding a home page
+
+- 建立 HomeComponent 在 app 資料夾底下
+
+```cmd
+cd .\client\src\app
+ng g c home --skip-tests
+```
+
+
 
 ## Section 58. Adding a register form
 
@@ -867,7 +940,15 @@ getMembers() {
 
 ## Section 61. Hooking up the register method to the service
 
-- <pre> 可以放一些不合法的值時候的樣式
+
+
+
+
+
+
+
+# Old Course
+
 
 # Section 5: Error Handling
 
