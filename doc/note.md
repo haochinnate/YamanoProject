@@ -930,15 +930,65 @@ cd .\client\src\app
 ng g c home --skip-tests
 ```
 
-
-
 ## Section 58. Adding a register form
 
+- 建立 RegisterComponent 在 app資料夾底下
+
+```cmd
+cd .\client\src\app
+ng g c register --skip-tests
+```
+
+- 在 html ngForm 中, input 都要記得給 name="...", 才可以 track
+
+
 ## Section 59. Parent to child communication
+
+- ex: 從 HomeComponent 傳到 RegisterComponent
+
+- 用 input property, 在 child component 中, 宣告 property with input decorator
+
+```typescript
+@Input() userFromHomeComponent: any;
+
+```
+
+- 在 Parent component template 中, 使用 []指定 property
+
+- users 是 HomeComponent 的 property
+
+```html
+<div class="col-4">
+    <app-register [userFromHomeComponent]="users"></app-register>
+</div>
+```
 
 ## Section 60. Child to parent communication
 
 ## Section 61. Hooking up the register method to the service
+
+
+
+# Section 6: Routing in Angular
+
+## Section 64. Creating some more components
+
+## Section 65. Adding the nav links
+
+## Section 66. Routing in code
+
+## Section 67. Adding a toast service for notifications
+
+## Section 68. Adding an Angular route guard
+
+## Section 69. Adding a dummy route
+
+## Section 70. Adding a new theme
+
+## Section 71. Tidying up the app module by using a shared module 
+
+
+
 
 
 
