@@ -955,7 +955,7 @@ ng g c register --skip-tests
 
 - 在 Parent component template 中, 使用 []指定 property
 
-- users 是 HomeComponent 的 property
+- users 是 HomeComponent 的 property, 傳下去到 RegisterComponent
 
 ```html
 <div class="col-4">
@@ -963,11 +963,64 @@ ng g c register --skip-tests
 </div>
 ```
 
+- 在 RegisterComponent 中, 使用 input property 就可以取得值, 但要注意 property的 case: userName
+```html
+<select class="form-control">
+    <option *ngFor="let user of userFromHomeComponent" [value]="user.userName">
+        {{user.userName}}
+    </option>
+</select>
+```
+
 ## Section 60. Child to parent communication
+
+- 用 Output property 在 child component 中, 宣告 property with output decorator
+
+- 目標控制 HomeComponent 的 registerMode
+
+```typescript
+@Output() cancelRegister = new EventEmitter();
+
+cancel(){  
+  this.cancelRegister.emit(false);
+  // emit 表示要傳 false 出去
+}
+
+```
+
+- parent 用 "()" 來取得值
+
+```html
+<div class="col-4">
+    <app-register [userFromHomeComponent]="users" (cancelRegister)="cancelRegisterMode($event)" ></app-register>
+</div>
+```
+
+```typescript
+// 在 parent 宣告一個method 
+cancelRegisterMode(event: boolean) {
+  this.registerMode = event;
+}
+```
 
 ## Section 61. Hooking up the register method to the service
 
+- 在 service 內呼叫API 要回傳 API的結果, 要在 pipe function 內再回傳
 
+```typescript
+  register(model: any) {
+    return this.http.post(this.baseUrl + 'account/register', model)
+      .pipe(
+        map((user: User) => {
+          if (user) {
+            localStorage.setItem('user', JSON.stringify(user));
+            this.currentUserSource.next(user);
+          }
+          return user;
+        })
+    );
+  }
+```
 
 # Section 6: Routing in Angular
 
