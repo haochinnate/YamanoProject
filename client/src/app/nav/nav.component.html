@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">Yamano Project</a>
+    <a class="navbar-brand" routerLink='/'>Yamano Project</a>
 
     <!-- this is for responsive -->
     <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,10 +29,11 @@
         <ul id="car-link-dropdown" *dropdownMenu class="dropdown-menu mt-2"
             role="menu"
           aria-labelledby="car-link">
-          <li><a class="dropdown-item" href="#">Find Cars</a></li>
-          <li><a class="dropdown-item" href="#">News</a></li>
-          <li><a class="dropdown-item" href="#">Compare</a></li>
-          <li><a class="dropdown-item" href="#">Ptt format</a></li>
+          <li><a class="dropdown-item nav-link" routerLink='/car/db' routerLinkActive='active'>DB</a></li>
+          <li><a class="dropdown-item nav-link" routerLink='/car/find' routerLinkActive='active'>Find Cars</a></li>
+          <li><a class="dropdown-item nav-link" routerLink='/car/news' routerLinkActive='active'>News</a></li>
+          <li><a class="dropdown-item nav-link" routerLink='/car/compare' routerLinkActive='active'>Compare</a></li>
+          <li><a class="dropdown-item nav-link" routerLink='/car/pttformat' routerLinkActive='active'>Ptt format</a></li>
         </ul>
       </li>
 
@@ -43,9 +44,9 @@
         <ul id="course-link-dropdown" *dropdownMenu class="dropdown-menu mt-2"
             role="menu"
             aria-labelledby="course-link">
-          <li><a class="dropdown-item" href="#">Matches</a></li>
-          <li><a class="dropdown-item" href="#">Lists</a></li>
-          <li><a class="dropdown-item" href="#">Messages</a></li>
+          <li><a class="dropdown-item nav-link" routerLink='/course/members' routerLinkActive='active'>Matches</a></li>
+          <li><a class="dropdown-item nav-link" routerLink='/course/lists' routerLinkActive='active'>Lists</a></li>
+          <li><a class="dropdown-item nav-link" routerLink='/course/messages' routerLinkActive='active'>Messages</a></li>
         </ul>
       </li>
     </ul>

@@ -1026,7 +1026,50 @@ cancelRegisterMode(event: boolean) {
 
 ## Section 64. Creating some more components
 
+```cmd
+cd src\app
+
+mkdir members
+cd members
+
+ng g c member-list  --skip-tests
+ng g c member-detail --skip-tests
+
+cd .. 
+ng g c lists --skip-tests
+ng g c messages --skip-tests
+
+```
+
+- 在 app-routing.module.ts 裡面 的 routes array 設定 routing 規則
+
+```typescript
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'course/members', component: MemberListComponent},
+  {path: 'course/members/:id', component: MemberDetailComponent},
+  {path: 'course/lists', component: ListsComponent},
+  {path: 'course/messages', component: MessagesComponent},
+  // wildcard route, return back to home
+  {path: '**', component: HomeComponent, pathMatch: 'full'}, 
+];
+```
+
+- 在 AppComponent template 中, 內容換成 <router-outlet>
+
+```html
+<router-outlet></router-outlet>
+```
+
 ## Section 65. Adding the nav links
+
+- 在 NavComponent template 中, 將 href 修改成 routerLink 指定路徑
+
+- 路徑記得 加上 / 開頭
+
+```html
+<li><a class="dropdown-item" routerLink='/members'>Matches</a></li>
+```
 
 ## Section 66. Routing in code
 
@@ -1041,6 +1084,7 @@ cancelRegisterMode(event: boolean) {
 ## Section 71. Tidying up the app module by using a shared module 
 
 
+# Section 7: Error handling
 
 
 
