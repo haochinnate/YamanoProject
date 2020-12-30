@@ -1067,13 +1067,69 @@ const routes: Routes = [
 
 - 路徑記得 加上 / 開頭
 
+- routerLinkActive 代表是該路徑的時候要 highlight 顯示
+
 ```html
-<li><a class="dropdown-item" routerLink='/members'>Matches</a></li>
+<li><a class="dropdown-item" routerLink='/members' routerLinkActive='active'>Matches</a></li>
 ```
 
 ## Section 66. Routing in code
 
+- 希望 logout 的時候, 回到 HomeComponent, login 的時候則是到 MemberListComponent
+
+- inject router class 到 NavComponent 中
+
+```typescript
+import { Router } from '@angular/router';
+private router: Router
+this.router.navigateByUrl('/course/members')
+```
+
 ## Section 67. Adding a toast service for notifications
+
+- 切到 client 資料夾, 安裝 ngx-toastr
+
+```cmd
+npm install ngx-toastr
+```
+
+- 在 angular.json 設定一些 style
+
+```json
+{
+  "styles": [ 
+    "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+    "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+    "./node_modules/font-awesome/css/font-awesome.css",
+    "./node_modules/ngx-toastr/toastr.css",
+    "src/styles.css"
+  ],
+}
+```
+
+- 在 app.module.ts 內也要設定使用 toastr
+
+```typescript
+import { ToastrModule } from 'ngx-toastr';
+
+imports: [
+  ToastrModule.forRoot({
+      positionClass: 'toast-buttom-right'
+  })
+]
+```
+
+- 在其他檔案內使用 toastr
+
+```typescript
+import { ToastrService } from 'ngx-toastr';
+
+private toastr: ToastrService
+
+this.toastr.error(error.error);
+
+// 第一個 error 是 HttpErrorResponse
+```
 
 ## Section 68. Adding an Angular route guard
 
@@ -1172,18 +1228,6 @@ npm install bootswatch
 ```
 
 # Section 7: Routing in Angular
-
-- Traditional websites vs. Single Page Application
-
-http://localhost/index.html
-http://localhost/foo.html
-
-http://localhost
-http://localhost/foo
-
-- in order to achieve this, we need to tell our application about how to find the different pars of our application
-
-- member-list -> car-list
 
 - 在 componet.html 裡面 輸入 a-routerlink 快速填寫
 
