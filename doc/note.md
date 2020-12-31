@@ -1129,11 +1129,63 @@ private toastr: ToastrService
 this.toastr.error(error.error);
 
 // 第一個 error 是 HttpErrorResponse
+// 第二個 error 是 response 中的 資訊
 ```
 
 ## Section 68. Adding an Angular route guard
 
+- 在 /client/src/app 底下建立資料夾 _guards
+
+- 在 _guards 資料夾底下建立 auth.guard.ts
+
+```cmd
+cd src/app/_guards
+ng g guard auth --skip-tests
+
+CanActivate
+```
+
+- guard 會自動 subscribes to any observables
+
+- 在 AuthGuard 的 canActivate method 中, 實作過濾的邏輯
+
+- 在 AppRoutingModule 中, 加入設定哪些 path 要用 guard
+
+```typescript
+{path: 'course/members', component: MemberListComponent, canActivate: [AuthGuard]},
+```
+
 ## Section 69. Adding a dummy route
+
+- 改寫 AppRoutingModule 的 Routes 變數
+
+```typescript
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  {
+    path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [AuthGuard],
+    children: [
+      {path: 'course/members', component: MemberListComponent},
+      {path: 'course/members/:id', component: MemberDetailComponent},
+      {path: 'course/lists', component: ListsComponent},
+      {path: 'course/messages', component: MessagesComponent},
+    ]
+  },
+  // wildcard route, return back to home
+  {path: '**', component: HomeComponent, pathMatch: 'full'}, 
+];
+```
+
+- 因為有可能之後會增加其他的 link 讓, 沒認證的user也可以看, 增加一個 angular container/ ng-container, apply a conditional to something, 這個container 不會產生有效的 html 碼
+
+- 所以可以用這個來包元件
+
+```html
+<ng-container *ngIf="accountService.currentUser$ | async" >
+</ng-container>
+```
 
 ## Section 70. Adding a new theme
 

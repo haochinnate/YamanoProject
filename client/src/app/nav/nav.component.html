@@ -21,7 +21,7 @@
         <a class="nav-link" href="#">Ptt format</a>
       </li>
     </ul> -->
-    <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$ | async" >
+    <ul class="navbar-nav mr-auto" >
       <li class="nav-item" dropdown container="body">
         <a id="car-link" dropdownToggle (click)="(false)" class="nav-link dropdown-toggle"
           aria-controls="car-link-dropdown">##Car
@@ -37,18 +37,21 @@
         </ul>
       </li>
 
-      <li class="nav-item" dropdown container="body">
-        <a id="course-link" dropdownToggle (click)="(false)" class="nav-link dropdown-toggle"
-           aria-controls="course-link-dropdown">##Course
-        </a>
-        <ul id="course-link-dropdown" *dropdownMenu class="dropdown-menu mt-2"
-            role="menu"
-            aria-labelledby="course-link">
-          <li><a class="dropdown-item nav-link" routerLink='/course/members' routerLinkActive='active'>Matches</a></li>
-          <li><a class="dropdown-item nav-link" routerLink='/course/lists' routerLinkActive='active'>Lists</a></li>
-          <li><a class="dropdown-item nav-link" routerLink='/course/messages' routerLinkActive='active'>Messages</a></li>
-        </ul>
-      </li>
+      <ng-container *ngIf="accountService.currentUser$ | async" >
+        <li class="nav-item" dropdown container="body">
+          <a id="course-link" dropdownToggle (click)="(false)" class="nav-link dropdown-toggle"
+             aria-controls="course-link-dropdown">##Course
+          </a>
+          <ul id="course-link-dropdown" *dropdownMenu class="dropdown-menu mt-2"
+              role="menu"
+              aria-labelledby="course-link">
+            <li><a class="dropdown-item nav-link" routerLink='/course/members' routerLinkActive='active'>Matches</a></li>
+            <li><a class="dropdown-item nav-link" routerLink='/course/lists' routerLinkActive='active'>Lists</a></li>
+            <li><a class="dropdown-item nav-link" routerLink='/course/messages' routerLinkActive='active'>Messages</a></li>
+          </ul>
+        </li>
+      </ng-container>
+
     </ul>
 
     <div class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
