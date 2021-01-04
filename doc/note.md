@@ -8,19 +8,19 @@
 - Alt + U 移到 value.component.ts
 - Reformat: Shift + Alt + F
 
-# Section 1: [Introduction](../chapter/Section01.md)
+# Section 1: [Introduction](chapter/Section01.md)
 
-# Section 2: [Building a Walking Skeleton Part One - API](../chapter/Section02.md)
+# Section 2: [Building a Walking Skeleton Part One - API](chapter/Section02.md)
 
-# Section 3: [Building a walking skeleton Part Two - Angular](../chapter/Section03.md)
+# Section 3: [Building a walking skeleton Part Two - Angular](chapter/Section03.md)
 
-# Section 4: [Authentication basics](../chapter/Section04.md)
+# Section 4: [Authentication basics](chapter/Section04.md)
 
-# Section 5: [Client side login and register](../chapter/Section05.md)
+# Section 5: [Client side login and register](chapter/Section05.md)
 
-# Section 6: [Routing in Angular](../chapter/Section06.md)
+# Section 6: [Routing in Angular](chapter/Section06.md)
 
-# Section 7: [Error handling](../chapter/Section07.md)
+# Section 7: [Error handling](chapter/Section07.md)
 
 
 

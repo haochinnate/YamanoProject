@@ -15,6 +15,13 @@ import { MemberDetailComponent } from './course/members/member-detail/member-det
 import { ListsComponent } from './course/lists/lists.component';
 import { MessagesComponent } from './course/messages/messages.component';
 import { SharedModule } from './_modules/shared.module';
+import { PttformatComponent } from './car/pttformat/pttformat.component';
+import { FindComponent } from './car/find/find.component';
+import { CompareComponent } from './car/compare/compare.component';
+import { NewsComponent } from './car/news/news.component';
+import { ManufacturerListComponent } from './car/db/manufacturer-list/manufacturer-list.component';
+import { ModelListComponent } from './car/db/model-list/model-list.component';
+import { ModelDetailComponent } from './car/db/model-detail/model-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +32,14 @@ import { SharedModule } from './_modules/shared.module';
     MemberListComponent,
     MemberDetailComponent,
     ListsComponent,
-    MessagesComponent
+    MessagesComponent,
+    PttformatComponent,
+    FindComponent,
+    CompareComponent,
+    NewsComponent,
+    ManufacturerListComponent,
+    ModelListComponent,
+    ModelDetailComponent
   ],
   imports: [
     BrowserModule,
