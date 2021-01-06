@@ -58,7 +58,69 @@
 
 ## Section 75. Handling server errors
 
+- 在 Startup.cs 的 Configure function 中, 第一步是 UseDeveloperExceptionPage
+
+- 處理 Server Error 是用 try-catch 包住, 並在 catch block 回傳 StatusCode
+
+```csharp
+return StatusCode(500, "Computer says no!");
+```
+
+- 但是這樣 terminal 不會有紀錄
+
 ## Section 76. Exception handling middleware
+
+- 但這樣加try-catch很麻煩, 所以改加 global exception handle middleware
+
+- 在 \API\ 加入新資料夾 \Errors\, 並在裡面建立類別 ApiException
+
+- 在 \API\ 加入新資料夾 \Middleware\, 並在裡面建立類別 ExceptionMiddleware
+
+- 
+
+```csharp
+public ExceptionMiddleware(RequestDelegate next, 
+    ILogger<ExceptionMiddleware> logger,
+    IHostEnvironment env)
+{
+    _next = next;
+    _logger = logger;
+    _env = env;
+}
+```
+
+```csharp
+public async Task InvokeAsync(HttpContext context)
+{
+    try
+    {
+        await _next(context);
+    }
+    catch (Exception ex)
+    {
+        _logger.LogError(ex, ex.Message);
+        context.Response.ContentType = "application/json";
+        context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+
+        var response = _env.IsDevelopment() 
+            ? new ApiException(context.Response.StatusCode, ex.Message, ex.StackTrace?.ToString())
+            : new ApiException(context.Response.StatusCode, "Internal Server Error"); 
+
+        var options = new JsonSerializerOptions{ PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+
+        var json = JsonSerializer.Serialize(response, options);
+
+        await context.Response.WriteAsync(json);
+    }
+}
+```
+
+
+- startup 的 Configure 改成使用 middleware
+```csharp
+app.UseMiddleware<ExceptionMiddleware>();
+```
+
 
 ## Section 77. Testing errors in the client
 
