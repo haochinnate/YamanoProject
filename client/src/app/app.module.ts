@@ -22,6 +22,7 @@ import { NewsComponent } from './car/news/news.component';
 import { ManufacturerListComponent } from './car/db/manufacturer-list/manufacturer-list.component';
 import { ModelListComponent } from './car/db/model-list/model-list.component';
 import { ModelDetailComponent } from './car/db/model-detail/model-detail.component';
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ModelDetailComponent } from './car/db/model-detail/model-detail.compone
     NewsComponent,
     ManufacturerListComponent,
     ModelListComponent,
-    ModelDetailComponent
+    ModelDetailComponent,
+    TestErrorsComponent
   ],
   imports: [
     BrowserModule,

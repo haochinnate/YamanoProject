@@ -4,6 +4,7 @@ import { ListsComponent } from './course/lists/lists.component';
 import { MemberDetailComponent } from './course/members/member-detail/member-detail.component';
 import { MemberListComponent } from './course/members/member-list/member-list.component';
 import { MessagesComponent } from './course/messages/messages.component';
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
 
@@ -22,6 +23,7 @@ const routes: Routes = [
     ]
   },
   // wildcard route, return back to home
+  {path: 'errors', component: TestErrorsComponent},
   {path: '**', component: HomeComponent, pathMatch: 'full'}, 
 ];
 

@@ -76,8 +76,6 @@ return StatusCode(500, "Computer says no!");
 
 - 在 \API\ 加入新資料夾 \Middleware\, 並在裡面建立類別 ExceptionMiddleware
 
-- 
-
 ```csharp
 public ExceptionMiddleware(RequestDelegate next, 
     ILogger<ExceptionMiddleware> logger,
@@ -88,6 +86,8 @@ public ExceptionMiddleware(RequestDelegate next,
     _env = env;
 }
 ```
+
+- 把 error code 用 json 格式回傳
 
 ```csharp
 public async Task InvokeAsync(HttpContext context)
@@ -115,14 +115,41 @@ public async Task InvokeAsync(HttpContext context)
 }
 ```
 
-
 - startup 的 Configure 改成使用 middleware
+
 ```csharp
 app.UseMiddleware<ExceptionMiddleware>();
 ```
 
+- 執行 {{url}}/api/buggy/server-error 的回傳結果如下
+
+```json
+{
+    "statusCode": 500,
+    "message": "Object reference not set to an instance of an object.",
+    "details": "..."
+}
+```
 
 ## Section 77. Testing errors in the client
+
+- 在 client (angular page), 處理 error 
+
+- 在 \client\src\app 裡面新增資料夾 errors, 並在裡面建立 component
+
+```cmd
+cd client\src\app\errors
+
+ng g c test-errors --skip-tests
+```
+
+- 並在裡面建立 method, 分別對應 BuggyController 的四個會出錯的 API
+
+- 在 app-routing.module.ts 中設定 URL
+
+```typescript
+{path: 'errors', component: TestErrorsComponent}
+```
 
 ## Section 78. Adding an error interceptor
 
