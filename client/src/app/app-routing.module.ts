@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CompareComponent } from './car/compare/compare.component';
+import { ManufacturerListComponent } from './car/db/manufacturer-list/manufacturer-list.component';
+import { FindComponent } from './car/find/find.component';
+import { NewsComponent } from './car/news/news.component';
+import { PttformatComponent } from './car/pttformat/pttformat.component';
 import { ListsComponent } from './course/lists/lists.component';
 import { MemberDetailComponent } from './course/members/member-detail/member-detail.component';
 import { MemberListComponent } from './course/members/member-list/member-list.component';
@@ -22,8 +27,13 @@ const routes: Routes = [
       {path: 'course/messages', component: MessagesComponent},
     ]
   },
-  // wildcard route, return back to home
+  {path: 'car/db', component: ManufacturerListComponent},
+  {path: 'car/find', component: FindComponent},
+  {path: 'car/news', component: NewsComponent},
+  {path: 'car/compare', component: CompareComponent},
+  {path: 'car/pttformat', component: PttformatComponent},
   {path: 'errors', component: TestErrorsComponent},
+  // wildcard route, return back to home
   {path: '**', component: HomeComponent, pathMatch: 'full'}, 
 ];
 

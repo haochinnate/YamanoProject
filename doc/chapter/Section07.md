@@ -153,6 +153,21 @@ ng g c test-errors --skip-tests
 
 ## Section 78. Adding an error interceptor
 
+- http interceptor
+
+- 在 \client\src\app 底下建立 新資料夾 _interceptors, 並建立一個 Error interceptor
+
+```cmd
+cd client\src\app
+mkdir _interceptors
+cd _interceptors
+ng g interceptor error --skip-tests
+```
+
+- intercept the request that goes out or the response comes back in the next
+
+- 使用 rxjs 的 catchError
+
 ## Section 79. Validation error
 
 ## Section 80. Handling not found
