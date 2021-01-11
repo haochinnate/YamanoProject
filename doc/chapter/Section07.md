@@ -223,7 +223,61 @@ providers: [
 
 ## Section 79. Validation error
 
+- flatten the array of array
+
+```typescript
+// 此行會編譯錯誤
+throw modalStateErrors.flat();
+```
+
+- 到 tsconfig.json, lib 加入 es2019, 才有支援 flat, 可以編譯成功
+
+```json
+{
+  "lib": [
+    "es2019",
+    "es2018",
+    "dom"
+  ]
+}
+```
+
 ## Section 80. Handling not found
+
+- 切到 errors 資料夾, 建立 NotFoundComponent
+
+```cmd
+cd .\client\src\app\errors\ 
+ng g c not-found --skip-tests
+```
+
+```html
+<div class="container">
+    <h1>Not found</h1>
+    <button class="btn btn-info btn-lg" routerLink='/'>Return to home page</button>
+</div>
+```
+
+- 然後在 app-routing.module.ts 中, 設定 NotFound 頁面
+
+- 原先 nav component 中 login method 的 error handling 就可以拿掉了
 
 ## Section 81. Adding a server error page
 
+- 切到 errors 資料夾, 建立 ServerErrorComponent
+
+```cmd
+cd .\client\src\app\errors\ 
+ng g c server-error --skip-tests
+```
+
+- 在 error interceptor 中 把 500 的 navigationExtras 傳進去
+
+- 只能在 constructor 中 取得 router 物件, 然後取得 getCurrentNavigation
+
+```typescript
+  constructor(private router: Router) { 
+    const navigation = this.router.getCurrentNavigation();
+    this.error = navigation?.extras?.state?.error;
+  }
+```

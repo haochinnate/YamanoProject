@@ -9,6 +9,8 @@ import { ListsComponent } from './course/lists/lists.component';
 import { MemberDetailComponent } from './course/members/member-detail/member-detail.component';
 import { MemberListComponent } from './course/members/member-list/member-list.component';
 import { MessagesComponent } from './course/messages/messages.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
@@ -33,8 +35,10 @@ const routes: Routes = [
   {path: 'car/compare', component: CompareComponent},
   {path: 'car/pttformat', component: PttformatComponent},
   {path: 'errors', component: TestErrorsComponent},
+  {path: 'not-found', component: NotFoundComponent},
+  {path: 'server-error', component: ServerErrorComponent},
   // wildcard route, return back to home
-  {path: '**', component: HomeComponent, pathMatch: 'full'}, 
+  {path: '**', component: NotFoundComponent, pathMatch: 'full'}, 
 ];
 
 @NgModule({
