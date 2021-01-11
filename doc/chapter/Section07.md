@@ -166,7 +166,60 @@ ng g interceptor error --skip-tests
 
 - intercept the request that goes out or the response comes back in the next
 
+```typescript
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    return next.handle(request).pipe(
+      catchError(error => {
+        // the first error is HttpErrorResponse
+        if (error) {
+          switch (error.status) {
+            case 400:
+              if (error.error.errors) {
+                const modalStateErrors = [];
+                for (const key in error.error.errors){
+                  if (error.error.errors[key]) {
+                    modalStateErrors.push(error.error.errors[key]);
+                  }
+                }
+                throw modalStateErrors;
+              } else {
+                this.toastr.error(error.statusText, error.status);
+              }
+              break;
+              case 401:
+                this.toastr.error(error.statusText, error.status);
+                break;
+              case 404:
+                this.router.navigateByUrl('/not-found');
+                break;
+              case 500:
+                const navigationExtras: NavigationExtras = {state: {error: error.error}};
+                this.router.navigateByUrl('/server-error', navigationExtras);
+                break;
+            default:
+              this.toastr.error('Something unexpected went wrong');
+              console.log(error);
+              break;
+          }
+        }
+        
+        // if switch didn't catch and handle it, then just return the error
+        // buy actually should not hit here
+        return throwError(error);
+      })
+    );
+  }
+```
+
 - 使用 rxjs 的 catchError
+
+- 在 app.module 中 provide 這個 error interceptor, multi 是 true 表示增加, 原有的還會存在
+
+```typescript
+providers: [
+  {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+],
+```
 
 ## Section 79. Validation error
 
