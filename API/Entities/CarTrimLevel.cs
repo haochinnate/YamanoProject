@@ -10,7 +10,7 @@ namespace API.Entities
         public string ModelName { get; set; }
         public string LevelName { get; set; }
         public string EnergyForm { get; set; }
-        public DateTime DayOfPublish { get; set; }
+        public DateTime DayOfAnnounce { get; set; }
         public int Length { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }

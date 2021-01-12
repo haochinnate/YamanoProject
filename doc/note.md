@@ -22,7 +22,7 @@
 
 # Section 7: [Error handling](chapter/Section07.md)
 
-
+# Section 8: [Extending the API](chapter/Section08.md)
 
 
 
