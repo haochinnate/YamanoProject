@@ -84,9 +84,61 @@ dotnet ef database update
 
 - [JSON generator](https://www.json-generator.com/)
 
+- 使用 \StudentAssets\jsongenerator.txt
+
 ## Section 88. Seeding data part one
 
+- 在 \API\Data 資料夾下, 建立 Seed class
+
+```csharp
+public static async Task SeedUsers(DataContext context)
+{
+    if (await context.Users.AnyAsync())
+    {
+        return;
+    } 
+            
+    var userData = await System.IO.File.ReadAllTextAsync("Data/UserSeedData.json");
+    var users = JsonSerializer.Deserialize<List<User>>(userData);
+}
+```
+
+- 在 Program.cs Main 中呼叫 Seed class 的 function 
+
+```csharp
+public static async Task Main(string[] args)
+{
+    // CreateHostBuilder(args).Build().Run();
+    var host = CreateHostBuilder(args).Build();
+
+    using var scope = host.Services.CreateScope();
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<DataContext>();
+        await context.Database.MigrateAsync();
+        await Seed.SeedUsers(context);
+    }
+    catch (System.Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred during migration");
+    }
+
+    await host.RunAsync();
+}
+```
+
 ## Section 89. Seeding data part two
+
+- 先 drop database, 再重新執行
+
+```cmd
+dotnet ef database drop
+dotnet watch run
+```
+
+- 再用 postman 測試, postman 中可以增加 Tests, 驗證 API 的 response 有沒有 token, 有的話儲存在 postman 的 global 中, {{token}}
 
 ## Section 90. The repository pattern
 

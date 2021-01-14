@@ -20,7 +20,6 @@ namespace API.Controllers
         }
 
         // url:port/api/carmanufacturers
-        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CarManufacturer>>> GetCarManufacturers()
         {
