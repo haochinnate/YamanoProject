@@ -1,135 +1,335 @@
 [
-- AstonMartin (https://www.yunsanmotors.com/astonmartin/)
-- Audi (https://www.audi.com.tw/tw/web/zh.html)
-- Bentley (https://www.yunsanmotors.com/bentley/)
-- BMW (https://www.bmw.com.tw/zh/index.html)
-- Citroen (https://www.citroen.com.tw/)
-- Ferrari
-- Ford (https://www.ford.com.tw/)
-- Honda (https://www.honda-taiwan.com.tw/Auto)
-- Hyundai (https://www.hyundai-motor.com.tw/)
-- Infiniti (https://www.infiniti.com.tw/)
-- Jaguar (https://www.jaguar.tw/)
-- KIA (https://www.kia.com.tw/)
-- Lamborghini
-- LandRover (https://www.landrover.tw/)
-- Lexus (https://www.lexus.com.tw/)
-- Lotus
-- Luxgen (https://www.luxgen-motor.com.tw/Home/Index)
-- Maserati (https://www.maserati.com/tw/zh)
-- Mazda (https://www.mazda.com.tw/)
-- McLaren
-- Mercedes-Benz
-- MINI
-- Mitsubishi
-- Nissan
-- Peugeot
-- Porsche
-- Rolls-Royce
-- Skoda
-- SMART
-- SsangYong
-- Subaru
-- Suzuki
-- Tesla
-- Toyota
-- Volkswagen
-- Volkswagen Commercial
-- Volvo
     {
-        "Name": "",
+        "Name": "Aston Martin",
         "ChineseName": "",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://www.yunsanmotors.com/astonmartin/",
+        "Models": [
+        
+        ]
     },
     {
-        "Name": "",
-        "ChineseName": "",
+        "Name": "Audi",
+        "ChineseName": "奧迪",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://www.audi.com.tw/tw/web/zh.html",
+        "Models": [
+        
+        ]
     },
     {
-        "Name": "",
-        "ChineseName": "",
+        "Name": "Bentley",
+        "ChineseName": "賓利",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://www.yunsanmotors.com/bentley/",
+        "Models": [
+        
+        ]
     },
     {
-        "Name": "",
-        "ChineseName": "",
+        "Name": "BMW",
+        "ChineseName": "寶馬",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://www.bmw.com.tw/zh/index.html",
+        "Models": [
+        
+        ]
     },
     {
-        "Name": "",
-        "ChineseName": "",
+        "Name": "Citroen",
+        "ChineseName": "雪鐵龍",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://www.citroen.com.tw/",
+        "Models": [
+        
+        ]
     },
     {
-        "Name": "",
-        "ChineseName": "",
+        "Name": "Ferrari",
+        "ChineseName": "法拉利",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://taiwan.ferraridealers.com/en_gb",
+        "Models": [
+        
+        ]
     },
     {
-        "Name": "",
-        "ChineseName": "",
+        "Name": "Ford",
+        "ChineseName": "福特",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://www.ford.com.tw/",
+        "Models": [
+        
+        ]
     },
     {
-        "Name": "",
-        "ChineseName": "",
+        "Name": "Honda",
+        "ChineseName": "本田",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://www.honda-taiwan.com.tw/Auto",
+        "Models": [
+        
+        ]
     },
     {
-        "Name": "",
-        "ChineseName": "",
+        "Name": "Hyundai",
+        "ChineseName": "現代",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://www.hyundai-motor.com.tw/",
+        "Models": [
+        
+        ]
     },
     {
-        "Name": "",
+        "Name": "Infiniti",
         "ChineseName": "",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://www.infiniti.com.tw/",
+        "Models": [
+        
+        ]
     },
     {
-        "Name": "",
-        "ChineseName": "",
+        "Name": "Jaguar",
+        "ChineseName": "捷豹",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://www.jaguar.tw/",
+        "Models": [
+        
+        ]
     },
     {
-        "Name": "",
-        "ChineseName": "",
+        "Name": "KIA",
+        "ChineseName": "起亞",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://www.kia.com.tw/",
+        "Models": [
+        
+        ]
     },
     {
-        "Name": "",
+        "Name": "Lamborghini",
         "ChineseName": "",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://www.lamborghini.com/en-en/ownership/dealer-locator/lamborghini-taipei",
+        "Models": [
+        
+        ]
     },
     {
-        "Name": "",
+        "Name": "Land Rover",
         "ChineseName": "",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://www.landrover.tw/",
+        "Models": [
+        
+        ]
     },
     {
-        "Name": "",
-        "ChineseName": "",
+        "Name": "Lexus",
+        "ChineseName": "凌志",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://www.lexus.com.tw/",
+        "Models": [
+        
+        ]
     },
     {
-        "Name": "",
+        "Name": "Lotus",
+        "ChineseName": "蓮花",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.lotuscars.com/",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Luxgen",
+        "ChineseName": "納智捷",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.luxgen-motor.com.tw/Home/Index",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Maserati",
+        "ChineseName": "瑪莎拉蒂",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.maserati.com/tw/zh",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Mazda",
+        "ChineseName": "馬自達",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.mazda.com.tw/",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "McLaren",
         "ChineseName": "",
         "LogoUrl": "",
-        "OfficialUrl": ""
+        "OfficialUrl": "https://www.yunsanmotors.com/mclaren/",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Mercedes-Benz",
+        "ChineseName": "賓士",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.mercedes-benz.com.tw/",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "MINI",
+        "ChineseName": "",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.mini.com.tw/zh_TW/home.html",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Mitsubishi",
+        "ChineseName": "三菱",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.mitsubishi-motors.com.tw/",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Nissan",
+        "ChineseName": "日產",
+        "LogoUrl": "",
+        "OfficialUrl": "https://new.nissan.com.tw/nissan",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Peugeot",
+        "ChineseName": "寶獅",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.peugeot.com.tw/",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Porsche",
+        "ChineseName": "保時捷",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.porsche.com/taiwan/zh-tw/",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Rolls-Royce",
+        "ChineseName": "勞斯萊斯",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.rolls-roycemotorcars.com/taipei/zh_TW/showroom.html",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Skoda",
+        "ChineseName": "",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.skoda.com.tw/",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "SMART",
+        "ChineseName": "",
+        "LogoUrl": "",
+        "OfficialUrl": "https://mercedes-me.tw/smartcar/",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "SsangYong",
+        "ChineseName": "雙龍",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.ssangyong.tw/",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Subaru",
+        "ChineseName": "速霸陸",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.subaru.asia/tw/zh/home/",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Suzuki",
+        "ChineseName": "鈴木",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.taiwansuzuki.com.tw/",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Tesla",
+        "ChineseName": "特斯拉",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.tesla.com/zh_tw",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Toyota",
+        "ChineseName": "豐田",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.toyota.com.tw/",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Volkswagen",
+        "ChineseName": "福斯",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.volkswagen.com.tw/zh.html",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Volkswagen Commercial",
+        "ChineseName": "福斯商旅",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.volkswagen-commercial.com.tw/zh.html",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "Volvo",
+        "ChineseName": "富豪",
+        "LogoUrl": "",
+        "OfficialUrl": "https://www.volvocars.com/tw",
+        "Models": [
+        
+        ]
     },
 ]
