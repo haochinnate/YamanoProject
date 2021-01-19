@@ -142,7 +142,33 @@ dotnet watch run
 
 ## Section 90. The repository pattern
 
+- A Repository mediates between the domain and data mapping layers, acting like an in-memory domain object collection
+
+- Controller 透過 Repository 來跟 DbContext 溝通, 而非直接使用 DbContext
+    1. Encapsulates the logic
+    2. Reduces duplicate query logic
+    3. Promotes testability
+    4. Decouples application from persistence framework
+
+- Disadvantages:
+    1. Abstraction of an abstraction
+    2. Each root entity should have it's own repository which means more code
+    3. Also need to implement the UnitOfWork pattern to control transactions
+
 ## Section 91. Creating a repository
+
+- 在 \API\Interfaces 資料夾底下 建立 IUserRepository 介面
+
+- 並新增一些 method
+
+- 在 \API\Data 資料夾底下 建立 UserRepository 類別, 並實作 IUserRepository 的 method的 method
+
+- 到 ApplicationServiceExtensions class, 設定 DI
+
+```csharp
+services.AddScoped<IUserRepository, UserRepository>();
+services.AddScoped<ICarModelRepository, CarModelRepository>();
+```
 
 ## Section 92. Updating the users controller
 
