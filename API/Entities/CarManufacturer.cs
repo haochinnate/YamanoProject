@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace API.Entities
 {
     public class CarManufacturer
@@ -7,5 +9,6 @@ namespace API.Entities
         public string ChineseName { get; set; }
         public string LogoUrl { get; set; }
         public string OfficialUrl { get; set; }
+        public ICollection<CarModel> Models { get; set; }
     }
 }

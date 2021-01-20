@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Entities
 {
+    [Table("TrimLevels")]
     public class CarTrimLevel
     {
         public int Id { get; set; }
@@ -20,6 +22,6 @@ namespace API.Entities
         public double BootCapacity { get; set; }
         public string SizeAndType { get; set; }
         public double FuelConsumption { get; set; }
-        public virtual ICollection<Photo> Photos { get; set; }
+        public virtual ICollection<CarPhoto> Photos { get; set; }
     }
 }

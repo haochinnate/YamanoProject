@@ -172,6 +172,8 @@ services.AddScoped<ICarModelRepository, CarModelRepository>();
 
 ## Section 92. Updating the users controller
 
+- 把原本 UsersController 中, 呼叫 dataContext 的 function 換成用 IUserRepository 的
+
 ## Section 93. Adding a DTO for Members
 
 ## Section 94. Adding AutoMapper
