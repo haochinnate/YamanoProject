@@ -174,11 +174,55 @@ services.AddScoped<ICarModelRepository, CarModelRepository>();
 
 - 把原本 UsersController 中, 呼叫 dataContext 的 function 換成用 IUserRepository 的
 
+- 目前 api 讀回來時, photos 會是null, 如果要包含, 在取得的時候要加 Include, 如下
+
+```csharp
+public async Task<IEnumerable<User>> GetUsersAsync()
+{
+    return await _context.Users
+        .Include(p => p.Photos)
+        .ToListAsync();
+}
+```
+
+- 但是這樣會有無限reference 的情況, 因為 User 裡有 Photo, Photo裡有 User, 呼叫 api 時, 會回傳 500 Internal Server Error
+
+- 所以改為使用 DTO 來回傳
+
 ## Section 93. Adding a DTO for Members
+
+- 在 \API\DTOs\ 資料夾下 建立 class MemberDto 和 PhotoDto, 然後只有部分 User Entity的 properties
+
+- repository 要回傳的是 Dto 而非 Entity class, 所以到時候 controller 中應該也要改
 
 ## Section 94. Adding AutoMapper
 
+- 增加 AutoMapper 做 Entity 和 DTO 的對應
+
+- 打開 nuget gallery, 搜尋 AutoMapper, 安裝 AutoMapper.Extensions.Microsoft.DependencyInjection
+
+- 在 \API\ 底下 建立 Helpers 資料夾, 並建立類別 AutoMapperProfiles
+
+```csharp
+public class AutoMapperProfiles : Profile
+{
+    public AutoMapperProfiles()
+    {
+        CreateMap<User, MemberDto>();
+        CreateMap<Photo, PhotoDto>();
+    }
+}
+```
+
+- 然後在 ApplicationServiceExtensions 類別中, 加入DI
+
+```csharp
+services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
+```
+
 ## Section 95. Using AutoMapper
+
+
 
 ## Section 96. Configuring AutoMapper
 
