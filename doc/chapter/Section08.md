@@ -222,8 +222,29 @@ services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 
 ## Section 95. Using AutoMapper
 
+- 到 UsersController, 把回傳 User 的地方改成 MemberDto
 
+- 要 injection: IMapper 
+
+```csharp
+var usersToReturn = _mapper.Map<IEnumerable<MemberDto>>(users);
+```
+
+- AutoMapper 可以認得所有同名的 properties, 還會認 Get 開頭的 function 來設定 property
+
+- 在 MemberDto 類別裡面新增 PhotoUrl property, 這時候如果去執行 API 的話, PhotoUrl 的值會是 null
 
 ## Section 96. Configuring AutoMapper
 
+- 設定 目標 class 中的某個 property 要如何對應
+
+```csharp
+CreateMap<User, MemberDto>()
+    .ForMember(
+        dest => dest.PhotoUrl,
+        opt => opt.MapFrom(
+            src => src.Photos.FirstOrDefault(x => x.IsMain).Url));
+```
+
 ## Section 97. Using AutoMapper queryable extensions
+
