@@ -248,3 +248,13 @@ CreateMap<User, MemberDto>()
 
 ## Section 97. Using AutoMapper queryable extensions
 
+1. 從 db query 時, 只留部分欄位, 再送到 DTO
+2. 或是, query 全部 entity, 再留部分欄位給 DTO
+
+- 在 UserRepository 增加 function 是回傳 MemberDto 的
+
+```csharp
+Task<IEnumerable<MemberDto>> GetMembersAsync();
+Task<MemberDto> GetMemberAsync();
+```
+
