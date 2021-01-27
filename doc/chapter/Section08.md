@@ -258,3 +258,11 @@ Task<IEnumerable<MemberDto>> GetMembersAsync();
 Task<MemberDto> GetMemberAsync();
 ```
 
+- 用 AutoMapper 的 ProjectTo 來 對應到 MemberDto
+
+```csharp
+return await _context.Users
+    .Where(u => u.UserName == username)
+    .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+    .SingleOrDefaultAsync();
+```

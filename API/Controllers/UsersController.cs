@@ -26,11 +26,13 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
         {
-            var users = await _userRepository.GetUsersAsync();
+            // var users = await _userRepository.GetUsersAsync();
 
-            var usersToReturn = _mapper.Map<IEnumerable<MemberDto>>(users);
+            // var usersToReturn = _mapper.Map<IEnumerable<MemberDto>>(users);
 
-            return Ok(usersToReturn);
+            // return Ok(usersToReturn);
+            var users = await _userRepository.GetMembersAsync();
+            return Ok(users);
         }
 
         // [HttpGet("{id}")]
@@ -42,8 +44,11 @@ namespace API.Controllers
         [HttpGet("{username}")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
-            var user = await _userRepository.GetUserByUserNameAsync(username); 
-            return _mapper.Map<MemberDto>(user);
+            // var user = await _userRepository.GetUserByUserNameAsync(username); 
+            // return _mapper.Map<MemberDto>(user);
+
+            var user = await _userRepository.GetMemberAsync(username); 
+            return user;
         }
     }
 }
