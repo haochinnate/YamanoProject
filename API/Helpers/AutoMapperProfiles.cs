@@ -20,6 +20,12 @@ namespace API.Helpers
                     opt => opt.MapFrom(src => src.DateOfBirth.CalculateAge())
                 );
             CreateMap<Photo, PhotoDto>();
+
+            // for my YamanoProject
+            CreateMap<CarManufacturer, ManufacturerDto>();
+            CreateMap<CarModel, CarModelDto>();
+            CreateMap<CarTrimLevel, TrimLevelDto>();
+            CreateMap<CarPhoto, CarPhotoDto>();
         }
     }
 }

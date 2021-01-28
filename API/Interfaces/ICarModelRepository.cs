@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using API.DTOs;
 using API.Entities;
 
 namespace API.Interfaces
@@ -11,21 +12,23 @@ namespace API.Interfaces
         // void Upate(User user);
         // Task<bool> SaveAllAsync();
 
+        // Manufacturer
+        Task<IEnumerable<ManufacturerDto>> GetManufacturersAsync();
+        Task<ManufacturerDto> GetManufacturerAsync(int id);
+        Task<ManufacturerDto> GetManufacturerAsync(string manufacturerName);
 
-        // Task<IEnumerable<CarManufacturer>> GetManufacturersAsync();
-        // Task<CarManufacturer> GetManufacturerByIdAsync(int id);
-        // Task<CarManufacturer> GetManufacturerByNameAsync(string manufacturerName);
+        // Model
+        Task<IEnumerable<CarModelDto>> GetModelsAsync(int manufacturerId);
+        Task<IEnumerable<CarModelDto>> GetModelsAsync(string manufacturerName);
+        Task<IEnumerable<CarModelDto>> GetModelsAsync(ManufacturerDto manufacturer);
+        Task<CarModelDto> GetModelAsync(ManufacturerDto manufacturer, int modelId);
+        Task<CarModelDto> GetModelAsync(ManufacturerDto manufacturer, string modelName);
 
-
-        // Task<IEnumerable<CarModel>> GetModelsInManufacturerAsync(int id);
-        // Task<IEnumerable<CarModel>> GetModelsInManufacturerAsync(string manufacturer);
-        // Task<CarManufacturer> GetManufacturerByIdAsync(int id);
-        // Task<CarManufacturer> GetManufacturerByNameAsync(string manufacturerName);
-
-
-        // Task<IEnumerable<CarTrimLevel>> GetTrimLevelsByAsync(int modelId);
-        // Task<IEnumerable<CarTrimLevel>> GetModelsByManufacturerAsync(string manufacturer);
-    
-
+        // TrimLevel
+        Task<IEnumerable<TrimLevelDto>> GetTrimLevelsAsync(int modelId);
+        Task<IEnumerable<TrimLevelDto>> GetTrimLevelsAsync(string modelName);
+        Task<IEnumerable<TrimLevelDto>> GetTrimLevelsAsync(CarModelDto model);
+        Task<TrimLevelDto> GetTrimLevelAsync(CarModelDto model, int trimLevelId);
+        Task<TrimLevelDto> GetTrimLevelAsync(CarModelDto model, string trimLevelName);
     }
 }
