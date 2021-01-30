@@ -1,0 +1,72 @@
+[
+    {
+        "Name": "Fabia",        
+        "OfficialUrl": "https://www.skoda.com.tw/models/the-new-fabia/the-new-fabia",
+        "Levels": [
+        
+        ]
+    },
+    {
+        "Name": "Fabia Combi",        
+        "OfficialUrl": "https://www.skoda.com.tw/models/the-new-fabia/the-new-fabia-combi",
+        "Levels": [
+        
+        ]
+    },
+    {
+        "Name": "Scala",        
+        "OfficialUrl": "https://www.skoda.com.tw/models/scala/scala",
+        "Levels": [
+        
+        ]
+    },
+    {
+        "Name": "Octavia",        
+        "OfficialUrl": "https://www.skoda.com.tw/models/the-new-octavia/the-new-octavia",
+        "Levels": [
+        
+        ]
+    },
+    {
+        "Name": "Octavia Combi",        
+        "OfficialUrl": "https://www.skoda.com.tw/models/the-new-octavia/the-new-octavia-combi",
+        "Levels": [
+        
+        ]
+    },
+    {
+        "Name": "Superb",        
+        "OfficialUrl": "https://www.skoda.com.tw/models/new-superb/new-superb",
+        "Levels": [
+        
+        ]
+    },
+    {
+        "Name": "Superb Combi",        
+        "OfficialUrl": "https://www.skoda.com.tw/models/new-superb/new-superb-combi",
+        "Levels": [
+        
+        ]
+    },
+    {
+        "Name": "Kamiq",        
+        "OfficialUrl": "https://www.skoda.com.tw/models/kamiq/kamiq",
+        "Levels": [
+        
+        ]
+    },
+    {
+        "Name": "Karoq",        
+        "OfficialUrl": "https://www.skoda.com.tw/models/the-new-karoq/the-new-karoq",
+        "Levels": [
+        
+        ]
+    },    
+    {
+        "Name": "Kodiaq",        
+        "OfficialUrl": "https://www.skoda.com.tw/models/the-new-kodiaq",
+        "Levels": [
+        
+        ]
+    }
+]
