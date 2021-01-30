@@ -1,26 +1,51 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Interfaces;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
     public class CarModelRepository : ICarModelRepository
     {
+        #region Field
+        private readonly DataContext _context;
+        private readonly IMapper _mapper;
+        #endregion
+
+        #region Constructor
+        public CarModelRepository(DataContext context, IMapper mapper)
+        {
+            _mapper = mapper;
+            _context = context;
+        }
+        #endregion
+
         #region GetManufacturer
-        public Task<ManufacturerDto> GetManufacturerAsync(int id)
+        public async Task<ManufacturerDto> GetManufacturerAsync(int id)
         {
-            throw new System.NotImplementedException();
+            return await _context.CarManufacturers
+                .Where(m => m.Id == id)
+                .ProjectTo<ManufacturerDto>(_mapper.ConfigurationProvider)
+                .SingleOrDefaultAsync();
         }
 
-        public Task<ManufacturerDto> GetManufacturerAsync(string manufacturerName)
+        public async Task<ManufacturerDto> GetManufacturerAsync(string manufacturerName)
         {
-            throw new System.NotImplementedException();
+            return await _context.CarManufacturers
+                .Where(m => m.Name == manufacturerName)
+                .ProjectTo<ManufacturerDto>(_mapper.ConfigurationProvider)
+                .SingleOrDefaultAsync();
         }
 
-        public Task<IEnumerable<ManufacturerDto>> GetManufacturersAsync()
+        public async Task<IEnumerable<ManufacturerDto>> GetManufacturersAsync()
         {
-            throw new System.NotImplementedException();
+            return await _context.CarManufacturers
+                .ProjectTo<ManufacturerDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
         }
 
         #endregion
@@ -49,7 +74,7 @@ namespace API.Data
         public Task<IEnumerable<CarModelDto>> GetModelsAsync(ManufacturerDto manufacturer)
         {
             throw new System.NotImplementedException();
-        }    
+        }
         #endregion
 
         #region GetTrimLevel

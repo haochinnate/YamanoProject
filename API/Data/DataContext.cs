@@ -11,6 +11,8 @@ namespace API.Data
         }
 
         public DbSet<CarManufacturer> CarManufacturers { get; set; }
+        // public DbSet<CarModel> Models { get; set; }
+        // public DbSet<CarTrimLevel> TrimLevels { get; set; }
         public DbSet<User> Users { get; set; }
     }
 }

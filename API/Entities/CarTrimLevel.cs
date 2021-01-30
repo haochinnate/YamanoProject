@@ -22,6 +22,7 @@ namespace API.Entities
         public double BootCapacity { get; set; }
         public string SizeAndType { get; set; }
         public double FuelConsumption { get; set; }
+        public bool IsActive { get; set; }
         public virtual ICollection<CarPhoto> Photos { get; set; }
     }
 }

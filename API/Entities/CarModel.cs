@@ -8,6 +8,7 @@ namespace API.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Level { get; set; }
         public string OfficialUrl { get; set; }
         public ICollection<CarTrimLevel> Levels { get; set; }
     }
