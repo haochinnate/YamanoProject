@@ -51,56 +51,96 @@ namespace API.Data
         #endregion
 
         #region GetModel
-        public Task<CarModelDto> GetModelAsync(ManufacturerDto manufacturer, int modelId)
+        public async Task<CarModelDto> GetModelAsync(ManufacturerDto manufacturer, int modelId)
         {
-            throw new System.NotImplementedException();
+            return await _context.Models
+                .Where(m => m.Id == modelId && m.CarManufacturerId == manufacturer.Id)
+                .ProjectTo<CarModelDto>(_mapper.ConfigurationProvider)
+                .SingleOrDefaultAsync();
         }
 
-        public Task<CarModelDto> GetModelAsync(ManufacturerDto manufacturer, string modelName)
+        public async Task<CarModelDto> GetModelAsync(ManufacturerDto manufacturer, string modelName)
         {
-            throw new System.NotImplementedException();
+            return await _context.Models
+                .Where(m => m.Name == modelName && m.CarManufacturerId == manufacturer.Id)
+                .ProjectTo<CarModelDto>(_mapper.ConfigurationProvider)
+                .SingleOrDefaultAsync();
         }
 
-        public Task<IEnumerable<CarModelDto>> GetModelsAsync(int manufacturerId)
+        public async Task<IEnumerable<CarModelDto>> GetModelsAsync(int manufacturerId)
         {
-            throw new System.NotImplementedException();
+            return await _context.CarManufacturers
+                .Where(m => m.Id == manufacturerId)
+                .Select(m => m.Models)
+                .ProjectTo<CarModelDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
         }
 
-        public Task<IEnumerable<CarModelDto>> GetModelsAsync(string manufacturerName)
+        public async Task<IEnumerable<CarModelDto>> GetModelsAsync(string manufacturerName)
         {
-            throw new System.NotImplementedException();
+            return await _context.CarManufacturers
+                .Where(m => m.Name == manufacturerName)
+                .Select(m => m.Models)
+                .ProjectTo<CarModelDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
         }
 
-        public Task<IEnumerable<CarModelDto>> GetModelsAsync(ManufacturerDto manufacturer)
+        public async Task<IEnumerable<CarModelDto>> GetModelsAsync(ManufacturerDto manufacturer)
         {
-            throw new System.NotImplementedException();
+            return await _context.CarManufacturers
+                .Where(m => m.Id == manufacturer.Id)
+                .Select(m => m.Models)
+                .ProjectTo<CarModelDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
         }
         #endregion
 
         #region GetTrimLevel
-        public Task<TrimLevelDto> GetTrimLevelAsync(CarModelDto model, int trimLevelId)
+        public async Task<TrimLevelDto> GetTrimLevelAsync(CarModelDto model, int trimLevelId)
         {
-            throw new System.NotImplementedException();
+            return await _context.Models
+                .FirstOrDefault(m => m.Id == model.Id)
+                .Levels.AsQueryable()
+                .Where(l => l.Id == trimLevelId)
+                .ProjectTo<TrimLevelDto>(_mapper.ConfigurationProvider)
+                .SingleOrDefaultAsync();
         }
 
-        public Task<TrimLevelDto> GetTrimLevelAsync(CarModelDto model, string trimLevelName)
+        public async Task<TrimLevelDto> GetTrimLevelAsync(CarModelDto model, string trimLevelName)
         {
-            throw new System.NotImplementedException();
+            return await _context.Models
+                .FirstOrDefault(m => m.Id == model.Id)
+                .Levels.AsQueryable()
+                .Where(l => l.LevelName == trimLevelName)
+                .ProjectTo<TrimLevelDto>(_mapper.ConfigurationProvider)
+                .SingleOrDefaultAsync();
         }
 
-        public Task<IEnumerable<TrimLevelDto>> GetTrimLevelsAsync(int modelId)
+        public async Task<IEnumerable<TrimLevelDto>> GetTrimLevelsAsync(int modelId)
         {
-            throw new System.NotImplementedException();
+            return await _context.Models
+                .Where(m => m.Id == modelId)
+                .Select(m => m.Levels)
+                .ProjectTo<TrimLevelDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
         }
 
-        public Task<IEnumerable<TrimLevelDto>> GetTrimLevelsAsync(string modelName)
+        public async Task<IEnumerable<TrimLevelDto>> GetTrimLevelsAsync(string modelName)
         {
-            throw new System.NotImplementedException();
+            return await _context.Models
+                .Where(m => m.Name == modelName)
+                .Select(m => m.Levels)
+                .ProjectTo<TrimLevelDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
         }
 
-        public Task<IEnumerable<TrimLevelDto>> GetTrimLevelsAsync(CarModelDto model)
+        public async Task<IEnumerable<TrimLevelDto>> GetTrimLevelsAsync(CarModelDto model)
         {
-            throw new System.NotImplementedException();
+            return await _context.Models
+                .Where(m => m.Id == model.Id)
+                .Select(m => m.Levels)
+                .ProjectTo<TrimLevelDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
         }
         #endregion
 

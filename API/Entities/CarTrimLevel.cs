@@ -24,5 +24,7 @@ namespace API.Entities
         public double FuelConsumption { get; set; }
         public bool IsActive { get; set; }
         public virtual ICollection<CarPhoto> Photos { get; set; }
+        public CarModel CarModel { get; set; }
+        public int CarModelId { get; set; }
     }
 }
