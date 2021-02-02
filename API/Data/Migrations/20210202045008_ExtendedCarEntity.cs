@@ -7,6 +7,11 @@ namespace API.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<string>(
+                name: "Level",
+                table: "CarManufacturers",
+                nullable: true);
+
             migrationBuilder.CreateTable(
                 name: "Models",
                 columns: table => new
@@ -15,7 +20,8 @@ namespace API.Data.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
                     OfficialUrl = table.Column<string>(nullable: true),
-                    CarManufacturerId = table.Column<int>(nullable: true)
+                    IsActive = table.Column<bool>(nullable: false),
+                    CarManufacturerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,7 +31,7 @@ namespace API.Data.Migrations
                         column: x => x.CarManufacturerId,
                         principalTable: "CarManufacturers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -48,7 +54,8 @@ namespace API.Data.Migrations
                     BootCapacity = table.Column<double>(nullable: false),
                     SizeAndType = table.Column<string>(nullable: true),
                     FuelConsumption = table.Column<double>(nullable: false),
-                    CarModelId = table.Column<int>(nullable: true)
+                    IsActive = table.Column<bool>(nullable: false),
+                    CarModelId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,7 +65,7 @@ namespace API.Data.Migrations
                         column: x => x.CarModelId,
                         principalTable: "Models",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -109,6 +116,10 @@ namespace API.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Models");
+
+            migrationBuilder.DropColumn(
+                name: "Level",
+                table: "CarManufacturers");
         }
     }
 }

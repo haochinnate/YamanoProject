@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210125045333_ExtendedCarEntity")]
+    [Migration("20210202045008_ExtendedCarEntity")]
     partial class ExtendedCarEntity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,6 +25,9 @@ namespace API.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ChineseName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Level")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LogoUrl")
@@ -47,7 +50,10 @@ namespace API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CarManufacturerId")
+                    b.Property<int>("CarManufacturerId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -100,7 +106,7 @@ namespace API.Data.Migrations
                     b.Property<double>("BootCapacity")
                         .HasColumnType("REAL");
 
-                    b.Property<int?>("CarModelId")
+                    b.Property<int>("CarModelId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DayOfAnnounce")
@@ -117,6 +123,9 @@ namespace API.Data.Migrations
 
                     b.Property<double>("HorsePower")
                         .HasColumnType("REAL");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Length")
                         .HasColumnType("INTEGER");
@@ -223,9 +232,11 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.CarModel", b =>
                 {
-                    b.HasOne("API.Entities.CarManufacturer", null)
+                    b.HasOne("API.Entities.CarManufacturer", "CarManufacturer")
                         .WithMany("Models")
-                        .HasForeignKey("CarManufacturerId");
+                        .HasForeignKey("CarManufacturerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("API.Entities.CarPhoto", b =>
@@ -239,9 +250,11 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.CarTrimLevel", b =>
                 {
-                    b.HasOne("API.Entities.CarModel", null)
+                    b.HasOne("API.Entities.CarModel", "CarModel")
                         .WithMany("Levels")
-                        .HasForeignKey("CarModelId");
+                        .HasForeignKey("CarModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("API.Entities.Photo", b =>
