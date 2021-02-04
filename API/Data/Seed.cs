@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -48,29 +49,28 @@ namespace API.Data
             
             var manufacturers = JsonSerializer.Deserialize<List<CarManufacturer>>(manufacturersData);
 
-            foreach (var manufacturer in Directory.GetFiles(_seedDataManufacturersFolder))
+            foreach (var manufacturerFile in Directory.GetFiles(_seedDataManufacturersFolder))
             {
-                var modelsData = await System.IO.File.ReadAllTextAsync(manufacturer);
+                // manufacturerFile is "\CarSeedData\Manufacturers\manufacturer.json", which contains models information
+                var modelsData = await System.IO.File.ReadAllTextAsync(manufacturerFile);
                 var models = JsonSerializer.Deserialize<List<CarModel>>(modelsData);
 
-                string manufacturerName = Path.GetFileNameWithoutExtension(manufacturer);
+                string manufacturerName = Path.GetFileNameWithoutExtension(manufacturerFile);
+                var manufacturer = manufacturers.First(m => m.Name == manufacturerName);
+                string manufacturerFolderPath = Path.Combine(_seedDataManufacturersFolder, manufacturerName);
+                
+                // assign models to manufacturer
+                manufacturer.Models = models;
 
-                string manufacturerRootPath = Path.Combine(_seedDataManufacturersFolder, manufacturerName);
-
-                // string modelName = Path.GetFileNameWithoutExtension(modelDataPath);
-
-                foreach (var modelDataPath in Directory.GetFiles(manufacturerRootPath))
+                foreach (var modelDataPath in Directory.GetFiles(manufacturerFolderPath))
                 {        
-                    var levelsData = await System.IO.File.ReadAllTextAsync(modelDataPath);
-                    var levels = JsonSerializer.Deserialize<List<CarTrimLevel>>(levelsData);
+                    var levels = await GetTrimLevelsFromFileAsync(modelDataPath);
+                    string modelName = Path.GetFileNameWithoutExtension(modelDataPath);
+                    var model = models.First(m => m.Name == modelName);
+                    // assign level to models
+                    model.Levels = levels;
                 }
-
             }        
-
-            // assign level to models
-
-            // assign models to manufacturer
-
 
             // add to context and save
             foreach (var manufacturer in manufacturers)
@@ -80,7 +80,7 @@ namespace API.Data
             await context.SaveChangesAsync(); 
         }
 
-        internal static async Task<List<CarTrimLevel>> GetTrimLevelsFromFile(string dataFilePath)
+        internal static async Task<List<CarTrimLevel>> GetTrimLevelsFromFileAsync(string dataFilePath)
         {
             var levelsData = await System.IO.File.ReadAllTextAsync(dataFilePath);
             var levels = JsonSerializer.Deserialize<List<CarTrimLevel>>(levelsData);

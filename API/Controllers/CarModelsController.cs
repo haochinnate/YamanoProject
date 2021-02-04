@@ -1,4 +1,9 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using API.Data;
+using API.DTOs;
+using API.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -7,13 +12,31 @@ namespace API.Controllers
     [Route("api/cars/{manufacturer}")]
     public class CarModelsController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly ICarModelRepository _carModelRepository;
+        private readonly IMapper _mapper;
 
-        public CarModelsController(DataContext context)
+        public CarModelsController(ICarModelRepository carModelRepository, IMapper mapper)
         {
-            this._context = context;
+            _carModelRepository = carModelRepository;
+            _mapper = mapper;
         }
 
+        // url:port/api/cars/{manufacturer}/models
+        [HttpGet("models")]
+        public async Task<ActionResult<IEnumerable<CarModelDto>>> GetModels([FromRoute]string manufacturer)
+        {
+            var models = await _carModelRepository.GetModelsAsync(manufacturer);
+            return Ok(models);
+        }
+
+        // url:port/api/cars/{manufacturer}/models/{modelName}
+        [HttpGet("models/{modelName}")]
+        public async Task<ActionResult<CarModelDto>> GetCarManufacturer([FromRoute]string manufacturer, string modelName)
+        {
+            var manufacturerObject = await _carModelRepository.GetManufacturerAsync(manufacturer);
+            var model = await _carModelRepository.GetModelAsync(manufacturerObject, modelName);
+            return model;
+        }
         
         // https://stackoverflow.com/questions/58208688/validating-and-passing-controller-level-parameters-with-asp-net-mvc-attribute-ro
         // [Route("customers/{customerId}/orders/{orderId}")]

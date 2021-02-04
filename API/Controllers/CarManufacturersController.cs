@@ -2,7 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
+using API.DTOs;
 using API.Entities;
+using API.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,27 +16,28 @@ namespace API.Controllers
     [Route("api/cars")]
     public class CarManufacturersController : ControllerBase
     {
-        private readonly DataContext _context;
-        public CarManufacturersController(DataContext context)
+        private readonly ICarModelRepository _carModelRepository;
+        private readonly IMapper _mapper;
+
+        public CarManufacturersController(ICarModelRepository carModelRepository, IMapper mapper)
         {
-            _context = context;
+            _carModelRepository = carModelRepository;
+            _mapper = mapper;
         }
 
-        // url:port/api/carmanufacturers
+        // url:port/api/cars
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CarManufacturer>>> GetCarManufacturers()
+        public async Task<ActionResult<IEnumerable<ManufacturerDto>>> GetCarManufacturers()
         {
-            var manufacturers = await _context.CarManufacturers.ToListAsync();
-
-            return manufacturers;
+            var manufacturers = await _carModelRepository.GetManufacturersAsync();
+            return Ok(manufacturers);
         }
 
-        // url:port/api/carmanufacturers/3
-        [HttpGet("{id}")]
-        public async Task<ActionResult<CarManufacturer>> GetCarManufacturer(int id)
+        // url:port/api/cars/{manufacturerName}
+        [HttpGet("{manufacturerName}")]
+        public async Task<ActionResult<ManufacturerDto>> GetCarManufacturer(string manufacturerName)
         {
-            var manufacturer = await _context.CarManufacturers.FindAsync(id);
-
+            var manufacturer = await _carModelRepository.GetManufacturerAsync(manufacturerName);
             return manufacturer;
         }
     }
