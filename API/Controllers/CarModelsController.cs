@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
@@ -25,14 +26,18 @@ namespace API.Controllers
         [HttpGet("models")]
         public async Task<ActionResult<IEnumerable<CarModelDto>>> GetModels([FromRoute]string manufacturer)
         {
+            Debug.WriteLine($"Function: GetModels({manufacturer})");
+
             var models = await _carModelRepository.GetModelsAsync(manufacturer);
             return Ok(models);
         }
 
         // url:port/api/cars/{manufacturer}/models/{modelName}
         [HttpGet("models/{modelName}")]
-        public async Task<ActionResult<CarModelDto>> GetCarManufacturer([FromRoute]string manufacturer, string modelName)
+        public async Task<ActionResult<CarModelDto>> GetModel([FromRoute]string manufacturer, string modelName)
         {
+            Debug.WriteLine($"Function: GetModel({manufacturer}, {modelName})");
+
             var manufacturerObject = await _carModelRepository.GetManufacturerAsync(manufacturer);
             var model = await _carModelRepository.GetModelAsync(manufacturerObject, modelName);
             return model;

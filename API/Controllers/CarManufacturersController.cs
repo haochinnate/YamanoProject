@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
@@ -29,6 +30,8 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ManufacturerDto>>> GetCarManufacturers()
         {
+            Debug.WriteLine($"Function: GetCarManufacturers()");
+
             var manufacturers = await _carModelRepository.GetManufacturersAsync();
             return Ok(manufacturers);
         }
@@ -37,6 +40,8 @@ namespace API.Controllers
         [HttpGet("{manufacturerName}")]
         public async Task<ActionResult<ManufacturerDto>> GetCarManufacturer(string manufacturerName)
         {
+            Debug.WriteLine($"Function: GetCarManufacturer({manufacturerName})");
+
             var manufacturer = await _carModelRepository.GetManufacturerAsync(manufacturerName);
             return manufacturer;
         }
