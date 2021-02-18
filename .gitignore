@@ -1,8 +1,9 @@
 API/appsettings.Development.json
 API/appsettings.json
-.vscode/launch.json
-.vscode/tasks.json
+.vscode/
 /API/bin/
 /API/obj/
 API/Properties/launchSettings.json
 *.db
+crawler/.vs/
+crawler/.venv/
