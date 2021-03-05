@@ -25,5 +25,23 @@
         "Models": [
         
         ]
+    },
+    {
+        "Name": "Mazda",
+        "ChineseName": "馬自達",
+        "Url": "https://newcar.u-car.com.tw/list/mazda",
+        "Level": "一般",
+        "Models": [
+        
+        ]
+    },
+    {
+        "Name": "McLaren",
+        "ChineseName": "https://newcar.u-car.com.tw/list/mclaren",
+        "Url": "",
+        "Level": "豪華",
+        "Models": [
+        
+        ]
     }
 ]

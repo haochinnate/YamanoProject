@@ -31,6 +31,8 @@ namespace API.Controllers
 
             var levels = await _carModelRepository.GetTrimLevelsAsync(modelName);
             return Ok(levels);
+            
+            // return Ok(_mapper.Map<IEnumerable<TrimLevelDto>>(levels));
         }
 
         // url:port/api/cars/{manufacturer}/models/{modelName}/levels/{id}
@@ -46,7 +48,23 @@ namespace API.Controllers
             var model = await _carModelRepository.GetModelAsync(manufacturerObject, modelName);
             var level = await _carModelRepository.GetTrimLevelAsync(model, id);
 
+            // another implementation from youtube video
+            // if(manufacturerObject != null)
+            // {
+            //     return Ok(level);
+            //     // should map to DTO in "controller" or "repository"??
+            //     return Ok(_mapper.Map<CommandReadDto>(commandItem));
+            // }
+            // return NotFound();
+
             return level;
         }
+
+        // POST api/commands
+        // [HttpPost]
+        // public ActionResult<CommandReadDto> CreateCommand(CommandCreateDto commandCreateDto)
+        // {
+        //     var commandModel = _mapper.Map<Command>(commandCreateDto);
+        // }
     }
 }

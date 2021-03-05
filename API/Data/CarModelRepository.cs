@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -144,5 +145,22 @@ namespace API.Data
         }
         #endregion
 
+        // from youtube video REST API
+        // public bool SaveChanged()
+        // {
+        //     return (_context.SaveChanges() >= 0);
+        // }
+
+        // public void CreateCommand(Command cmd)
+        // {
+        //     if (cmd == null)
+        //     {
+        //         throw new ArgumentNullException(nameof(cmd));
+        //     }
+
+        //     _context.Commands.Add(cmd);
+        // }
+
+        
     }
 }

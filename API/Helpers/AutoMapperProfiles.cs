@@ -26,6 +26,9 @@ namespace API.Helpers
             CreateMap<CarModel, CarModelDto>();
             CreateMap<CarTrimLevel, TrimLevelDto>();
             CreateMap<CarPhoto, CarPhotoDto>();
+
+            // CreateMap<Command, CommandReadDto>();
+            // CreateMap<CommandCreateDto, Command>(); 
         }
     }
 }

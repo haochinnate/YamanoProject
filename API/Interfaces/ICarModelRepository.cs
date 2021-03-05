@@ -30,5 +30,9 @@ namespace API.Interfaces
         Task<IEnumerable<TrimLevelDto>> GetTrimLevelsAsync(CarModelDto model);
         Task<TrimLevelDto> GetTrimLevelAsync(CarModelDto model, int trimLevelId);
         Task<TrimLevelDto> GetTrimLevelAsync(CarModelDto model, string trimLevelName);
+
+        // void CreateCommand(Command cmd);
+        // void CreateTrimLevel(TrimLevelDto? trimLevel);
+        // bool SaveChanged();
     }
 }

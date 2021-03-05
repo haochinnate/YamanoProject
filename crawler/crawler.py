@@ -48,12 +48,16 @@ def quick_test():
 
 
 def start_from_root():
-    try:        
+    try:    
+        # create folder to store all models of makers    
         Path(data_file_makers_folder).mkdir(parents=True, exist_ok=True)
 
-        # manufacturers_source_file = data_file_root_folder.joinpath('UcarManufacturers.json')       
-        manufacturers_source_file = data_file_root_folder.joinpath('UcarManufacturers_test.json')       
-        all_manufacturers = UCarParser.get_manufacturers_from_file(manufacturers_source_file)
+        # target_manufacturers_file = 'UcarManufacturers.json' # all manufactures
+        target_manufacturers_file = 'UcarManufacturers_test.json' # just few manufactures for test
+        manufacturers_source_file_fullpath = data_file_root_folder.joinpath(target_manufacturers_file)
+
+        # file to manufacturers objects        
+        all_manufacturers = UCarParser.get_manufacturers_from_file(manufacturers_source_file_fullpath)
 
         for manufacturer in all_manufacturers:
             logging.info(f'Current running maker: {manufacturer.name}')
