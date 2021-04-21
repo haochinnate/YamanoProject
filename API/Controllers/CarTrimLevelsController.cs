@@ -60,7 +60,8 @@ namespace API.Controllers
             return level;
         }
 
-        // POST api/commands
+        #region CREATE Endpoint
+        // POST: api/commands
         // [HttpPost]
         // public ActionResult<CommandReadDto> CreateCommand(CommandCreateDto commandCreateDto)
         // {
@@ -70,11 +71,15 @@ namespace API.Controllers
         //     
         //     var commandReadDto = _mapper.Map<CommandReadDto>(commandModel);
         //     
+        //     // 這個在postman 中, 回傳 status會是 201 Created
+        //     // 然後也會有 created 的 location Uri, 可以知道 create 在哪
         //     return CreateAtRoute(nameof(GetCommandById), new {Id = commandReadDto.Id}, commandReadDto);
         //     // return Ok(commandReadDto);
         // }
+        #endregion
 
-        // Get api/commands/{id}
+        #region GET Endpoint
+        // GET: api/commands/{id}
         // [HttpGet("{id}", Name="GetCommandById")]
         // public ActionResult<CommandReadDto> GetCommandById(int id)
         // {
@@ -85,5 +90,27 @@ namespace API.Controllers
         //     }
         //     return NotFound();
         // }
+        #endregion
+
+        #region UPDATE Endpoint
+        // PUT request is "Full" update, need to supply the entire object
+        // Inefficient(and error prone for large objects)
+        // Not used so much now, PATCH is the favoured approach
+
+        // PUT: api/commands/{id}
+        
+
+
+
+        #endregion
+
+        #region PATCH Endpoint
+            
+        #endregion
+
+        #region DELETE Endpoint
+            
+        #endregion
+
     }
 }
