@@ -161,6 +161,15 @@ namespace API.Data
         //     _context.Commands.Add(cmd);
         // }
 
+        // public Command GetCommandById(int id)
+        // {
+        //      return _context.Commands.FirstOrDefault(c => c.Id == Id);
+        // }
+
+        // public void UpdateCommand(Command cmd)
+        // {
+        //     // nothing
+        // }
         
     }
 }

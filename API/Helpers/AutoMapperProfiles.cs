@@ -29,6 +29,7 @@ namespace API.Helpers
 
             // CreateMap<Command, CommandReadDto>();
             // CreateMap<CommandCreateDto, Command>(); 
+            // CreateMap<CommandUpdateDto, Command>(); 
         }
     }
 }

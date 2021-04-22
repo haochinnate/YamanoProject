@@ -31,8 +31,14 @@ namespace API.Interfaces
         Task<TrimLevelDto> GetTrimLevelAsync(CarModelDto model, int trimLevelId);
         Task<TrimLevelDto> GetTrimLevelAsync(CarModelDto model, string trimLevelName);
 
-        // void CreateCommand(Command cmd);
-        // void CreateTrimLevel(TrimLevelDto? trimLevel);
+        // Command (from youtube video)
         // bool SaveChanged();
+        // IEnumerable<Command> GetAllCommands();
+        // Command GetCommandById(int id);        
+        // void CreateCommand(Command cmd);
+        // void UpdateCommand(Command cmd);
+
+        // void CreateTrimLevel(TrimLevelDto? trimLevel);
+
     }
 }
