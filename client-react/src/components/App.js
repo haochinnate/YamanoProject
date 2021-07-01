@@ -1,11 +1,13 @@
 import React from 'react'
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import CarDb from './cars/CarDb';
 
 const App = () => {
     return (
-        <div className="ui container">
-            App
+        <div>
+            <CarDb />
         </div>
+        // compare, db, find, news, pttformat
     );
 };
 
