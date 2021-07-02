@@ -1,11 +1,19 @@
 import React from 'react'
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import CarDb from './cars/CarDb';
+import FindCars from './cars/FindCars';
+import Header from './Header';
 
 const App = () => {
     return (
-        <div>
-            <CarDb />
+        <div className="ui container">
+            <BrowserRouter>
+                <div>
+                    <Header />
+                    <Route path="/" exact component={FindCars}/>
+                    <Route path="/cars/" component={CarDb}/>
+                </div>
+            </BrowserRouter>
         </div>
         // compare, db, find, news, pttformat
     );
