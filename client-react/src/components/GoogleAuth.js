@@ -5,7 +5,7 @@ import { signIn, signOut } from '../actions';
 class GoogleAuth extends Component {
 
     componentDidMount() {
-        window.GamepadHapticActuator.loat('client:auth2', () => {
+        window.gapi.load('client:auth2', () => {
             // initialized
             window.gapi.client.init({
                 clientId: 'CLIENT_ID',
