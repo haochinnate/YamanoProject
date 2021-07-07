@@ -1,4 +1,19 @@
-import { SIGN_IN, SIGN_OUT } from "./types";
+import manufacturers from "../apis/manufacturers";
+import carmodels from "../apis/carmodels";
+import { 
+    SIGN_IN, 
+    SIGN_OUT, 
+    CREATE_MANUFACTURER,
+    FETCH_MANUFACTURERS,
+    FETCH_MANUFACTURER,
+    DELETE_MANUFACTURER,
+    EDIT_MANUFACTURER,
+    CREATE_CARMODEL,
+    FETCH_CARMODELS,
+    FETCH_CARMODEL,
+    DELETE_CARMODEL,
+    EDIT_CARMODEL
+} from "./types";
 
 export const signIn = (userId) => {
     return{
@@ -12,3 +27,66 @@ export const signOut = () => {
         type: SIGN_OUT
     };
 };
+
+// manufacturers
+export const createManufacturer = (formValues) => async (dispatch) => {
+    const response = await manufacturers.post('/manufacturers', formValues);
+
+    dispatch({ type: CREATE_MANUFACTURER, payload: response.data });
+};
+
+export const fetchManufacturers = () => async (dispatch) => {
+    const response = await manufacturers.get('/manufacturers');
+
+    dispatch({ type: FETCH_MANUFACTURERS, payload: response.data });
+};
+
+export const fetchManufacturer = (id) => async (dispatch) => {
+    const response = await manufacturers.get(`/manufacturers/${id}`);
+
+    dispatch({ type: FETCH_MANUFACTURER, payload: response.data });
+};
+
+export const editManufacturer = (id, formValues) => async (dispatch) => {
+    const response = await manufacturers.put(`/manufacturers/${id}`, formValues);
+
+    dispatch({ type: EDIT_MANUFACTURER, payload: response.data });
+};
+
+export const deleteManufacturer = (id) => async (dispatch) => {
+    await manufacturers.delete(`/manufacturers/${id}`);
+
+    dispatch({ type: DELETE_MANUFACTURER, payload: id });
+};
+
+// carmodels
+export const createCarmodel = (formValues) => async (dispatch) => {
+    const response = await carmodels.post('/carmodels', formValues);
+
+    dispatch({ type: CREATE_CARMODEL, payload: response.data });
+};
+
+export const fetchCarmodels = () => async (dispatch) => {
+    const response = await carmodels.get('/carmodels');
+
+    dispatch({ type: FETCH_CARMODELS, payload: response.data });
+};
+
+export const fetchCarmodel = (id) => async (dispatch) => {
+    const response = await carmodels.get(`/carmodels/${id}`);
+
+    dispatch({ type: FETCH_CARMODEL, payload: response.data });
+};
+
+export const editCarmodel = (id, formValues) => async (dispatch) => {
+    const response = await carmodels.put(`/carmodels/${id}`, formValues);
+
+    dispatch({ type: EDIT_CARMODEL, payload: response.data });
+};
+
+export const deleteCarmodel = (id) => async (dispatch) => {
+    await carmodels.delete(`/carmodels/${id}`);
+
+    dispatch({ type: DELETE_CARMODEL, payload: id });
+};
+

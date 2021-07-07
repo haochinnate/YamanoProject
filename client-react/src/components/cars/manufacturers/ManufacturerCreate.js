@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { createManufacturer } from '../../../actions'
+
 
 class ManufacturerCreate extends Component {
 
@@ -25,8 +28,9 @@ class ManufacturerCreate extends Component {
         );
     };
 
-    onSubmit(formValues) {
-        console.log(formValues);
+    onSubmit = (formValues) => {
+        // console.log(formValues);
+        this.props.createManufacturer(formValues);
     }
     
     render() {
@@ -59,16 +63,14 @@ const validate = (formValues) => {
     if (!formValues.level) {
         errors.level = 'Level is required';
     }
-    
-    if (!formValues.officialUrl) {
-        errors.officialUrl = 'Official URL is required';
-    }
-    
+           
     return errors;
 };
 
 
-export default reduxForm({
+const formWrapped = reduxForm({
     form: 'manufacturerCreate',
     validate
 })(ManufacturerCreate);
+
+export default connect(null, { createManufacturer })(formWrapped);
