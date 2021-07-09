@@ -1,3 +1,18 @@
 {
-    "manufacturers": []
+  "manufacturers": [
+    {
+      "name": "Skoda",
+      "chineseName": "Skoda",
+      "level": "一般",
+      "officialUrl": "https://www.skoda.com.tw",
+      "id": 1
+    },
+    {
+      "name": "Mazda",
+      "chineseName": "馬自達",
+      "level": "一般",
+      "officialUrl": "https://www.mazda.com.tw",
+      "id": 2
+    }
+  ]
 }

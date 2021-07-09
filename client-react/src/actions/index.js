@@ -1,4 +1,5 @@
 import manufacturers from "../apis/manufacturers";
+import history from "../history";
 import carmodels from "../apis/carmodels";
 import { 
     SIGN_IN, 
@@ -33,6 +34,8 @@ export const createManufacturer = (formValues) => async (dispatch) => {
     const response = await manufacturers.post('/manufacturers', formValues);
 
     dispatch({ type: CREATE_MANUFACTURER, payload: response.data });
+
+    history.push('/cars');
 };
 
 export const fetchManufacturers = () => async (dispatch) => {
