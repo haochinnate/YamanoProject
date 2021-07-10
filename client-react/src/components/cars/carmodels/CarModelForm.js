@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { createCarmodel } from '../../../actions'
 
-class CarModelCreate extends Component {
+class CarModelForm extends Component {
 
     renderError({error, touched}) {
         if (touched && error) {
@@ -29,8 +27,8 @@ class CarModelCreate extends Component {
 
     onSubmit(formValues) {
         // console.log(formValues);
-        this.props.createCarmodel(formValues);
-    }
+        this.props.onSubmit(formValues);
+    };
     
     render() {
         return (
@@ -73,10 +71,7 @@ const validate = (formValues) => {
 };
 
 
-const formWrapper = reduxForm({
-    form: 'carModelCreate',
+export default reduxForm({
+    form: 'carModelForm',
     validate
-})(CarModelCreate);
-
-export default connect(null, { createCarmodel })(formWrapper);
-
+})(CarModelForm);

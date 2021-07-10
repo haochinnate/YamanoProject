@@ -13,9 +13,10 @@ class ManufacturerList extends Component {
         if (this.props.isSignedIn) {
             return (
                 <div className="right floated content">
-                    <button className="ui button primary">
+                    <Link to={`/cars/manufacturers/edit/${manufacturer.id}`} className="ui button primary">
                         Edit
-                    </button>
+                    </Link>
+                    {/* <button className="ui button primary">Edit</button> */}
                     <button className="ui button negative">
                         Delete
                     </button>
@@ -28,7 +29,7 @@ class ManufacturerList extends Component {
         if (this.props.isSignedIn) {
             return (
                 <div style={{ textAlign: 'right'}}>
-                    <Link to="/cars/manufacturer/new" className="ui button primary"> 
+                    <Link to="/cars/manufacturers/new" className="ui button primary"> 
                         Create Manufacturer
                     </Link>
                 </div>

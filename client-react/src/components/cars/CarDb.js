@@ -13,10 +13,10 @@ const CarDb = () => {
             <Router history={history}>
                 <div>
                     <Route path="/cars" exact component={ManufacturerList}/>
-                    <Route path="/cars/manufacturer/new" exact component={ManufacturerCreate}/>
-                    <Route path="/cars/manufacturer/edit" exact component={ManufacturerEdit}/>
-                    <Route path="/cars/manufacturer/delete" exact component={ManufacturerDelete}/>
-                    <Route path="/cars/manufacturer/show" exact component={ManufacturerShow}/>
+                    <Route path="/cars/manufacturers/new" exact component={ManufacturerCreate}/>
+                    <Route path="/cars/manufacturers/edit/:id" exact component={ManufacturerEdit}/>
+                    <Route path="/cars/manufacturers/delete" exact component={ManufacturerDelete}/>
+                    <Route path="/cars/manufacturers/show" exact component={ManufacturerShow}/>
                 </div>
             </Router>
         </div>
