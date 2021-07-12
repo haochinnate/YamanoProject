@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Modal from '../../Modal';
 
 const ManufacturerDelete = () => {
     return (
         <div>
             ManufacturerDelete
+            <Modal />
         </div>
     )
 }

@@ -51,9 +51,11 @@ export const fetchManufacturer = (id) => async (dispatch) => {
 };
 
 export const editManufacturer = (id, formValues) => async (dispatch) => {
-    const response = await manufacturers.put(`/manufacturers/${id}`, formValues);
+    const response = await manufacturers.patch(`/manufacturers/${id}`, formValues);
 
     dispatch({ type: EDIT_MANUFACTURER, payload: response.data });
+
+    history.push('/cars');
 };
 
 export const deleteManufacturer = (id) => async (dispatch) => {
@@ -82,9 +84,11 @@ export const fetchCarmodel = (id) => async (dispatch) => {
 };
 
 export const editCarmodel = (id, formValues) => async (dispatch) => {
-    const response = await carmodels.put(`/carmodels/${id}`, formValues);
+    const response = await carmodels.patch(`/carmodels/${id}`, formValues);
 
     dispatch({ type: EDIT_CARMODEL, payload: response.data });
+    
+    history.push('/cars');
 };
 
 export const deleteCarmodel = (id) => async (dispatch) => {
