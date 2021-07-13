@@ -62,6 +62,8 @@ export const deleteManufacturer = (id) => async (dispatch) => {
     await manufacturers.delete(`/manufacturers/${id}`);
 
     dispatch({ type: DELETE_MANUFACTURER, payload: id });
+
+    history.push('/cars');
 };
 
 // carmodels
@@ -95,5 +97,7 @@ export const deleteCarmodel = (id) => async (dispatch) => {
     await carmodels.delete(`/carmodels/${id}`);
 
     dispatch({ type: DELETE_CARMODEL, payload: id });
+
+    history.push('/cars');
 };
 

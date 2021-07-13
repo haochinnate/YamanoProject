@@ -15,7 +15,7 @@ const CarDb = () => {
                     <Route path="/cars" exact component={ManufacturerList}/>
                     <Route path="/cars/manufacturers/new" exact component={ManufacturerCreate}/>
                     <Route path="/cars/manufacturers/edit/:id" exact component={ManufacturerEdit}/>
-                    <Route path="/cars/manufacturers/delete" exact component={ManufacturerDelete}/>
+                    <Route path="/cars/manufacturers/delete/:id" exact component={ManufacturerDelete}/>
                     <Route path="/cars/manufacturers/show" exact component={ManufacturerShow}/>
                 </div>
             </Router>

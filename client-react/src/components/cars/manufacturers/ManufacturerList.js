@@ -16,10 +16,11 @@ class ManufacturerList extends Component {
                     <Link to={`/cars/manufacturers/edit/${manufacturer.id}`} className="ui button primary">
                         Edit
                     </Link>
-                    {/* <button className="ui button primary">Edit</button> */}
-                    <button className="ui button negative">
+                    <Link to={`/cars/manufacturers/delete/${manufacturer.id}`} className="ui button negative">
                         Delete
-                    </button>
+                    </Link>
+                    {/* <button className="ui button primary">Edit</button> */}
+                    {/* <button className="ui button negative">Delete</button> */}
                 </div>
             );
         }
