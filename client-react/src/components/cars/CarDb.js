@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router, Route } from 'react-router-dom'
+import { Router, Route, Switch } from 'react-router-dom'
 import ManufacturerCreate from './manufacturers/ManufacturerCreate'
 import ManufacturerDelete from './manufacturers/ManufacturerDelete'
 import ManufacturerEdit from './manufacturers/ManufacturerEdit'
@@ -11,13 +11,13 @@ const CarDb = () => {
     return (
         <div className="ui container">
             <Router history={history}>
-                <div>
+                <Switch>
                     <Route path="/cars" exact component={ManufacturerList}/>
                     <Route path="/cars/manufacturers/new" exact component={ManufacturerCreate}/>
                     <Route path="/cars/manufacturers/edit/:id" exact component={ManufacturerEdit}/>
                     <Route path="/cars/manufacturers/delete/:id" exact component={ManufacturerDelete}/>
-                    <Route path="/cars/manufacturers/show" exact component={ManufacturerShow}/>
-                </div>
+                    <Route path="/cars/manufacturers/:id" exact component={ManufacturerShow}/>
+                </Switch>
             </Router>
         </div>
     )

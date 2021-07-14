@@ -45,7 +45,9 @@ class ManufacturerList extends Component {
                     {this.renderAdmin(manufacturer)}
                     <i className="large middle aligned icon car"/>
                     <div className="content">
-                        {manufacturer.name}({manufacturer.chineseName})
+                        <Link to={`/manufacturers/${manufacturer.id}`} className="header">
+                            {manufacturer.name}({manufacturer.chineseName})
+                        </Link>
                         <div className="description">{manufacturer.officialUrl}</div>
                     </div>
                 </div>
