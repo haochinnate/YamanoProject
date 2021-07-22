@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 
 class ManufacturerForm extends Component {
 
@@ -39,7 +40,7 @@ class ManufacturerForm extends Component {
                 <Field name="officialUrl" component={this.renderInput} label="官方網站"/>
                 <Field name="logoUrl" component={this.renderInput} label="Logo位置"/>
                     
-                <button className="ui button primary">Create</button>
+                <button className="ui button primary">Submit</button>
             </form>
         );
     };

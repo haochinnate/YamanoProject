@@ -33,14 +33,16 @@ class CarModelForm extends Component {
     render() {
         return (
             <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
-                {/* name, category, officialUrl, isActive, manufacturer */}
+                {/* name, category, officialUrl, isArchived, manufacturer */}
 
                 <Field name="name" component={this.renderInput} label="名稱"/>
                 <Field name="category" component={this.renderInput} label="車型"/>
                 <Field name="officialUrl" component={this.renderInput} label="官方網站"/>
-                <Field name="isActive" component={this.renderInput} label="IsActive"/>
+                <Field name="isArchived" component={this.renderInput} label="IsArchived"/>
                 <Field name="manufacturer" component={this.renderInput} label="車廠"/>
-                    
+                <Field name="releaseDate" component={this.renderInput} label="發布日期"/>
+                <Field name="yearsInfo" component={this.renderInput} label="年式資訊"/>
+
                 <button className="ui button primary">Create</button>
             </form>
         );
@@ -59,8 +61,8 @@ const validate = (formValues) => {
         errors.category = 'Category is required';
     }
     
-    if (!formValues.isActive) {
-        errors.isActive = 'IsActive is required';
+    if (!formValues.isArchived) {
+        errors.isArchived = 'IsArchived is required';
     }
 
     if (!formValues.manufacturer) {

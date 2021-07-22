@@ -10,7 +10,7 @@ class ManufacturerList extends Component {
     }
 
     renderAdmin(manufacturer) {
-        if (this.props.isSignedIn) {
+        // if (this.props.isSignedIn) {
             return (
                 <div className="right floated content">
                     <Link to={`/cars/manufacturers/edit/${manufacturer.id}`} className="ui button primary">
@@ -19,15 +19,13 @@ class ManufacturerList extends Component {
                     <Link to={`/cars/manufacturers/delete/${manufacturer.id}`} className="ui button negative">
                         Delete
                     </Link>
-                    {/* <button className="ui button primary">Edit</button> */}
-                    {/* <button className="ui button negative">Delete</button> */}
                 </div>
             );
-        }
+        // }
     }
 
     renderCreate() {
-        if (this.props.isSignedIn) {
+        // if (this.props.isSignedIn) {
             return (
                 <div style={{ textAlign: 'right'}}>
                     <Link to="/cars/manufacturers/new" className="ui button primary"> 
@@ -35,7 +33,7 @@ class ManufacturerList extends Component {
                     </Link>
                 </div>
             );
-        } 
+        // } 
     }
 
     renderList() {
@@ -45,10 +43,12 @@ class ManufacturerList extends Component {
                     {this.renderAdmin(manufacturer)}
                     <i className="large middle aligned icon car"/>
                     <div className="content">
-                        <Link to={`/manufacturers/${manufacturer.id}`} className="header">
+                        <Link to={`/cars/manufacturers/${manufacturer.id}`} className="header">
                             {manufacturer.name}({manufacturer.chineseName})
                         </Link>
-                        <div className="description">{manufacturer.officialUrl}</div>
+                        <div className="description">
+                            <a href={manufacturer.officialUrl} target="_blank">官網</a>   
+                        </div>
                     </div>
                 </div>
                 // <Field name="chineseName" component={this.renderInput} label="中文名稱"/>

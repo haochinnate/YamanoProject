@@ -14,14 +14,15 @@ class CarModelShow extends React.Component {
             return <div>Loading...</div>
         }
         
-        const { name, category, officialUrl, isActive, manufacturer} = this.props.carmodel;
+        const { name, category, officialUrl, isArchived, manufacturer} = this.props.carmodel;
 
         return (
             <div>
+                <lable>eererer</lable>
                 <h1>{name}</h1>
                 <h2>{category}</h2>
                 <h5>{officialUrl}</h5>
-                <h5>{isActive}</h5>
+                <h5>{isArchived}</h5>
                 <h5>{manufacturer}</h5>
             </div>
         );

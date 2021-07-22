@@ -39,7 +39,7 @@ class ManufacturerDelete extends React.Component{
                 title="Delete Manufacturer"
                 content={this.renderContent()}
                 actions={this.renderActions()}
-                onDismiss={() => history.push('/')}
+                onDismiss={() => history.push('/cars')}
             />
         );
     }

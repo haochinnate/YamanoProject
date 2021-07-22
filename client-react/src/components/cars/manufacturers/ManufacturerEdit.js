@@ -36,7 +36,7 @@ class ManufacturerEdit extends React.Component {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    return { manufacturer: state.manufacturer[ownProps.match.params.id] };
+    return { manufacturer: state.manufacturers[ownProps.match.params.id] };
 }
 
 export default connect(

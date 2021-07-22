@@ -27,7 +27,7 @@ class CarModelEdit extends React.Component {
                 <CarModelForm
                     initialValues={_.pick(
                         this.props.carmodel,
-                        'name', 'category', 'officialUrl', 'isActive', 'manufacturer'
+                        'name', 'category', 'officialUrl', 'isArchived', 'manufacturer', 'releaseDate', 'yearsInfo'
                     )}
                     onSubmit={this.onSubmit}/>
             </div>

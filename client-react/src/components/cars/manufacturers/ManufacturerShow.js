@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchManufacturer } from '../../../actions';
+import CarModelList from '../carmodels/CarModelList';
 
 class ManufacturerShow extends React.Component {
     
@@ -17,12 +18,13 @@ class ManufacturerShow extends React.Component {
         const { name, chineseName, level, officialUrl, logoUrl} = this.props.manufacturer;
 
         return (
-            <div>
+            <div className="ui container">
                 <h1>{name}</h1>
                 <h2>{chineseName}</h2>
                 <h5>{level}</h5>
                 <h5>{officialUrl}</h5>
                 <h5>{logoUrl}</h5>
+                <CarModelList />
             </div>
         );
     }
@@ -30,6 +32,7 @@ class ManufacturerShow extends React.Component {
 };
 
 const mapStateToProps = (state, ownProps) => {
+    console.log(ownProps);
     return { manufacturer: state.manufacturers[ownProps.match.params.id] }
 };
 
