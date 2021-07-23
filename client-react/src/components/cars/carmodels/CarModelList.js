@@ -40,14 +40,15 @@ class CarModelList extends React.Component {
                 <div className="item" key={carmodel.id}>
                     <i className="large middle aligned icon car"/>
                     <div className="content">
-                        <Link to={`/cars/manufacturers/${manufacturer.id}`} className="header">
-                            {manufacturer.name}({manufacturer.chineseName})
+                        <Link to={`/cars/${carmodel.manufacturer.name}/${carmodel.name}`} className="header">
+                            {carmodel.name}()
                         </Link>
                         <div className="description">
-                            <a href={manufacturer.officialUrl} target="_blank">官網</a>   
+                            <a href={carmodel.officialUrl} target="_blank">官網</a>   
                         </div>
-                        {carmodel.name}
-                        <div className="description">{carmodel.officialUrl}</div>
+                        {carmodel.isArchived}
+                        <div className="description">{carmodel.releaseDate}</div>
+                        <div className="description">{carmodel.yearsInfo}</div>
                     </div>
                 </div>
                 // <Field name="name" component={this.renderInput} label="名稱"/>
@@ -55,6 +56,7 @@ class CarModelList extends React.Component {
                 // <Field name="officialUrl" component={this.renderInput} label="官方網站"/>
                 // <Field name="isArchived" component={this.renderInput} label="IsArchived"/>
                 // <Field name="manufacturer" component={this.renderInput} label="車廠"/>
+                // alias
                 // releaseDate
                 // yearsInfo
             );

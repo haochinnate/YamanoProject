@@ -5,7 +5,8 @@
       "chineseName": "Skoda",
       "level": "一般",
       "officialUrl": "https://www.skoda.com.tw",
-      "id": 1
+      "id": 1,
+      "logoUrl": "\\logo\\skoda.jpg"
     },
     {
       "name": "Mazda",
@@ -13,6 +14,20 @@
       "level": "一般",
       "officialUrl": "https://www.mazda.com.tw",
       "id": 2
+    },
+    {
+      "name": "Volvo",
+      "officialUrl": "https://www.volvocars.com/tw",
+      "level": "豪華",
+      "chineseName": "Volvo",
+      "id": 3
+    },
+    {
+      "name": "Audi",
+      "chineseName": "奧迪",
+      "level": "豪華",
+      "officialUrl": "https://www.audi.com.tw/tw/web/zh.html",
+      "id": 4
     }
   ]
 }

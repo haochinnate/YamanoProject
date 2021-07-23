@@ -1,47 +1,83 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Form, Field } from 'react-final-form';
 
 class ManufacturerForm extends Component {
 
     renderError({error, touched}) {
         if (touched && error) {
             return (
-                <div className="ui error message">
-                    <div className="header">{error}</div>
-                </div>
+                <div className="invalid-feedback">{error}</div>
             );
         }
     };
 
     renderInput = ({ input, label, meta }) => {
-        const className = `field ${meta.error && meta.touched ? 'error' : '' }`;
+        // console.log(input);
+        // console.log(label);
+        // console.log(meta);
+        const className = `mb-1 field ${meta.error && meta.touched ? 'error' : '' }`;
+        // const className = 'mb-1 field';
+        // className="form-control"
         
         return (
             <div className={className}>
-                <label>{label}</label>
-                <input {...input} autoComplete="off"></input>
+                <label className="form-label">{label}</label>
+                <input {...input} autoComplete="off" ></input>
                 {this.renderError(meta)}
             </div>
         );
     };
 
+    renderLevelSelection = ({ input, label, meta }) => {
+        // const className = `mb-1 ${meta.error && meta.touched ? 'is-invalid' : '' }`;
+        const className = 'mb-1 field';
+        console.log(input);
+        return (
+            <div className={className}>
+                <label className="form-label">{label}</label>
+                {/* <input {...input} autoComplete="off" className="form-control"></input> */}
+                <select {...input} className="form-select" aria-label="Level select">
+                    <option value="1">一般</option>
+                    <option value="2">豪華</option>
+                </select>
+                {this.renderError(meta)}
+            </div>
+        );
+    }
+
     onSubmit = (formValues) => {
-        // console.log(formValues);
-        this.props.onSubmit(formValues);
+        // preventDefault();
+        console.log(formValues);
+        // this.props.onSubmit(formValues);
     };
     
     render() {
         return (
-            <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
-                <Field name="name" component={this.renderInput} label="名稱"/>
-                <Field name="chineseName" component={this.renderInput} label="中文名稱"/>
-                <Field name="level" component={this.renderInput} label="等級"/>
-                <Field name="officialUrl" component={this.renderInput} label="官方網站"/>
-                <Field name="logoUrl" component={this.renderInput} label="Logo位置"/>
+                <form onSubmit={this.onSubmit} className="form">
+                    <Field name="name" component={this.renderInput} label="名稱"/>
+                    <Field name="chineseName" component={this.renderInput} label="中文名稱"/>
+                    <Field name="level" component={this.renderLevelSelection} label="等級"/>
+                    <Field name="officialUrl" component={this.renderInput} label="官方網站"/>
+                    <Field name="logoUrl" component={this.renderInput} label="Logo位置"/>
+                
+                    <button type="submit" className="mt-3 btn btn-primary">Submit</button>
+                </form>
+            // <Form initailValues={this.props.initialValues}
+            //     onSubmit={this.onSubmit}
+            //     validate={validate}
+            //     render={( { handleSubmit } ) => {
+                
+            //         <form onSubmit={handleSubmit} className="form">
+            //             <Field name="name" component={this.renderInput} label="名稱"/>
+            //             <Field name="chineseName" component={this.renderInput} label="中文名稱"/>
+            //             <Field name="level" component={this.renderLevelSelection} label="等級"/>
+            //             <Field name="officialUrl" component={this.renderInput} label="官方網站"/>
+            //             <Field name="logoUrl" component={this.renderInput} label="Logo位置"/>
                     
-                <button className="ui button primary">Submit</button>
-            </form>
+            //             <button type="submit" className="mt-3 btn btn-primary">Submit</button>
+            //         </form>
+            //     }}>
+            // </Form>  
         );
     };
 
@@ -66,7 +102,5 @@ const validate = (formValues) => {
 };
 
 
-export default reduxForm({
-    form: 'manufacturerForm',
-    validate
-})(ManufacturerForm);
+// export default ManufacturerForm;
+export default props => <Form {...props} component={ManufacturerForm} />
