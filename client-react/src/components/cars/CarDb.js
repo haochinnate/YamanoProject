@@ -36,7 +36,7 @@ const CarDb = () => {
                     {/* for display */}
                     <Route path="/cars" exact component={ManufacturerList}/>
                     <Route path="/cars/manufacturers/:id" component={ManufacturerShow}/> 
-                    <Route path="/cars/:manufacturerName" component={ManufacturerShow}/>
+                    {/* <Route path="/cars/:manufacturerName" component={ManufacturerShow}/> */}
                     <Route path="/cars/:manufacturerName/:carmodelName" component={CarModelShow}/>
 
 

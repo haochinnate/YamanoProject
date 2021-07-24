@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCarmodels } from '../../../actions';
+import { CARMODELS_ROOT } from '../../../consts/url';
 
 class CarModelList extends React.Component {
     
@@ -12,10 +13,10 @@ class CarModelList extends React.Component {
     renderAdmin(carmodel) {
         return (
             <div className="right floated content">
-                <Link to={`/cars/carmodels/edit/${carmodel.id}`} className="ui button primary">
+                <Link to={`${CARMODELS_ROOT}/edit/${carmodel.id}`} className="btn btn-primary m-1">
                     Edit
                 </Link>
-                <Link to={`/cars/carmodels/delete/${carmodel.id}`} className="ui button negative">
+                <Link to={`${CARMODELS_ROOT}/delete/${carmodel.id}`} className="btn btn-danger m-1">
                     Delete
                 </Link>
             </div>
@@ -24,9 +25,9 @@ class CarModelList extends React.Component {
 
     renderCreate() {
         // if (this.props.isSignedIn) {
-            return (
+            return (                
                 <div style={{ textAlign: 'right'}}>
-                    <Link to="/cars/carmodels/new" className="ui button primary"> 
+                    <Link to={`${CARMODELS_ROOT}/new`} className="btn btn-success mb-3"> 
                         Create CarModel
                     </Link>
                 </div>

@@ -4,7 +4,7 @@ import { fetchCarmodel } from '../../../actions';
 
 class CarModelShow extends React.Component {
     
-    componentDidCatch() {
+    componentDidMount() {
         this.props.fetchCarmodel(this.props.match.params.id);
     }
 

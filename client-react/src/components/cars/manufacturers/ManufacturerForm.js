@@ -1,106 +1,114 @@
 import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
+import { render } from 'react-dom';
 
-class ManufacturerForm extends Component {
+const ManufacturerForm = (props) => {
+    
+    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-    renderError({error, touched}) {
+    const onSubmit = async values => {
+        await sleep(300)
+        // console.log(values);
+        // console.log('submit in ManufacturerForm')
+        // window.alert(JSON.stringify(values));
+        props.onSubmit(values);
+    }
+
+    const validate = (formValues) => {
+        const errors = {};
+        if (!formValues.name) {
+            errors.name = 'Name is required';
+        }
+        
+        if (!formValues.chineseName) {
+            errors.chineseName = 'Chinese Name is required';
+        }
+        
+        if (!formValues.level) {
+            errors.level = 'Level is required';
+        }
+               
+        return errors;
+    };
+
+    const renderError = ({error, touched}) => {
+       
         if (touched && error) {
+            console.log(error)
+            console.log(touched)
             return (
-                <div className="invalid-feedback">{error}</div>
+                // <div className="invalid-feedback">{error}</div>
+                <div className="text-danger">{error}</div>
             );
         }
     };
 
-    renderInput = ({ input, label, meta }) => {
+    const renderInput = ({ input, label, meta }) => {
         // console.log(input);
         // console.log(label);
         // console.log(meta);
-        const className = `mb-1 field ${meta.error && meta.touched ? 'error' : '' }`;
-        // const className = 'mb-1 field';
+        // const className = `mb-2 field ${meta.error && meta.touched ? 'error' : '' }`;
+        const className = 'mb-2';
         // className="form-control"
-        
+    
         return (
             <div className={className}>
                 <label className="form-label">{label}</label>
-                <input {...input} autoComplete="off" ></input>
-                {this.renderError(meta)}
+                <input {...input} autoComplete="off" className="form-control"></input>          
+                {renderError(meta)}
             </div>
         );
     };
 
-    renderLevelSelection = ({ input, label, meta }) => {
+    const renderLevelSelection = ({ input, label, meta }) => {
         // const className = `mb-1 ${meta.error && meta.touched ? 'is-invalid' : '' }`;
-        const className = 'mb-1 field';
-        console.log(input);
+        const className = 'mb-2';
+        // console.log(input);
         return (
             <div className={className}>
                 <label className="form-label">{label}</label>
                 {/* <input {...input} autoComplete="off" className="form-control"></input> */}
-                <select {...input} className="form-select" aria-label="Level select">
-                    <option value="1">一般</option>
-                    <option value="2">豪華</option>
+                {/* <div>
+                    <label>
+                        <Field name
+                    </label>
+                </div>
+                */}
+                <select {...input} className="form-select" aria-label="Level select"
+                    >
+                    <option value="一般">一般</option>
+                    <option value="豪華">豪華</option>
                 </select>
-                {this.renderError(meta)}
+                {renderError(meta)}
             </div>
         );
     }
+    console.log(props)
 
-    onSubmit = (formValues) => {
-        // preventDefault();
-        console.log(formValues);
-        // this.props.onSubmit(formValues);
-    };
-    
-    render() {
-        return (
-                <form onSubmit={this.onSubmit} className="form">
-                    <Field name="name" component={this.renderInput} label="名稱"/>
-                    <Field name="chineseName" component={this.renderInput} label="中文名稱"/>
-                    <Field name="level" component={this.renderLevelSelection} label="等級"/>
-                    <Field name="officialUrl" component={this.renderInput} label="官方網站"/>
-                    <Field name="logoUrl" component={this.renderInput} label="Logo位置"/>
+    return (
+        <Form onSubmit={onSubmit}
+            initialValues={props.initialValues}
+            validate={validate}
+            render={( { handleSubmit, form, submitting, pristine, values } ) => (
+                <form className="form" onSubmit={handleSubmit}>
+                    <Field name="name" component={renderInput} label="名稱"/>
+                    <Field name="chineseName" component={renderInput} label="中文名稱"/>
+                    <Field name="level" component={renderLevelSelection} label="等級"/>
+                    {/* {renderLevelSelection()} */}
+                    <Field name="officialUrl" component={renderInput} label="官方網站"/>
+                    <Field name="logoUrl" component={renderInput} label="Logo位置"/>
                 
-                    <button type="submit" className="mt-3 btn btn-primary">Submit</button>
+                    <button type="submit" className="mt-3 mb-3 btn btn-primary">Submit</button>
                 </form>
-            // <Form initailValues={this.props.initialValues}
-            //     onSubmit={this.onSubmit}
-            //     validate={validate}
-            //     render={( { handleSubmit } ) => {
-                
-            //         <form onSubmit={handleSubmit} className="form">
-            //             <Field name="name" component={this.renderInput} label="名稱"/>
-            //             <Field name="chineseName" component={this.renderInput} label="中文名稱"/>
-            //             <Field name="level" component={this.renderLevelSelection} label="等級"/>
-            //             <Field name="officialUrl" component={this.renderInput} label="官方網站"/>
-            //             <Field name="logoUrl" component={this.renderInput} label="Logo位置"/>
-                    
-            //             <button type="submit" className="mt-3 btn btn-primary">Submit</button>
-            //         </form>
-            //     }}>
-            // </Form>  
-        );
-    };
+            )}>
 
+        </Form>
+    );
 };
 
 
-const validate = (formValues) => {
-    const errors = {};
-    if (!formValues.name) {
-        errors.name = 'Name is required';
-    }
-    
-    if (!formValues.chineseName) {
-        errors.chineseName = 'Chinese Name is required';
-    }
-    
-    if (!formValues.level) {
-        errors.level = 'Level is required';
-    }
-           
-    return errors;
-};
 
 
-// export default ManufacturerForm;
-export default props => <Form {...props} component={ManufacturerForm} />
+
+export default ManufacturerForm;
+// export default props => <Form {...props} component={ManufacturerForm} />

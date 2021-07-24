@@ -28,6 +28,12 @@
       "level": "豪華",
       "officialUrl": "https://www.audi.com.tw/tw/web/zh.html",
       "id": 4
+    },
+    {
+      "name": "Mercedes-Benz",
+      "chineseName": "賓士",
+      "level": "豪華",
+      "id": 5
     }
   ]
 }

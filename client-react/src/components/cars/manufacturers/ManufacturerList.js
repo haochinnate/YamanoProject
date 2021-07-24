@@ -29,7 +29,7 @@ class ManufacturerList extends Component {
         // if (this.props.isSignedIn) {
             return (
                 <div style={{ textAlign: 'right'}}>
-                    <Link to={`${MANUFACTURERS_ROOT}/new`} className="btn btn-success"> 
+                    <Link to={`${MANUFACTURERS_ROOT}/new`} className="btn btn-success mb-3"> 
                         Create Manufacturer
                     </Link>
                 </div>
@@ -39,12 +39,15 @@ class ManufacturerList extends Component {
 
     renderManufacturers() {
         return this.props.manufacturers.map(manufacturer => {
+            // const imageSource = require(escape('../../../images/manufacturers/skoda.png'));
+            // const imageSource = require(escape('./images/manufacturers/skoda.PNG'));
             return (
                 <div className="col" key={manufacturer.id}>
                     
 
                     <Link to={`${MANUFACTURERS_ROOT}/${manufacturer.id}`}>
-                        <img src="..." className="img-fluid" alt="..."/>
+                        {/* <img src=".." className="img-fluid" alt={manufacturer.name}/> */}
+                        <img src={window.location.origin + `/images/manufacturers/${manufacturer.name}.png`} className="img-fluid" alt={manufacturer.name}/>
                     </Link>
 
                     <div className="container">
@@ -73,7 +76,7 @@ class ManufacturerList extends Component {
             <div>
                 <h2>Manufacturers</h2>
                 <div className="container">
-                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-8">
+                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-6 row-cols-lg-8">
                         {/* <div class="col">Column</div>
                         <div class="col">Column</div>
                         <div class="col">Column</div>

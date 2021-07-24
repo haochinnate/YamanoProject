@@ -8,6 +8,7 @@ class ManufacturerCreate extends Component {
 
 
     onSubmit = (formValues) => {
+        // console.log('submit in ManufacturerCreate');
         // console.log(formValues);
         this.props.createManufacturer(formValues);
     }
