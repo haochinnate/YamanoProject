@@ -2,6 +2,7 @@ import _ from 'lodash';
 import {
     CREATE_CARMODEL,
     FETCH_CARMODEL,
+    FETCH_CARMODELS_BY_MANUFACTURER,
     FETCH_CARMODELS,
     EDIT_CARMODEL,
     DELETE_CARMODEL
@@ -18,6 +19,10 @@ const carmodelReducer = (state = {}, action) => {
 
         case FETCH_CARMODELS:
             return { ...state, ..._.mapKeys(action.payload, 'id') };
+
+        case FETCH_CARMODELS_BY_MANUFACTURER:
+            // return { ...state, ..._.mapKeys(action.payload, 'id') };
+            return { ..._.mapKeys(action.payload, 'id') };
 
         case EDIT_CARMODEL:
             return { ...state, [action.payload.id]: action.payload };

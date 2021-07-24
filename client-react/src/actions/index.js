@@ -79,6 +79,13 @@ export const fetchCarmodels = () => async (dispatch) => {
     dispatch({ type: FETCH_CARMODELS, payload: response.data });
 };
 
+export const fetchCarmodelsByManufacturer = (manufacturer) => async (dispatch) => {
+    // GET /contacts/{cID}/notes
+    const response = await carmodels.get(`/manufacturers/${manufacturer.id}/carmodels`);
+
+    dispatch({ type: FETCH_CARMODELS, payload: response.data });
+};
+
 export const fetchCarmodel = (id) => async (dispatch) => {
     const response = await carmodels.get(`/carmodels/${id}`);
 

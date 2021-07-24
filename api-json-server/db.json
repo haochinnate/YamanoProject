@@ -35,5 +35,55 @@
       "level": "豪華",
       "id": 5
     }
+  ],
+  "carmodels": [
+    {
+      "id": 1,
+      "name": "Fabia",
+      "bodyStyle": 5,
+      "officialUrl": "",
+      "isArchived": false,
+      "manufacturerId": 1,
+      "alias": [],
+      "releaseData": "",
+      "yearsInfo": "",
+      "mainImage": ""
+    },
+    {
+      "id": 2,
+      "name": "Karoq",
+      "bodyStyle": 8,
+      "officialUrl": "",
+      "isArchived": false,
+      "manufacturerId": 1,
+      "alias": [],
+      "releaseData": "",
+      "yearsInfo": "",
+      "mainImage": ""
+    },
+    {
+      "id": 3,
+      "name": "A5 Sportback",
+      "bodyStyle": 3,
+      "officialUrl": "",
+      "isArchived": false,
+      "manufacturerId": 4,
+      "alias": [],
+      "releaseData": "",
+      "yearsInfo": "",
+      "mainImage": ""
+    },
+    {
+      "id": 4,
+      "name": "Q5",
+      "bodyStyle": 7,
+      "officialUrl": "",
+      "isArchived": false,
+      "manufacturerId": 4,
+      "alias": [],
+      "releaseData": "",
+      "yearsInfo": "",
+      "mainImage": ""
+    }
   ]
 }

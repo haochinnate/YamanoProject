@@ -25,7 +25,7 @@ class ManufacturerShow extends React.Component {
                 <h5>{level}</h5> <h5>{officialUrl}</h5>
                 
                 <h5>{logoUrl}</h5>
-                <CarModelList />
+                <CarModelList manufacturer={this.props.manufacturer} />
             </div>
         );
     }

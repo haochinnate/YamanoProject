@@ -1,13 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchCarmodels } from '../../../actions';
+import { fetchCarmodelsByManufacturer } from '../../../actions';
 import { CARMODELS_ROOT } from '../../../consts/url';
 
 class CarModelList extends React.Component {
     
     componentDidMount() {
-        this.props.fetchCarmodels();
+        if (this.props.manufacturer) {
+            console.log(this.props.manufacturer);
+            this.props.fetchCarmodelsByManufacturer(this.props.manufacturer);
+        }
     }
 
     renderAdmin(carmodel) {
@@ -41,15 +44,24 @@ class CarModelList extends React.Component {
                 <div className="item" key={carmodel.id}>
                     <i className="large middle aligned icon car"/>
                     <div className="content">
-                        <Link to={`/cars/${carmodel.manufacturer.name}/${carmodel.name}`} className="header">
+                        <Link to={`/cars/${carmodel.name}/${carmodel.name}`} className="header">
                             {carmodel.name}()
                         </Link>
                         <div className="description">
                             <a href={carmodel.officialUrl} target="_blank">官網</a>   
                         </div>
                         {carmodel.isArchived}
-                        <div className="description">{carmodel.releaseDate}</div>
-                        <div className="description">{carmodel.yearsInfo}</div>
+          
+                        <div>{carmodel.id}</div>
+                        <div>{carmodel.name}</div>
+                        <div>{carmodel.bodyStyle}</div>
+                        <div>{carmodel.officialUrl}</div>
+                        <div>{carmodel.isArchived}</div>
+                        <div>{carmodel.manufacturerId}</div>
+                        <div>{carmodel.alias}</div>
+                        <div>{carmodel.releaseData}</div>
+                        <div>{carmodel.yearsInfo}</div>
+                        <div>{carmodel.mainImage}</div>
                     </div>
                 </div>
                 // <Field name="name" component={this.renderInput} label="名稱"/>
@@ -81,5 +93,5 @@ const mapStateToProps = (state) => {
     return { carmodels: Object.values(state.carmodels) }
 };
 
-export default connect(mapStateToProps, { fetchCarmodels })(CarModelList);
+export default connect(mapStateToProps, { fetchCarmodelsByManufacturer })(CarModelList);
 
