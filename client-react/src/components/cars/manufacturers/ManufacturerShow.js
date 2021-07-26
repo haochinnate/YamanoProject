@@ -19,15 +19,10 @@ class ManufacturerShow extends React.Component {
 
         return (
             <div className="container">
-                <div className="d-flex align-items-center">
-                    <div className="p-2">
+                <div className="row m-2">
+                    <div className="col-12 fs-1 text-center">
                         <img style={{ height: '50px' }} src={window.location.origin + `/images/manufacturers/${name}.png`} alt={name}/>
-                    </div>
-                    <div className="p-2 fs-1 text-center">
-                        <p>{name === chineseName ? name : `${name}(${chineseName})`}</p>
-                    </div>
-                    <div class="p-2 fs-3 text-center">
-                        <a href={officialUrl} target="_blank">官網</a>   
+                        <label className="align-bottom">{name === chineseName ? name : `${name}(${chineseName})`}</label>
                     </div>
                 </div>
                 

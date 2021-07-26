@@ -45,7 +45,7 @@
       "isArchived": false,
       "manufacturerId": 1,
       "alias": [],
-      "releaseData": "",
+      "releaseDate": "",
       "yearsInfo": "",
       "mainImage": ""
     },
@@ -57,7 +57,7 @@
       "isArchived": false,
       "manufacturerId": 1,
       "alias": [],
-      "releaseData": "",
+      "releaseDate": "",
       "yearsInfo": "",
       "mainImage": ""
     },
@@ -69,7 +69,7 @@
       "isArchived": false,
       "manufacturerId": 4,
       "alias": [],
-      "releaseData": "",
+      "releaseDate": "",
       "yearsInfo": "",
       "mainImage": ""
     },
@@ -81,7 +81,7 @@
       "isArchived": false,
       "manufacturerId": 4,
       "alias": [],
-      "releaseData": "",
+      "releaseDate": "",
       "yearsInfo": "",
       "mainImage": ""
     }

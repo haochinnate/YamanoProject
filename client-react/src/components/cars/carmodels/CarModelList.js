@@ -44,46 +44,53 @@ class CarModelList extends React.Component {
         // console.log(this.props.carmodels);
         return this.props.carmodels.map(carmodel => {
             return (
-
-                <div className="d-flex align-items-center" key={carmodel.id}>
-                    <div className="flex-shrink-0 max-vh-10">
-                        <Link to={`/cars/${carmodel.name}/${carmodel.name}`}>
-                            <img src={window.location.origin + '/images/icons/car.png'} alt={carmodel.name}></img>
+                // 圖片
+                // 名稱
+                // 價格
+                // 級距
+                // 發布日期
+                // 別稱
+                <div className="col">
+                    <div className="card" style={{width: '18rem'}} key={carmodel.id}>
+                        <Link className="text-center" to={`/cars/${this.props.manufacturer.name}/${carmodel.name}`}>
+                            {/* {carmodel.mainImage} */}
+                            <img src={window.location.origin + '/images/icons/car.png'} 
+                                alt={carmodel.name} className="card-img-top w-50"></img>
                         </Link>
-                    </div>
-                        
-                    <div className="flex-grow-1 ms-3">
-                        <div className="row">
-                            <div className="col col-md-auto fs-2">
-                            {carmodel.name} 
-                        </div>
-                        <div className="col col-md-auto fs-3">
+                    
+                        <div className="card-body">
+                            <h3 className="card-title fw-bold">{carmodel.name}</h3>
+                            <h4 className="card-text text-danger">xxx.x萬 ~ xxx.x 萬</h4>
+                            <div className="">
+                            <a href={carmodel.officialUrl} target="_blank">官網<small className="text-muted mx-2">別稱: {carmodel.alias}</small></a>   
+                            <h6 className="card-text"> </h6>   
+                            
+                            </div>
                             <a href={carmodel.officialUrl} target="_blank">官網</a>   
+                            <p className="card-text">999<small className="text-muted">發布日期: {carmodel.releaseDate}</small></p>
+                            <span class="badge bg-primary">Primary</span>
+                            <span class="badge bg-secondary">Secondary</span>
+                            <span class="badge bg-success">Success</span>
+                            <span class="badge bg-danger">Danger</span>
+                            <span class="badge bg-warning text-dark">Warning</span>
+                            <span class="badge bg-info text-dark">Info</span>
+                            <span class="badge bg-light text-dark">Light</span>
+                            <span class="badge bg-dark">Dark</span>
                         </div>
-                        </div>
-                        
-                        {carmodel.isArchived}
-          
-                        <div>{carmodel.id}</div>
-                        <div>{carmodel.name}</div>
-                        <div>{carmodel.bodyStyle}</div>
-                        <div>{carmodel.officialUrl}</div>
-                        <div>{carmodel.isArchived}</div>
-                        <div>{carmodel.manufacturerId}</div>
-                        <div>{carmodel.alias}</div>
-                        <div>{carmodel.releaseData}</div>
-                        <div>{carmodel.yearsInfo}</div>
-                        <div>{carmodel.mainImage}</div>
                     </div>
                 </div>
-                // <Field name="name" component={this.renderInput} label="名稱"/>
-                // <Field name="category" component={this.renderInput} label="車型"/>
-                // <Field name="officialUrl" component={this.renderInput} label="官方網站"/>
-                // <Field name="isArchived" component={this.renderInput} label="IsArchived"/>
-                // <Field name="manufacturer" component={this.renderInput} label="車廠"/>
-                // alias
-                // releaseDate
-                // yearsInfo
+                
+                        // OK<div>{carmodel.id}</div>
+                        // OK<div>{carmodel.name}</div>
+                        // <div>{carmodel.bodyStyle}</div>
+                        // OK<div>{carmodel.officialUrl}</div>
+                        // <div>{carmodel.isArchived}</div>
+                        // NN<div>{carmodel.manufacturerId}</div>
+                        // <div>{carmodel.alias}</div>
+                        // <div>{carmodel.releaseDate}</div>
+                        // NN<div>{carmodel.yearsInfo}</div>
+                        // OK<div>{carmodel.mainImage}</div> 
+
             );
         });
     }
@@ -91,7 +98,7 @@ class CarModelList extends React.Component {
     render() {
         return (
             <div>
-                <div class="container-fluid">
+                <div class="row row-cols-1 row-cols-sm-auto">
                     {this.renderList()}
                 </div>
                 {this.renderCreate()}

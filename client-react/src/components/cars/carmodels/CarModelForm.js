@@ -47,8 +47,18 @@ class CarModelForm extends Component {
                         <Field name="manufacturer" component={this.renderInput} label="車廠"/>
                         <Field name="releaseDate" component={this.renderInput} label="發布日期"/>
                         <Field name="yearsInfo" component={this.renderInput} label="年式資訊"/>
-    
-                        <button className="ui button primary">Create</button>
+                        {/* // <div>{carmodel.id}</div>
+                        // <div>{carmodel.name}</div>
+                        // <div>{carmodel.bodyStyle}</div>
+                        // <div>{carmodel.officialUrl}</div>
+                        // <div>{carmodel.isArchived}</div>
+                        // <div>{carmodel.manufacturerId}</div>
+                        // <div>{carmodel.alias}</div>
+                        // <div>{carmodel.releaseDate}</div>
+                        // <div>{carmodel.yearsInfo}</div>
+                        // <div>{carmodel.mainImage}</div>  */}
+
+                        <button type="submit" className="mt-3 mb-3 btn btn-primary">Submit</button>
                     </form>
                 )}
             </Form>
