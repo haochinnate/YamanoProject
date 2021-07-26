@@ -19,12 +19,18 @@ class ManufacturerShow extends React.Component {
 
         return (
             <div className="container">
-                <h1>{name === chineseName ? name : `${name}(${chineseName})`}</h1>
-                {/* <h1>{name}</h1> */}
-                {/* <h2>{chineseName}</h2> */}
-                <h5>{level}</h5> <h5>{officialUrl}</h5>
+                <div className="d-flex align-items-center">
+                    <div className="p-2">
+                        <img style={{ height: '50px' }} src={window.location.origin + `/images/manufacturers/${name}.png`} alt={name}/>
+                    </div>
+                    <div className="p-2 fs-1 text-center">
+                        <p>{name === chineseName ? name : `${name}(${chineseName})`}</p>
+                    </div>
+                    <div class="p-2 fs-3 text-center">
+                        <a href={officialUrl} target="_blank">官網</a>   
+                    </div>
+                </div>
                 
-                <h5>{logoUrl}</h5>
                 <CarModelList manufacturer={this.props.manufacturer} />
             </div>
         );

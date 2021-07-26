@@ -14,7 +14,7 @@ import history from '../../history'
 
 const CarDb = () => {
     return (
-        <div className="ui container">
+        <div className="container">
             <Router history={history}>
                 <Switch>
                     {/* <Route path="/cars" exact component={ManufacturerList}/>

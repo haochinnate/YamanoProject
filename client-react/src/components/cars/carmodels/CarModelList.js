@@ -1,8 +1,10 @@
-import React from 'react'
+import _ from 'lodash';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCarmodelsByManufacturer } from '../../../actions';
 import { CARMODELS_ROOT } from '../../../consts/url';
+import { BODY_STYLES } from '../../../consts/bodyStyles';
 
 class CarModelList extends React.Component {
     
@@ -39,17 +41,27 @@ class CarModelList extends React.Component {
     }
 
     renderList() {
+        // console.log(this.props.carmodels);
         return this.props.carmodels.map(carmodel => {
             return (
-                <div className="item" key={carmodel.id}>
-                    <i className="large middle aligned icon car"/>
-                    <div className="content">
-                        <Link to={`/cars/${carmodel.name}/${carmodel.name}`} className="header">
-                            {carmodel.name}()
+
+                <div className="d-flex align-items-center" key={carmodel.id}>
+                    <div className="flex-shrink-0 max-vh-10">
+                        <Link to={`/cars/${carmodel.name}/${carmodel.name}`}>
+                            <img src={window.location.origin + '/images/icons/car.png'} alt={carmodel.name}></img>
                         </Link>
-                        <div className="description">
+                    </div>
+                        
+                    <div className="flex-grow-1 ms-3">
+                        <div className="row">
+                            <div className="col col-md-auto fs-2">
+                            {carmodel.name} 
+                        </div>
+                        <div className="col col-md-auto fs-3">
                             <a href={carmodel.officialUrl} target="_blank">官網</a>   
                         </div>
+                        </div>
+                        
                         {carmodel.isArchived}
           
                         <div>{carmodel.id}</div>
@@ -79,8 +91,7 @@ class CarModelList extends React.Component {
     render() {
         return (
             <div>
-                <h2>Models</h2>
-                <div className="ui celled list">
+                <div class="container-fluid">
                     {this.renderList()}
                 </div>
                 {this.renderCreate()}
@@ -89,8 +100,15 @@ class CarModelList extends React.Component {
     }
 };
 
-const mapStateToProps = (state) => {
-    return { carmodels: Object.values(state.carmodels) }
+const mapStateToProps = (state, ownProps) => {
+
+    return { carmodels:  Object.values(
+        _.pickBy(state.carmodels, 
+            (carmodel) => {
+                return carmodel.manufacturerId === ownProps.manufacturer.id;
+            }
+        ))
+    }
 };
 
 export default connect(mapStateToProps, { fetchCarmodelsByManufacturer })(CarModelList);

@@ -21,8 +21,8 @@ const carmodelReducer = (state = {}, action) => {
             return { ...state, ..._.mapKeys(action.payload, 'id') };
 
         case FETCH_CARMODELS_BY_MANUFACTURER:
-            // return { ...state, ..._.mapKeys(action.payload, 'id') };
-            return { ..._.mapKeys(action.payload, 'id') };
+            return { ...state, ..._.mapKeys(action.payload, 'id') };
+            // return { ..._.mapKeys(action.payload, 'id') };
 
         case EDIT_CARMODEL:
             return { ...state, [action.payload.id]: action.payload };
