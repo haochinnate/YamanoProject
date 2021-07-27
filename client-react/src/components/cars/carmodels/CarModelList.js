@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCarmodelsByManufacturer } from '../../../actions';
 import { CARMODELS_ROOT } from '../../../consts/url';
-import { BODY_STYLES } from '../../../consts/bodyStyles';
+import { BODY_STYLES, BODY_STYLES_ZH } from '../../../consts/bodyStyles';
 
 class CarModelList extends React.Component {
     
@@ -41,7 +41,7 @@ class CarModelList extends React.Component {
     }
 
     renderList() {
-        // console.log(this.props.carmodels);
+        console.log(this.props.carmodels);
         return this.props.carmodels.map(carmodel => {
             return (
                 // 圖片
@@ -61,35 +61,23 @@ class CarModelList extends React.Component {
                         <div className="card-body">
                             <h3 className="card-title fw-bold">{carmodel.name}</h3>
                             <h4 className="card-text text-danger">xxx.x萬 ~ xxx.x 萬</h4>
-                            <div className="">
-                            <a href={carmodel.officialUrl} target="_blank">官網<small className="text-muted mx-2">別稱: {carmodel.alias}</small></a>   
-                            <h6 className="card-text"> </h6>   
                             
+                            <div className="">
+                                <a href={carmodel.officialUrl} target="_blank">官網</a>   
+                                <span className="text-muted mx-2">別稱: {_.join(carmodel.alias, ',')}</span>
                             </div>
-                            <a href={carmodel.officialUrl} target="_blank">官網</a>   
-                            <p className="card-text">999<small className="text-muted">發布日期: {carmodel.releaseDate}</small></p>
-                            <span class="badge bg-primary">Primary</span>
-                            <span class="badge bg-secondary">Secondary</span>
-                            <span class="badge bg-success">Success</span>
-                            <span class="badge bg-danger">Danger</span>
-                            <span class="badge bg-warning text-dark">Warning</span>
-                            <span class="badge bg-info text-dark">Info</span>
-                            <span class="badge bg-light text-dark">Light</span>
-                            <span class="badge bg-dark">Dark</span>
+                            <h6 className="card-text"><small className="text-muted">發布日期: {carmodel.releaseDate}</small></h6>
+
+                            <span class="badge bg-secondary me-2">{this.props.manufacturer.level}</span>
+
+                            <span class="badge bg-primary me-2">{BODY_STYLES_ZH[carmodel.bodyStyle]}</span>
+
+                            <span class="badge bg-success me-2 ">Level 2</span>
+
+                            <span class="badge bg-danger">汽油</span>
                         </div>
                     </div>
                 </div>
-                
-                        // OK<div>{carmodel.id}</div>
-                        // OK<div>{carmodel.name}</div>
-                        // <div>{carmodel.bodyStyle}</div>
-                        // OK<div>{carmodel.officialUrl}</div>
-                        // <div>{carmodel.isArchived}</div>
-                        // NN<div>{carmodel.manufacturerId}</div>
-                        // <div>{carmodel.alias}</div>
-                        // <div>{carmodel.releaseDate}</div>
-                        // NN<div>{carmodel.yearsInfo}</div>
-                        // OK<div>{carmodel.mainImage}</div> 
 
             );
         });
@@ -98,10 +86,12 @@ class CarModelList extends React.Component {
     render() {
         return (
             <div>
-                <div class="row row-cols-1 row-cols-sm-auto">
+                <div className="d-flex row row-cols-1 row-cols-sm-auto justify-content-center">
                     {this.renderList()}
                 </div>
-                {this.renderCreate()}
+                <div className="mx-2 my-2 d-flex justify-content-center">
+                    {this.renderCreate()}
+                </div>
             </div>
         );
     }

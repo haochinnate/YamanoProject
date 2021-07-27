@@ -14,7 +14,7 @@ class CarModelCreate extends Component {
         return (
             <div>
                 <h3>Create a carmodel</h3>
-                {/* <CarModelForm onSubmit={this.onSubmit}/> */}
+                <CarModelForm onSubmit={this.onSubmit}/>
             </div>
         );
     };

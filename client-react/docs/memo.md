@@ -27,3 +27,23 @@ DELETE /contacts/{cID}/notes/{nID}
   - MPV(廂式休旅)
   - Trunk Pickup(貨卡車)
   - Commercial(商用車)
+
+- manufacturer property
+  - "name": "Mazda",
+  - "chineseName": "馬自達",
+  - "level": "一般",
+  - "officialUrl": "https://www.mazda.com.tw",
+  - "id": 2
+
+
+- carmodel property
+  - {carmodel.id}
+  - {carmodel.name}
+  - {carmodel.bodyStyle}
+  - {carmodel.officialUrl}
+  - {carmodel.isArchived}
+  - {carmodel.manufacturerId}
+  - {carmodel.alias}
+  - {carmodel.releaseDate}
+  - {carmodel.yearsInfo}
+  - {carmodel.mainImage} 

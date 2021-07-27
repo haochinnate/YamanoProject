@@ -19,7 +19,7 @@ class ManufacturerDelete extends React.Component{
         return (
             <React.Fragment>
                 <button onClick={() => { this.deleteManufacturer() }} 
-                    className="ui button negative">Delete</button>
+                    className="btn btn-danger">Delete</button>
                 <Link to="/cars" className="ui button">Cancel</Link>
             </React.Fragment>
         );

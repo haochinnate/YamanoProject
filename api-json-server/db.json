@@ -44,7 +44,11 @@
       "officialUrl": "",
       "isArchived": false,
       "manufacturerId": 1,
-      "alias": [],
+      "alias": [
+        "小發",
+        "發比",
+        "測試"
+      ],
       "releaseDate": "",
       "yearsInfo": "",
       "mainImage": ""
