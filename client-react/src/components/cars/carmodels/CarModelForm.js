@@ -23,7 +23,7 @@ const CarModelForm = (props) => {
         valueChangedHandler: nameChangedHandler,
         inputBlurHandler: nameBlurHandler,
         reset: resetNameInput
-    } = useInput(isNotEmpty);
+    } = useInput({ validateValue: isNotEmpty, initialValue: 'initial really?' });
 
     const {
         value: enteredBodyStyle, 
@@ -32,16 +32,14 @@ const CarModelForm = (props) => {
         valueChangedHandler: bodyStyleChangedHandler,
         inputBlurHandler: bodyStyleBlurHandler,
         reset: resetBodyStyleInput
-    } = useInput(isNotEmpty);
+    } = useInput({ validateValue: isNotEmpty });
 
     const {
         value: enteredOfficialUrl, 
-        hasError: officialUrlInputHasError,
-        isValid: enteredOfficialUrlIsvalid,
         valueChangedHandler: officialUrlChangedHandler,
         inputBlurHandler: officialUrlBlurHandler,
         reset: resetOfficialUrlInput
-    } = useInput(doNotCare);
+    } = useInput( { validateValue: doNotCare });
 
     const {
         value: enteredIsArchived, 
@@ -50,7 +48,7 @@ const CarModelForm = (props) => {
         valueChangedHandler: isArchivedChangedHandler,
         inputBlurHandler: isArchivedBlurHandler,
         reset: resetIsArchivedInput
-    } = useInput(isNotEmpty);
+    } = useInput({ validateValue: isNotEmpty });
 
     const {
         value: enteredManufacturerId, 
@@ -59,16 +57,14 @@ const CarModelForm = (props) => {
         valueChangedHandler: manufacturerIdChangedHandler,
         inputBlurHandler: manufacturerIdBlurHandler,
         reset: resetManufacturerIdInput
-    } = useInput(isNotEmpty);
+    } = useInput({ validateValue: isNotEmpty });
 
     const {
         value: enteredAlias, 
-        hasError: aliasInputHasError,
-        isValid: enteredAliasIsvalid,
         valueChangedHandler: aliasChangedHandler,
         inputBlurHandler: aliasBlurHandler,
         reset: resetAliasInput
-    } = useInput(doNotCare);
+    } = useInput({ validateValue: doNotCare, initialValue: 'eee,ooo' });
 
     const {
         value: enteredReleaseDate, 
@@ -77,25 +73,21 @@ const CarModelForm = (props) => {
         valueChangedHandler: releaseDateChangedHandler,
         inputBlurHandler: releaseDateBlurHandler,
         reset: resetReleaseDateInput
-    } = useInput(doNotCare);
+    } = useInput({ validateValue: doNotCare });
 
     const {
         value: enteredYearsInfo, 
-        hasError: yearsInfoInputHasError,
-        isValid: enteredYearsInfoIsvalid,
         valueChangedHandler: yearsInfoChangedHandler,
         inputBlurHandler: yearsInfoBlurHandler,
         reset: resetYearsInfoInput
-    } = useInput(doNotCare);
+    } = useInput({ validateValue: doNotCare });
 
     const {
         value: enteredMainImage, 
-        hasError: mainImageInputHasError,
-        isValid: enteredMainImageIsvalid,
         valueChangedHandler: mainImageChangedHandler,
         inputBlurHandler: mainImageBlurHandler,
         reset: resetMainImageInput
-    } = useInput(doNotCare);
+    } = useInput({ validateValue: doNotCare });
 
     // const renderError = ({hasError, errorMessage}) =>  {
     //     const feedbackClass = hasError ? 'invalid-feedback' : 'valid-feedback'
@@ -109,21 +101,7 @@ const CarModelForm = (props) => {
     //         );
     //     }
     // };
-
-    const nameFeedbackClass = nameInputHasError ? 'invalid-feedback' : 'valid-feedback'
-
-
-    // renderInput = ({ input, label, meta }) => {
-    //     const className = `field ${meta.error && meta.touched ? 'error' : '' }`;
-        
-    //     return (
-    //         <div className={className}>
-    //             <label>{label}</label>
-    //             <input {...input} autoComplete="off"></input>
-    //             {this.renderError(meta)}
-    //         </div>
-    //     );
-    // };
+    // enteredName = 'some initial';
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -135,6 +113,9 @@ const CarModelForm = (props) => {
 
         console.log(event);
         console.log(enteredName);
+        console.log(enteredReleaseDate);
+        console.log(enteredAlias);
+        console.log(enteredIsArchived);
         // props.onSubmit(values);
 
         // props.onSubmit(formValues);
@@ -153,6 +134,7 @@ const CarModelForm = (props) => {
         // <div>{carmodel.mainImage}</div>  
         // needs-validation noValidate
         <form className="row g-3 needs-validation" noValidate onSubmit={onSubmit}>
+
             {/* Name */}
             <div className="col-md-4">
                 <label htmlFor="name" className="form-label">Name</label>
@@ -163,6 +145,70 @@ const CarModelForm = (props) => {
                 {/* {renderError({ hasError: nameInputHasError, errorMessage: 'Please enter Name' })} */}
                 {nameInputHasError && <p style={{ color: 'red' }}>Name must not be empty</p>}
             </div>
+
+            
+            {/* Body Style */}
+         
+            {/* Official Url */}
+            <div className="col-md-4">
+                <label htmlFor="officialUrl" className="form-label">官網</label>
+                <input type="text" className="form-control" 
+                    id="officialUrl" 
+                    value={enteredOfficialUrl} onChange={officialUrlChangedHandler} onBlur={officialUrlBlurHandler}>
+                </input>
+            </div>
+
+            {/* IsArchived */}
+            <div className="col-12">
+                <div className="form-check">
+                    <input className="form-check-input" type="checkbox" 
+                        checked={enteredIsArchived}
+                        onChange={isArchivedChangedHandler} onBlur={isArchivedBlurHandler}
+                        id="isArchived"></input>
+                    <label className="form-check-label" htmlFor="isArchived">
+                        已下市
+                    </label>
+                </div>
+            </div> 
+
+            {/* ManufacturerId */}
+        
+            {/* Alias */}
+            <div className="col-md-4">
+                <label htmlFor="alias" className="form-label">別稱(以,區隔)</label>
+                <input type="text" className="form-control" 
+                    id="alias" 
+                    value={enteredAlias} onChange={aliasChangedHandler} onBlur={aliasBlurHandler}>
+                </input>
+            </div>
+
+            {/* Release Date */}
+            <div className="col-md-4">
+                <label htmlFor="releaseDate" className="form-label">發表日期</label>
+                <input type="date" className="form-control" 
+                    id="releaseDate" 
+                    value={enteredReleaseDate} onChange={releaseDateChangedHandler} onBlur={releaseDateBlurHandler}>
+                </input>
+            </div>
+        
+            {/* Years Info */}
+            <div className="col-md-4">
+                <label htmlFor="yearsInfo" className="form-label">年式</label>
+                <input type="text" className="form-control" 
+                    id="yearsInfo" 
+                    value={enteredYearsInfo} onChange={yearsInfoChangedHandler} onBlur={yearsInfoBlurHandler}>
+                </input>
+            </div>
+
+            {/* Main Image   */}
+            <div className="col-md-4">
+                <label htmlFor="mainImage" className="form-label">主要圖片</label>
+                <input type="text" className="form-control" 
+                    id="mainImage" 
+                    value={enteredMainImage} onChange={mainImageChangedHandler} onBlur={mainImageBlurHandler}>
+                </input>
+            </div>
+
 {/*                 
             <div className="col-md-4">
                 <label for="validationCustom02" className="form-label">Last name</label>
@@ -185,14 +231,6 @@ const CarModelForm = (props) => {
                 </div>
             </div>
                 
-            <div className="col-md-6">
-                <label for="validationCustom03" className="form-label">City</label>
-                <input type="text" className="form-control" id="validationCustom03" required></input>
-                <div className="invalid-feedback">
-                    Please provide a valid city.
-                </div>
-            </div>
-                
             <div className="col-md-3">
                 <label for="validationCustom04" className="form-label">State</label>
                     <select className="form-select" id="validationCustom04" required>
@@ -202,14 +240,6 @@ const CarModelForm = (props) => {
                     <div className="invalid-feedback">
                         Please select a valid state.
                     </div>
-            </div>
-                
-            <div className="col-md-3">
-                <label for="validationCustom05" className="form-label">Zip</label>
-                <input type="text" className="form-control" id="validationCustom05" required></input>
-                <div className="invalid-feedback">
-                    Please provide a valid zip.
-                </div>
             </div>
                 
             <div className="col-12">
