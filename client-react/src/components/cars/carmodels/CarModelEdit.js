@@ -11,8 +11,8 @@ class CarModelEdit extends React.Component {
     };
 
     onSubmit = (formValues) => {
-        // console.log(formValues);
-        this.props.editCarmodel(this.props.match.params.id, formValues);
+        console.log(formValues);
+        // this.props.editCarmodel(this.props.match.params.id, formValues);
     };
 
     render() {
@@ -27,7 +27,9 @@ class CarModelEdit extends React.Component {
                 <CarModelForm
                     initialValues={_.pick(
                         this.props.carmodel,
-                        'name', 'category', 'officialUrl', 'isArchived', 'manufacturer', 'releaseDate', 'yearsInfo'
+                        'name', 'bodyStyle', 'officialUrl', 
+                        'isArchived', 'manufacturerId', 'alias',
+                        'releaseDate', 'yearsInfo', 'mainImage'
                     )}
                     onSubmit={this.onSubmit}/>
             </div>

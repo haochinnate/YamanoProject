@@ -17,7 +17,7 @@ class CarModelList extends React.Component {
 
     renderAdmin(carmodel) {
         return (
-            <div className="right floated content">
+            <div className="text-center">
                 <Link to={`${CARMODELS_ROOT}/edit/${carmodel.id}`} className="btn btn-primary m-1">
                     Edit
                 </Link>
@@ -41,7 +41,7 @@ class CarModelList extends React.Component {
     }
 
     renderList() {
-        console.log(this.props.carmodels);
+        // console.log(this.props.carmodels);
         return this.props.carmodels.map(carmodel => {
             return (
                 // 圖片
@@ -50,8 +50,8 @@ class CarModelList extends React.Component {
                 // 級距
                 // 發布日期
                 // 別稱
-                <div className="col">
-                    <div className="card" style={{width: '18rem'}} key={carmodel.id}>
+                <div className="col" key={carmodel.id}>
+                    <div className="card" style={{width: '18rem'}}>
                         <Link className="text-center" to={`/cars/${this.props.manufacturer.name}/${carmodel.name}`}>
                             {/* {carmodel.mainImage} */}
                             <img src={window.location.origin + '/images/icons/car.png'} 
@@ -68,13 +68,17 @@ class CarModelList extends React.Component {
                             </div>
                             <h6 className="card-text"><small className="text-muted">發布日期: {carmodel.releaseDate}</small></h6>
 
-                            <span class="badge bg-secondary me-2">{this.props.manufacturer.level}</span>
+                            <span className="badge bg-secondary me-2">{this.props.manufacturer.level}</span>
 
-                            <span class="badge bg-primary me-2">{BODY_STYLES_ZH[carmodel.bodyStyle]}</span>
+                            <span className="badge bg-primary me-2">{BODY_STYLES_ZH[carmodel.bodyStyle]}</span>
 
-                            <span class="badge bg-success me-2 ">Level 2</span>
+                            <span className="badge bg-success me-2 ">Level 2</span>
 
-                            <span class="badge bg-danger">汽油</span>
+                            <span className="badge bg-danger">汽油</span>
+                        </div>
+
+                        <div className="card-footer">
+                            {this.renderAdmin(carmodel)}
                         </div>
                     </div>
                 </div>

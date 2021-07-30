@@ -8,7 +8,11 @@ const useInput = ({ validateValue, initialValue = ''}) => {
     const hasError = !valueIsValid && isTouched;
 
     const valueChangedHandler = event => {
-        setEnteredValue(event.target.value);
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        
+        setEnteredValue(value);
+        // setEnteredValue(event.target.value);
     };
   
     const inputBlurHandler = event => {
