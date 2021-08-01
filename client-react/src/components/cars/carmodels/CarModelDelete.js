@@ -18,8 +18,8 @@ class CarModelDelete extends React.Component{
     renderActions() {
         return (
             <React.Fragment>
-                <button onClick={() => {this.deleteCarmodel()}} className="ui button negative">Delete</button>
-                <Link to="/cars" className="ui button">Cancel</Link>
+                <button onClick={() => {this.deleteCarmodel()}} className="btn btn-danger">Delete</button>
+                <Link to="/cars" className="btn btn-secondary">Cancel</Link>
             </React.Fragment>
         ); 
     }

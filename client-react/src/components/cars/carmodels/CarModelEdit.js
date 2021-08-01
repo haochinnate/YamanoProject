@@ -11,8 +11,8 @@ class CarModelEdit extends React.Component {
     };
 
     onSubmit = (formValues) => {
-        console.log(formValues);
-        // this.props.editCarmodel(this.props.match.params.id, formValues);
+        // console.log(formValues);
+        this.props.editCarmodel(this.props.match.params.id, formValues);
     };
 
     render() {

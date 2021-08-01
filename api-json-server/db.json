@@ -44,11 +44,7 @@
       "officialUrl": "",
       "isArchived": false,
       "manufacturerId": 1,
-      "alias": [
-        "小發",
-        "發比",
-        "測試"
-      ],
+      "alias": "小發,發比",
       "releaseDate": "",
       "yearsInfo": "",
       "mainImage": ""
@@ -88,6 +84,18 @@
       "releaseDate": "",
       "yearsInfo": "",
       "mainImage": ""
+    },
+    {
+      "name": "Scala",
+      "bodyStyle": "5",
+      "officialUrl": "https://www.skoda.com.tw/models/scala/scala",
+      "isArchived": "",
+      "manufacturerId": "1",
+      "alias": "",
+      "releaseDate": "",
+      "yearsInfo": "",
+      "mainImage": "",
+      "id": 5
     }
   ]
 }

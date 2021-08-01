@@ -10,7 +10,7 @@ class CarModelList extends React.Component {
     
     componentDidMount() {
         if (this.props.manufacturer) {
-            console.log(this.props.manufacturer);
+            // console.log(this.props.manufacturer);
             this.props.fetchCarmodelsByManufacturer(this.props.manufacturer);
         }
     }
@@ -102,11 +102,11 @@ class CarModelList extends React.Component {
 };
 
 const mapStateToProps = (state, ownProps) => {
-
+    // console.log(state.carmodels)
     return { carmodels:  Object.values(
         _.pickBy(state.carmodels, 
             (carmodel) => {
-                return carmodel.manufacturerId === ownProps.manufacturer.id;
+                return String(carmodel.manufacturerId) === String(ownProps.manufacturer.id);
             }
         ))
     }

@@ -51,7 +51,7 @@ class ManufacturerList extends Component {
                     </Link>
 
                     <div className="container">
-                        <Link to={`${MANUFACTURERS_ROOT}/${manufacturer.id}`} className="fs-4">
+                        <Link to={`${MANUFACTURERS_ROOT}/${manufacturer.id}`} className="fs-4 text-nowrap">
                             {manufacturer.name === manufacturer.chineseName 
                                 ? manufacturer.name
                                 : `${manufacturer.name}(${manufacturer.chineseName})`}

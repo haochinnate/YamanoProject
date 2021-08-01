@@ -5,9 +5,9 @@ import CarModelForm from './CarModelForm'
 
 class CarModelCreate extends Component {
 
-    onSubmit(formValues) {
-        console.log(formValues);
-        // this.props.createCarmodel(formValues);
+    onSubmit = (formValues) => {
+        // console.log(formValues);
+        this.props.createCarmodel(formValues);
     }
     
     render() {
