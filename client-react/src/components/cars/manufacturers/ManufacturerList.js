@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchManufacturers } from '../../../actions';
-import { MANUFACTURERS_ROOT } from '../../../consts/url';
+import { MANUFACTURERS_ROOT, CARS_DB_ROOT } from '../../../consts/url';
 
 class ManufacturerList extends Component {
 
@@ -51,7 +51,7 @@ class ManufacturerList extends Component {
                     </Link>
 
                     <div className="container">
-                        <Link to={`${MANUFACTURERS_ROOT}/${manufacturer.id}`} className="fs-4 text-nowrap">
+                        <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="fs-4 text-nowrap">
                             {manufacturer.name === manufacturer.chineseName 
                                 ? manufacturer.name
                                 : `${manufacturer.name}(${manufacturer.chineseName})`}

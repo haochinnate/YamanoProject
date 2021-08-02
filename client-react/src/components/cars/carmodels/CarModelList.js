@@ -9,6 +9,8 @@ import { BODY_STYLES, BODY_STYLES_ZH } from '../../../consts/bodyStyles';
 class CarModelList extends React.Component {
     
     componentDidMount() {
+        // console.log('componentDidMount');
+
         if (this.props.manufacturer) {
             // console.log(this.props.manufacturer);
             this.props.fetchCarmodelsByManufacturer(this.props.manufacturer);
@@ -62,11 +64,11 @@ class CarModelList extends React.Component {
                             <h3 className="card-title fw-bold">{carmodel.name}</h3>
                             <h4 className="card-text text-danger">xxx.x萬 ~ xxx.x 萬</h4>
                             
-                            <div className="">
+                            {/* <div className="">
                                 <a href={carmodel.officialUrl} target="_blank">官網</a>   
                                 <span className="text-muted mx-2">別稱: {_.join(carmodel.alias, ',')}</span>
                             </div>
-                            <h6 className="card-text"><small className="text-muted">發布日期: {carmodel.releaseDate}</small></h6>
+                            <h6 className="card-text"><small className="text-muted">發布日期: {carmodel.releaseDate}</small></h6> */}
 
                             <span className="badge bg-secondary me-2">{this.props.manufacturer.level}</span>
 
@@ -74,7 +76,7 @@ class CarModelList extends React.Component {
 
                             <span className="badge bg-success me-2 ">Level 2</span>
 
-                            <span className="badge bg-danger">汽油</span>
+                            {/* <span className="badge bg-danger">汽油</span> */}
                         </div>
 
                         <div className="card-footer">
@@ -102,6 +104,8 @@ class CarModelList extends React.Component {
 };
 
 const mapStateToProps = (state, ownProps) => {
+    // console.log(ownProps.match)
+    // console.log('mapStateToProps');
     // console.log(state.carmodels)
     return { carmodels:  Object.values(
         _.pickBy(state.carmodels, 

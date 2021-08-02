@@ -50,6 +50,13 @@ export const fetchManufacturer = (id) => async (dispatch) => {
     dispatch({ type: FETCH_MANUFACTURER, payload: response.data });
 };
 
+export const fetchManufacturerByName = (name) => async (dispatch) => {
+    const response = await manufacturers.get('/manufacturers');
+    // const response = await manufacturers.get(`/manufacturers/${id}`);
+
+    dispatch({ type: FETCH_MANUFACTURERS, payload: response.data });
+};
+
 export const editManufacturer = (id, formValues) => async (dispatch) => {
     const response = await manufacturers.patch(`/manufacturers/${id}`, formValues);
 

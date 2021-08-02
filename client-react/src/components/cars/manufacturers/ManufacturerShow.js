@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchManufacturer } from '../../../actions';
+import { fetchManufacturerByName } from '../../../actions';
+import _ from 'lodash';
 import CarModelList from '../carmodels/CarModelList';
 
 class ManufacturerShow extends React.Component {
     
     componentDidMount() {
-        this.props.fetchManufacturer(this.props.match.params.id);
+        this.props.fetchManufacturerByName(this.props.match.params.manufacturerName);
     }
 
     render() {
@@ -36,10 +37,10 @@ class ManufacturerShow extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     // console.log(ownProps);
     // console.log(state);
-    return { manufacturer: state.manufacturers[ownProps.match.params.id] }
+    return { manufacturer: _.find(state.manufacturers, { name: ownProps.match.params.manufacturerName}) }
 };
 
 export default connect(
     mapStateToProps, 
-    { fetchManufacturer }
+    { fetchManufacturerByName }
 )(ManufacturerShow);
