@@ -50,7 +50,7 @@ class CarModelList extends React.Component {
                 // 級距
                 // 發布日期
                 // 別稱
-                <div className="col" key={carmodel.id}>
+                <div className="col me-2" key={carmodel.id}>
                     <div className="card" style={{width: '18rem'}}>
                         <Link className="text-center" to={`/cars/${this.props.manufacturer.name}/${carmodel.name}`}>
                             {/* {carmodel.mainImage} */}

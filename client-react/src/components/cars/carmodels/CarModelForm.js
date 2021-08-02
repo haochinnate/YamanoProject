@@ -169,7 +169,7 @@ const CarModelForm = (props) => {
             bodyStyle: enteredBodyStyle,
             officialUrl: enteredOfficialUrl,
             isArchived: enteredIsArchived,
-            manufacturerId: enteredManufacturerId,
+            manufacturerId: Number(enteredManufacturerId),
             alias: enteredAlias,
             releaseDate: enteredReleaseDate,
             yearsInfo: enteredYearsInfo,
