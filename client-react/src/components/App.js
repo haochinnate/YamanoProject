@@ -7,7 +7,7 @@ import history from '../history';
 
 const App = () => {
     return (
-        <div className="ui container">
+        <div className="container">
             <Router history={history}>
                 <div>
                     <Header />

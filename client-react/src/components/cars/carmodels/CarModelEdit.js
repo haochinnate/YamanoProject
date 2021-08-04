@@ -23,7 +23,7 @@ class CarModelEdit extends React.Component {
 
         return (
             <div>
-                <h3>Edit a carmodel</h3>
+                <h3 className="my-2 fw-bold">Edit a carmodel</h3>
                 <CarModelForm
                     initialValues={_.pick(
                         this.props.carmodel,

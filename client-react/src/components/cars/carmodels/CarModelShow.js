@@ -3,6 +3,8 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { fetchCarmodelByName } from '../../../actions';
 import youtube from '../../../apis/youtube';
+import { BODY_STYLES_ZH } from '../../../consts/bodyStyles';
+import TrimLevelList from '../trimlevels/TrimLevelList';
 
 class CarModelShow extends React.Component {
     
@@ -66,7 +68,12 @@ class CarModelShow extends React.Component {
                     className="d-block w-100" 
                     alt={video.snippet.title}>
                 </img> */}
-                    <iframe className="w-100" title="精銳小兵 令國產車汗顏！Škoda Fabia 1.0 TSI" src={`https://www.youtube.com/embed/ffjN93Bcvuo`}/>
+                    <div className="ratio ratio-16x9" >
+                        <iframe allowfullscreen
+                            title="精銳小兵 令國產車汗顏！Škoda Fabia 1.0 TSI" 
+                            src={`https://www.youtube.com/embed/ffjN93Bcvuo`}/>
+                    </div>
+
                     <div className="carousel-caption d-none d-md-block">
                         <h5>精銳小兵 令國產車汗顏！Škoda Fabia 1.0 TSI</h5>
                         <p>11月小改款上市的Škoda Fabia，車頭與車尾做了微幅的修改，在安全配備上更是做了許多的精進。自1999年上市發表以來，Fabia在全球銷量已經超過400萬輛，除了 ...</p>
@@ -162,16 +169,34 @@ class CarModelShow extends React.Component {
         // <div>{carmodel.mainImage}</div>  
 
         return (
-            <div className="container">
+            <div className="d-flex align-content-start flex-nowrap flex-row flex-sm-row">
                 {/* {this.renderVideos(this.state.videos)} */}
-                {this.renderVideosTmp()}
-                <h1>Eererer</h1>
-                <h1>{name}</h1>
-                <h2>{bodyStyle}</h2>
-                <h5>{officialUrl}</h5>
-                <h5>{isArchived}</h5>
-                <h5>{manufacturerId}</h5>
-                <h3>更多影片</h3>
+                <div className="d-inline-flex flex-column col-sm-4 ">
+                    <h1 className="fs-2 fw-bold">{name}</h1>
+                    <h5>
+                        <a href={officialUrl} target="_blank">官網</a> 
+                    </h5>
+                             {/* <div className="">
+                                  
+                                <span className="text-muted mx-2">別稱: {_.join(carmodel.alias, ',')}</span>
+                            </div>
+                            <h6 className="card-text"><small className="text-muted">發布日期: {carmodel.releaseDate}</small></h6> */}
+                    <span className="badge bg-primary me-2">{BODY_STYLES_ZH[bodyStyle]}</span>
+                    <h2>{bodyStyle}</h2>
+                    <h5>{isArchived}</h5>
+                    {/* <h5>{manufacturerId}</h5> */}
+                    <h3>更多影片</h3>
+                </div>
+
+                <div className="container col-sm-8">
+                    {this.renderVideosTmp()}
+                
+                </div>
+
+                <div className="container col-12 col-sm-12" >
+                    <TrimLevelList />
+                </div>
+               
                 {/* https://www.youtube.com/results?search_query=fabia+%E8%A9%A6%E9%A7%95 */}
             </div>
         );

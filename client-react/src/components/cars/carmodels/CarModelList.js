@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCarmodelsByManufacturer } from '../../../actions';
 import { CARMODELS_ROOT } from '../../../consts/url';
-import { BODY_STYLES, BODY_STYLES_ZH } from '../../../consts/bodyStyles';
+import { BODY_STYLES_ZH } from '../../../consts/bodyStyles';
 
 class CarModelList extends React.Component {
     
@@ -61,8 +61,8 @@ class CarModelList extends React.Component {
                         </Link>
                     
                         <div className="card-body">
-                            <h3 className="card-title fw-bold">{carmodel.name}</h3>
-                            <h4 className="card-text text-danger">xxx.x萬 ~ xxx.x 萬</h4>
+                            <h3 className="card-title fw-bold fs-3">{carmodel.name}</h3>
+                            <h4 className="card-text text-danger fs-4">xxx.x萬 ~ xxx.x 萬</h4>
                             
                             {/* <div className="">
                                 <a href={carmodel.officialUrl} target="_blank">官網</a>   

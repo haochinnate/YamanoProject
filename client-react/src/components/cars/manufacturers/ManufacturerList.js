@@ -28,7 +28,7 @@ class ManufacturerList extends Component {
     renderCreate() {
         // if (this.props.isSignedIn) {
             return (
-                <div style={{ textAlign: 'right'}}>
+                <div>
                     <Link to={`${MANUFACTURERS_ROOT}/new`} className="btn btn-success mb-3"> 
                         Create Manufacturer
                     </Link>
@@ -42,26 +42,53 @@ class ManufacturerList extends Component {
             // const imageSource = require(escape('../../../images/manufacturers/skoda.png'));
             // const imageSource = require(escape('./images/manufacturers/skoda.PNG'));
             return (
-                <div className="col" key={manufacturer.id}>
+                // <div className="col col-12 col-sm-6 col-md-4 col-lg-2" key={manufacturer.id}>
                     
+                //     <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="text-center">
+                //         <img src={window.location.origin + `/images/manufacturers/${manufacturer.name}.png`}
+                //             className="img-fluid ratio ratio-1-1" alt={manufacturer.name}/>
+                //     </Link>
 
-                    <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`}>
-                        {/* <img src=".." className="img-fluid" alt={manufacturer.name}/> */}
-                        <img src={window.location.origin + `/images/manufacturers/${manufacturer.name}.png`} className="img-fluid" alt={manufacturer.name}/>
-                    </Link>
-
-                    <div className="container">
-                        <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="fs-4 text-nowrap">
-                            {manufacturer.name === manufacturer.chineseName 
-                                ? manufacturer.name
-                                : `${manufacturer.name}(${manufacturer.chineseName})`}
+                //     <div className="text-center">
+                //         <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="fs-4 text-nowrap">
+                //             {manufacturer.name === manufacturer.chineseName 
+                //                 ? manufacturer.name
+                //                 : `${manufacturer.name}(${manufacturer.chineseName})`}
+                //         </Link>
+                //         <div className="fs-6">
+                //             <a href={manufacturer.officialUrl} target="_blank">官網</a>   
+                //         </div>
+                //     </div>
+                //     {this.renderAdmin(manufacturer)}
+                // </div>
+                <div className="col my-2" key={manufacturer.id}>
+                    
+                    <div className="card" style={{ style: '18rem' }}>
+                        <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="text-center">
+                            <img src={window.location.origin + `/images/manufacturers/${manufacturer.name}.png`}
+                                className="card-img-top w-50" alt={manufacturer.name}/>
                         </Link>
-                        <div className="description">
-                            <a href={manufacturer.officialUrl} target="_blank">官網</a>   
+                    
+                    <div className="card-body">
+                        <div className="text-center">
+                            <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="fs-4 text-nowrap">
+                                {manufacturer.name === manufacturer.chineseName 
+                                    ? manufacturer.name
+                                    : `${manufacturer.name}(${manufacturer.chineseName})`}
+                            </Link>
+                            <div className="fs-6">
+                                <a href={manufacturer.officialUrl} target="_blank">官網</a>   
+                            </div>
                         </div>
                     </div>
-                    {this.renderAdmin(manufacturer)}
+                    
+                    <div className="card-footer">
+                        {this.renderAdmin(manufacturer)}
+                    </div>
+                    </div>
+
                 </div>
+
                 // <Field name="chineseName" component={this.renderInput} label="中文名稱"/>
                 // <Field name="name" component={this.renderInput} label="名稱"/>
                 // <Field name="level" component={this.renderInput} label="等級"/>
@@ -73,21 +100,24 @@ class ManufacturerList extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Manufacturers</h2>
-                <div className="container">
-                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-6 row-cols-lg-8">
-                        {/* <div class="col">Column</div>
-                        <div class="col">Column</div>
-                        <div class="col">Column</div>
-                        <div class="col">Column</div> */}
-                        {this.renderManufacturers()}
-                    </div>
+            <div className="">
+                <div className="row">
+                    <h1 className="text-left">車廠</h1>
                 </div>
-                {/* <div className="ui celled list">
-                    {this.renderList()}
+
+                {/* <div className="row row-cols-1 row-cols-sm-2 row-cols-md-6 row-cols-lg-8"> */}
+                {/* <div class="d-lg-none">hide on screens wider than lg</div>
+                <div class="d-none d-lg-block">hide on screens smaller than lg</div> */}
+                {/* <div className="row">
+                    {this.renderManufacturers()}
                 </div> */}
-                {this.renderCreate()}
+                <div className="d-flex row row-cols-1 row-cols-sm-auto justify-content-center">
+                    {this.renderManufacturers()}
+                </div>
+                
+                <div className="mx-2 my-2 d-flex justify-content-center">
+                    {this.renderCreate()}
+                </div>
             </div>
         )
     }

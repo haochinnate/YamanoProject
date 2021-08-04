@@ -34,6 +34,18 @@
       "chineseName": "賓士",
       "level": "豪華",
       "id": 5
+    },
+    {
+      "name": "Jaguar",
+      "chineseName": "捷豹",
+      "level": "豪華",
+      "id": 6
+    },
+    {
+      "name": "Volkswagen",
+      "chineseName": "福斯",
+      "level": "一般",
+      "id": 7
     }
   ],
   "carmodels": [

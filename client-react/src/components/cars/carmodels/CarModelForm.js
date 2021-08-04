@@ -191,7 +191,7 @@ const CarModelForm = (props) => {
         // <div>{carmodel.yearsInfo}</div>
         // <div>{carmodel.mainImage}</div>  
         // needs-validation noValidate
-        <form className="row g-3 needs-validation" noValidate onSubmit={onSubmit}>
+        <form className="row g-2 needs-validation" noValidate onSubmit={onSubmit}>
 
             {/* Name */}
             <div className="col-md-4">
