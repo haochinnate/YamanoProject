@@ -45,7 +45,7 @@ class ManufacturerList extends Component {
                 <div className="col" key={manufacturer.id}>
                     
 
-                    <Link to={`${MANUFACTURERS_ROOT}/${manufacturer.id}`}>
+                    <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`}>
                         {/* <img src=".." className="img-fluid" alt={manufacturer.name}/> */}
                         <img src={window.location.origin + `/images/manufacturers/${manufacturer.name}.png`} className="img-fluid" alt={manufacturer.name}/>
                     </Link>

@@ -51,9 +51,10 @@ export const fetchManufacturer = (id) => async (dispatch) => {
 };
 
 export const fetchManufacturerByName = (name) => async (dispatch) => {
-    const response = await manufacturers.get('/manufacturers');
-    // const response = await manufacturers.get(`/manufacturers/${id}`);
-
+    
+    const response = await manufacturers.get('/manufacturers', { params: { name } });
+    // console.log('fetchManufacturerByName');
+    // console.log(response);
     dispatch({ type: FETCH_MANUFACTURERS, payload: response.data });
 };
 
@@ -97,6 +98,20 @@ export const fetchCarmodel = (id) => async (dispatch) => {
     const response = await carmodels.get(`/carmodels/${id}`);
 
     dispatch({ type: FETCH_CARMODEL, payload: response.data });
+};
+
+export const fetchCarmodelByName = (manufacturerName, carmodleName) => async (dispatch) => {
+    // /comments?author.name=typicode
+    const response = await carmodels.get(`/carmodels`, { params: { 
+                'manufacturer.name': manufacturerName,
+                'name': carmodleName
+            } });
+    // console.log('fetchCarmodelByName');
+    // console.log(manufacturerName);
+    // console.log(carmodleName);
+    // console.log(response);
+    // response.data is an array, so use [0] to get first item
+    dispatch({ type: FETCH_CARMODEL, payload: response.data[0] });
 };
 
 export const editCarmodel = (id, formValues) => async (dispatch) => {
