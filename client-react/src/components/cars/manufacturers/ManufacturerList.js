@@ -11,7 +11,7 @@ class ManufacturerList extends Component {
     }
 
     renderAdmin(manufacturer) {
-        // if (this.props.isSignedIn) {
+        if (this.props.isAdminUser) {
             return (
                 <div className="text-center">
                     <Link to={`${MANUFACTURERS_ROOT}/edit/${manufacturer.id}`} className="btn btn-primary m-1">
@@ -22,19 +22,19 @@ class ManufacturerList extends Component {
                     </Link>
                 </div>
             );
-        // }
+        }
     }
 
     renderCreate() {
-        // if (this.props.isSignedIn) {
+        if (this.props.isAdminUser) {
             return (
-                <div>
+                <div className="mx-2 my-2 d-flex justify-content-center">
                     <Link to={`${MANUFACTURERS_ROOT}/new`} className="btn btn-success mb-3"> 
                         Create Manufacturer
                     </Link>
                 </div>
             );
-        // } 
+        } 
     }
 
     renderManufacturers() {
@@ -63,28 +63,28 @@ class ManufacturerList extends Component {
                 // </div>
                 <div className="col my-2" key={manufacturer.id}>
                     
-                    <div className="card" style={{ style: '18rem' }}>
-                        <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="text-center">
+                    <div className="card" >
+                        <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="text-center" style={{ width: '18rem', height: '18rem' }}>
                             <img src={window.location.origin + `/images/manufacturers/${manufacturer.name}.png`}
-                                className="card-img-top w-50" alt={manufacturer.name}/>
+                                className="card-img-top img-fluid"  alt={manufacturer.name}/>
                         </Link>
                     
-                    <div className="card-body">
-                        <div className="text-center">
-                            <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="fs-4 text-nowrap">
-                                {manufacturer.name === manufacturer.chineseName 
-                                    ? manufacturer.name
-                                    : `${manufacturer.name}(${manufacturer.chineseName})`}
-                            </Link>
-                            <div className="fs-6">
-                                <a href={manufacturer.officialUrl} target="_blank">官網</a>   
+                        <div className="card-body">
+                            <div className="text-center">
+                                <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="fs-4 text-nowrap">
+                                    {manufacturer.name === manufacturer.chineseName 
+                                        ? manufacturer.name
+                                        : `${manufacturer.name}(${manufacturer.chineseName})`}
+                                </Link>
+                                <div className="fs-6">
+                                    <a href={manufacturer.officialUrl} target="_blank">官網</a>   
+                                </div>
                             </div>
                         </div>
-                    </div>
                     
-                    <div className="card-footer">
-                        {this.renderAdmin(manufacturer)}
-                    </div>
+                        <div className="card-footer">
+                            {this.renderAdmin(manufacturer)}
+                        </div>
                     </div>
 
                 </div>
@@ -101,8 +101,10 @@ class ManufacturerList extends Component {
     render() {
         return (
             <div className="">
-                <div className="row">
-                    <h1 className="text-left">車廠</h1>
+                <div className="row my-2">
+                    <div className="col-12">
+                        <h1 className="text-center text-md-start">車廠</h1>
+                    </div>
                 </div>
 
                 {/* <div className="row row-cols-1 row-cols-sm-2 row-cols-md-6 row-cols-lg-8"> */}
@@ -114,20 +116,19 @@ class ManufacturerList extends Component {
                 <div className="d-flex row row-cols-1 row-cols-sm-auto justify-content-center">
                     {this.renderManufacturers()}
                 </div>
-                
-                <div className="mx-2 my-2 d-flex justify-content-center">
-                    {this.renderCreate()}
-                </div>
+
+                {this.renderCreate()}
             </div>
         )
     }
 };
 
 const mapStateToProps = (state) => {
+    console.log('UserId: ' + state.auth.userId)
     return { 
         manufacturers: Object.values(state.manufacturers),
         currentUserId: state.auth.userId,
-        isSignedIn: state.auth.isSignedIn
+        isAdminUser: state.auth.isAdminUser
     };
 };
 

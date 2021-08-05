@@ -37,13 +37,19 @@ const Header = () => {
                                 <li><a className="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li> */}
+                        
                     </ul>
 
+                    <form className="d-flex">
+                        <GoogleAuth />
+                    </form>
                     {/* Search area */}
-                    <form className="d-flex" style={{visibility: 'hidden'}}>
+                    {/* <form className="d-flex" style={{visibility: 'hidden'}}>
+                        
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                         <button className="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                    </form> */}
+
                 </div>
             </div>
         </nav>

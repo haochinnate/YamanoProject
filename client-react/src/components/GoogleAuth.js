@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { signIn, signOut } from '../actions';
+import './GoogleAuth.scss';
 
 class GoogleAuth extends Component {
 
@@ -8,7 +9,7 @@ class GoogleAuth extends Component {
         window.gapi.load('client:auth2', () => {
             // initialized
             window.gapi.client.init({
-                clientId: 'CLIENT_ID',
+                clientId: process.env.REACT_APP_AUTH_CLIENT_ID,
                 scope: 'email'
             }).then(() => {
                 // get and store the reference of 'auth' object
@@ -43,19 +44,21 @@ class GoogleAuth extends Component {
             return null;
         } else if (this.props.isSignedIn) {
             return (
-                <button className="ui red google button"
-                    onClick={this.onSignOutClick}>
-                    <i className="google icon"/>
-                    Sign Out
-                </button>
+                <div className="google-btn" onClick={this.onSignOutClick}>
+                    <div className="google-icon-wrapper">
+                        <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                    </div>
+                    <p className="btn-text"><b>Sign Out</b></p>
+                </div>
             );
         } else {
             return (
-                <button className="ui red google button"
-                    onClick={this.onSignInClick}>
-                    <i className="google icon"/>
-                    Sign In with Google
-                </button>
+                <div className="google-btn" onClick={this.onSignInClick}>
+                    <div className="google-icon-wrapper">
+                        <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                    </div>
+                    <p className="btn-text"><b>Sign In with Google</b></p>
+                </div>
             );
         }
     }

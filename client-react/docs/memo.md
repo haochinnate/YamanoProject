@@ -62,6 +62,8 @@ DELETE /contacts/{cID}/notes/{nID}
     - 
   - power
 
+- https://www.jaguar.co.uk/jaguar-range/i-pace/specifications/index.html
+
 
 - 篩選:
   - UCAR
@@ -126,3 +128,132 @@ https://www.ptt.cc/bbs/car/M.1627294142.A.0E0.html
 環景
 盲點
 自停
+
+
+2018時其實就有相關報導, 本板代號 #1S5hZWTz
+當時只作出六項建議(FCW.AEB.ACC.BSW.LDW.LKA)
+
+查了一下2020/8有再作更新
+Clearing the Confusion: Recommended Common Naming for Advanced Driver
+Assistance Technologies
+https://tinyurl.com/drw5tuuk (消費者報告原文含命名建議PDF)
+
+這次分了五大類共二十項命名建議
+想說看了就順便翻中文
+如果板友有更通順或達意的翻譯可以分享一下 XD
+
+這份清單基於系統功能作出簡單並且具體的通用命名
+目的在減輕消費者的困擾並且以一致的方式定義ADAS的功能
+這對於確保駕駛認知到這些系統是輔助而非取代實際參與的駕駛相當重要
+同時清單的用意並非取代各家製造商自有的系統名稱
+而是幫助消費者辨別系統名稱內的各項關鍵功能並提供清楚的訊息
+
+
+****COLLISION WARNING 碰撞警告
+Blind Spot Warning
+盲點警示
+偵測並警示盲區車輛的存在
+某些系統在駕駛打方向燈時提供額外的警示
+
+Forward Collision Warning
+前方碰撞警示
+偵測並警示前方可能的車輛碰撞事件
+某些系統同時提供行人或其他偵測目標
+
+Lane Departure Warning
+車道偏離警示
+監控車輛在車道上的位置
+在車輛靠近或跨越標線時發出警示
+
+Parking Collision Warning
+停車碰撞警示
+停車過程中偵測並警示車輛附近物體
+
+Rear Cross Traffic Warning
+後方車側警示
+倒退檔時偵測並警示後方側邊接近的車輛
+某些系統同時提供行人或其他偵測目標
+
+
+****COLLISION INTERVENTION 碰撞干預
+Automatic Emergency Braking
+自動緊急煞車
+偵測前方可能的車輛碰撞事件
+提供警示並且自動煞車以避免碰撞或減輕撞擊
+某些系統同時提供行人或其他偵測目標
+
+Automatic Emergency Steering
+自動緊急轉向
+偵測前方可能的車輛碰撞事件
+並自動轉向以避免碰撞或減輕撞擊
+某些系統同時提供行人或其他偵測目標
+
+Reverse Automatic Emergency Braking
+倒退檔時偵測可能的車輛碰撞事件
+並且自動煞車以避免碰撞或減輕撞擊
+某些系統同時提供行人或其他偵測目標
+
+
+****DRIVING CONTROL ASSISTANCE 駕駛控制輔助 
+Adaptive Cruise Control
+自我調整定速巡航
+定速巡航並且透過加速、減速來保持駕駛設定的前方車距
+某些系統可以停止後繼續運作, 某些不行
+
+Lane Keeping Assistance
+車道保持輔助
+提供轉向輔助以協助駕駛預防車輛跨越車道
+某些系統可以輔助車輛保持行駛車道中間
+
+Active Driving Assistance
+主動式駕駛輔助
+同時提供轉向、煞車/加速輔助
+駕駛必須持續監督此項輔助功能並保持對行車的責任
+
+
+**** PARKING ASSISTANCE 停車輔助 
+Backup Camera
+倒車鏡頭
+倒退時提供車輛後方影像
+
+Surround View Camera
+環視鏡頭
+在停止或低速操作時
+提供即時的部份或全部的車輛週邊影像
+
+Active Parking Assistance
+主動式停車輔助
+在操作停車時提供轉向或其他輔助
+駕駛可能被要求要操作加速、煞車且/或檔位選擇
+某些系統可提供平行且/或垂直停車
+駕駛必須持續監督此項輔助功能並保持對停車的責任
+
+Remote Parking Assistance1
+遠端停車輔助
+駕駛不必實際坐在車輛裡
+提供轉向、加速、煞車及選擇檔位來將車輛駛入或移出停車位
+駕駛必須持續監督此項輔助功能並保持對停車的責任
+
+Trailer Assistance
+拖車輔助
+在倒退準備連結拖車或已連結拖車進行倒退時提供視覺指引
+某些系統有已連結拖車時提供額外的影像
+某些系統在倒退時提供轉向輔助
+
+
+**** OTHER DRIVER ASSISTANCE SYSTEMS 其他駕駛輔助系統
+Automatic High Beams
+自動遠燈
+根據照明和交通狀況自動切換遠近燈
+
+Driver Monitoring
+駕駛監測
+觀察駕駛行為來預測駕駛是否不適合從事行車任務
+某些系統可能會監控眼睛動作或/且頭部位置
+
+Head-Up Display
+抬頭顯示
+投射行車資訊到駕駛的前方視野
+
+Night Vision
+藉由在儀表板或抬頭顯示器投射增強的影像來強化前方夜間視野

@@ -18,20 +18,22 @@ class CarModelList extends React.Component {
     }
 
     renderAdmin(carmodel) {
-        return (
-            <div className="text-center">
-                <Link to={`${CARMODELS_ROOT}/edit/${carmodel.id}`} className="btn btn-primary m-1">
-                    Edit
-                </Link>
-                <Link to={`${CARMODELS_ROOT}/delete/${carmodel.id}`} className="btn btn-danger m-1">
-                    Delete
-                </Link>
-            </div>
-        );
+        if (this.props.isAdminUser) {
+            return (
+                <div className="text-center">
+                    <Link to={`${CARMODELS_ROOT}/edit/${carmodel.id}`} className="btn btn-primary m-1">
+                        Edit
+                    </Link>
+                    <Link to={`${CARMODELS_ROOT}/delete/${carmodel.id}`} className="btn btn-danger m-1">
+                        Delete
+                    </Link>
+                </div>
+            );
+        }
     }
 
     renderCreate() {
-        // if (this.props.isSignedIn) {
+        if (this.props.isAdminUser) {
             return (                
                 <div style={{ textAlign: 'right'}}>
                     <Link to={`${CARMODELS_ROOT}/new`} className="btn btn-success mb-3"> 
@@ -39,7 +41,7 @@ class CarModelList extends React.Component {
                     </Link>
                 </div>
             );
-        // } 
+        } 
     }
 
     renderList() {
@@ -92,6 +94,12 @@ class CarModelList extends React.Component {
     render() {
         return (
             <div>
+                {/* <div className="row my-2">
+                    <div className="col-12">
+                        <h1 className="text-center text-md-start">車廠 -> Carmodel</h1>
+                    </div>
+                </div> */}
+
                 <div className="d-flex row row-cols-1 row-cols-sm-auto justify-content-center">
                     {this.renderList()}
                 </div>
@@ -112,7 +120,8 @@ const mapStateToProps = (state, ownProps) => {
             (carmodel) => {
                 return String(carmodel.manufacturerId) === String(ownProps.manufacturer.id);
             }
-        ))
+        )),
+        isAdminUser: state.auth.isAdminUser
     }
 };
 

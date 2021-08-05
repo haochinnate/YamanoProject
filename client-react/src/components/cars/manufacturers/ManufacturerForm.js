@@ -83,7 +83,6 @@ const ManufacturerForm = (props) => {
             </div>
         );
     }
-    console.log(props)
 
     return (
         <Form onSubmit={onSubmit}
