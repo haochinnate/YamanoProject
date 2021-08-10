@@ -176,7 +176,7 @@ export const fetchTrimLevelByName = (manufacturerName, carmodleName, trimlevelNa
     dispatch({ type: FETCH_TRIMLEVEL, payload: response.data[0] });
 };
 
-export const editTrimlevel = (id, formValues) => async (dispatch) => {
+export const editTrimLevel = (id, formValues) => async (dispatch) => {
     const response = await carmodels.patch(`/trimlevels/${id}`, formValues);
 
     dispatch({ type: EDIT_TRIMLEVEL, payload: response.data });
@@ -184,7 +184,7 @@ export const editTrimlevel = (id, formValues) => async (dispatch) => {
     history.push('/cars');
 };
 
-export const deleteTrimlevel = (id) => async (dispatch) => {
+export const deleteTrimLevel = (id) => async (dispatch) => {
     await carmodels.delete(`/trimlevels/${id}`);
 
     dispatch({ type: DELETE_TRIMLEVEL, payload: id });

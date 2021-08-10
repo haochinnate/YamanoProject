@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { createTrimLevel } from '../../..actions';
+import { createTrimLevel } from '../../../actions';
 import TrimLevelForm from './TrimLevelForm';
 
-const TrimLevelCreate = () => {
-    return (
-        <div>
-            TrimLevelCreate
-        </div>
-    )
-}
+class TrimLevelCreate extends Component {
 
-export default TrimLevelCreate
+    onSubmit = (formValues) => {
+        console.log('onSubmit in TrimLevelCreate');
+        console.log(formValues);
+        // this.props.createTrimLevel(formValues);
+    }
+
+    render() {
+        return (
+            <div>
+                <h3>Create a carmodel</h3>
+                <TrimLevelForm onSubmit={this.onSubmit}/>
+            </div>
+        )
+    }
+};
+
+export default connect(
+    null,
+    { createTrimLevel }
+)(TrimLevelCreate)
