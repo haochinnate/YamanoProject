@@ -13,7 +13,12 @@ import {
     FETCH_CARMODELS,
     FETCH_CARMODEL,
     DELETE_CARMODEL,
-    EDIT_CARMODEL
+    EDIT_CARMODEL,
+    CREATE_TRIMLEVEL,
+    FETCH_TRIMLEVELS,
+    FETCH_TRIMLEVEL,
+    DELETE_TRIMLEVEL,
+    EDIT_TRIMLEVEL
 } from "./types";
 
 export const signIn = (userId) => {
@@ -130,3 +135,59 @@ export const deleteCarmodel = (id) => async (dispatch) => {
     history.push('/cars');
 };
 
+// trimlevels
+export const createTrimLevel = (formValues) => async (dispatch) => {
+    const response = await carmodels.post('/trimlevels', formValues);
+
+    dispatch({ type: CREATE_TRIMLEVEL, payload: response.data });
+};
+
+export const fetchTrimLevels = () => async (dispatch) => {
+    const response = await carmodels.get('/trimlevels');
+
+    dispatch({ type: FETCH_TRIMLEVELS, payload: response.data });
+};
+
+export const fetchTrimLevelsByCarmodel = (carmodel) => async (dispatch) => {
+    // GET /contacts/{cID}/notes
+    const response = await carmodels.get(`/carmodels/${carmodel.id}/trimlevels`);
+    // console.log(response.data)
+    dispatch({ type: FETCH_TRIMLEVELS, payload: response.data });
+};
+
+export const fetchTrimLevel = (id) => async (dispatch) => {
+    const response = await carmodels.get(`/trimlevels/${id}`);
+
+    dispatch({ type: FETCH_TRIMLEVEL, payload: response.data });
+};
+
+export const fetchTrimLevelByName = (manufacturerName, carmodleName, trimlevelName) => async (dispatch) => {
+    // /comments?author.name=typicode
+    const response = await carmodels.get(`/trimlevels`, { params: { 
+                'carmodel.manufacturer.name': manufacturerName,
+                'carmodel.name': carmodleName,
+                'name': trimlevelName
+            } });
+    // console.log('fetchCarmodelByName');
+    // console.log(manufacturerName);
+    // console.log(carmodleName);
+    // console.log(response);
+    // response.data is an array, so use [0] to get first item
+    dispatch({ type: FETCH_TRIMLEVEL, payload: response.data[0] });
+};
+
+export const editTrimlevel = (id, formValues) => async (dispatch) => {
+    const response = await carmodels.patch(`/trimlevels/${id}`, formValues);
+
+    dispatch({ type: EDIT_TRIMLEVEL, payload: response.data });
+    
+    history.push('/cars');
+};
+
+export const deleteTrimlevel = (id) => async (dispatch) => {
+    await carmodels.delete(`/trimlevels/${id}`);
+
+    dispatch({ type: DELETE_TRIMLEVEL, payload: id });
+
+    history.push('/cars');
+};

@@ -93,7 +93,6 @@ class CarModelShow extends React.Component {
         );
     }
 
-
     renderVideos(videos) {
         // console.log(videos);
         return (
@@ -148,6 +147,8 @@ class CarModelShow extends React.Component {
         );
     }
 
+    
+
     // https://getbootstrap.com/docs/5.0/components/carousel/
     render() {
         
@@ -185,7 +186,11 @@ class CarModelShow extends React.Component {
                     <h2>{bodyStyle}</h2>
                     <h5>{isArchived}</h5>
                     {/* <h5>{manufacturerId}</h5> */}
-                    <h3>更多影片</h3>
+                    <h5>
+                        <a href={`https://www.youtube.com/results?search_query=${name}+%E8%A9%A6%E9%A7%95`} target="_blank">更多影片</a> 
+                    </h5>
+
+                    
                 </div>
 
                 <div className="container col-sm-8">

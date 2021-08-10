@@ -81,6 +81,9 @@ DELETE /contacts/{cID}/notes/{nID}
 https://www.ptt.cc/bbs/car/M.1627294142.A.0E0.html
 
 
+### 
+
+- [電動車資料庫](https://ev-database.org/)
 
 
 ### ADAS 文章
@@ -98,47 +101,18 @@ https://tinyurl.com/drw5tuuk (消費者報告原文含命名建議PDF)
 
 
 ****COLLISION WARNING 碰撞警告
-Blind Spot Warning
-盲點警示
-偵測並警示盲區車輛的存在
-某些系統在駕駛打方向燈時提供額外的警示
-
-Forward Collision Warning
-前方碰撞警示
-偵測並警示前方可能的車輛碰撞事件
-某些系統同時提供行人或其他偵測目標
-
-Lane Departure Warning
-車道偏離警示
-監控車輛在車道上的位置
-在車輛靠近或跨越標線時發出警示
 
 Parking Collision Warning
 停車碰撞警示
 停車過程中偵測並警示車輛附近物體
 
-Rear Cross Traffic Warning
-後方車側警示
-倒退檔時偵測並警示後方側邊接近的車輛
-某些系統同時提供行人或其他偵測目標
-
 
 ****COLLISION INTERVENTION 碰撞干預
-Automatic Emergency Braking
-自動緊急煞車
-偵測前方可能的車輛碰撞事件
-提供警示並且自動煞車以避免碰撞或減輕撞擊
-某些系統同時提供行人或其他偵測目標
 
 Automatic Emergency Steering
 自動緊急轉向
 偵測前方可能的車輛碰撞事件
 並自動轉向以避免碰撞或減輕撞擊
-某些系統同時提供行人或其他偵測目標
-
-Reverse Automatic Emergency Braking
-倒退檔時偵測可能的車輛碰撞事件
-並且自動煞車以避免碰撞或減輕撞擊
 某些系統同時提供行人或其他偵測目標
 
 
@@ -147,11 +121,6 @@ Adaptive Cruise Control
 自我調整定速巡航
 定速巡航並且透過加速、減速來保持駕駛設定的前方車距
 某些系統可以停止後繼續運作, 某些不行
-
-Lane Keeping Assistance
-車道保持輔助
-提供轉向輔助以協助駕駛預防車輛跨越車道
-某些系統可以輔助車輛保持行駛車道中間
 
 Active Driving Assistance
 主動式駕駛輔助
