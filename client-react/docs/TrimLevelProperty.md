@@ -5,8 +5,11 @@
 - 名稱(Name)
 - 價格(Price)
 - isArchived
+- Manufacturer
+- Carmodel
 
 ## 車身外型
+
 - 車身形式 BodyStyle
 - 車門數(X) 
 - 座位數 Seats 5人
@@ -49,10 +52,6 @@
     - 後驅
     - 四驅
 
-- 能源數據
-  - 市區油耗 CityFuelEfficiency
-  - 高速油耗 FreewayFuelEfficiency
-  - 平均油耗 AverageFuelEfficiency
 - 引擎系統 Engine
   - Engine Displacement排氣量(c.c)
   - MaxTorque最大扭力(kgm@rpm)
@@ -60,6 +59,9 @@
   (1 HP = 0.746kW)
   (1 PS = 0.735kW)
   (1 HP = 1.015PS)
+  - 市區油耗 CityFuelEfficiency
+  - 高速油耗 FreewayFuelEfficiency
+  - 平均油耗 AverageFuelEfficiency
 - 電能動力 Electric Motor
   - 馬達能量來源: 電池
   - 電池種類

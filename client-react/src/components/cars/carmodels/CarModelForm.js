@@ -10,10 +10,10 @@ const doNotCare = value => true;
 const CarModelForm = (props) => {
     
     useEffect(() =>{
-        console.log('some call useEffect!!')
+        // console.log('some call useEffect!!')
         props.fetchManufacturers();
-        console.log(props.manufacturers);
-        console.log(props.initialValues);
+        // console.log(props.manufacturers);
+        // console.log(props.initialValues);
     }, []);
 
     // <div>{carmodel.name}</div>
@@ -48,7 +48,7 @@ const CarModelForm = (props) => {
     } = useInput({ 
         validateValue: isNotEmpty,
         initialValue: props.initialValues === undefined ? '' : props.initialValues.bodyStyle 
-     });
+    });
 
     const {
         value: enteredOfficialUrl, 
