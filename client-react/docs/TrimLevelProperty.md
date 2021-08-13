@@ -21,17 +21,16 @@
 - height (mm)
 - 軸距 (Wheelbase)(mm)
 - 車重 (weight) (kg)
-- 標準行李箱容積(StandardBootSpace, CargoVolume) (L)
-- 座位傾倒後行李箱容積(ExtendedBootSpace_5) (L) 
-- 座位傾倒後行李箱容積(ExtendedBootSpace_2) (L) 
-- CargoVolumeMax
-- 前行李箱容積(CargoVolumeFrunk)
+- 後行李箱標準容積(StandardCargoVolume) (L)
+- 後行李箱容積_五人座(FiveSeatsCargoVolume) (L) 
+- 後行李箱最大容積(MaxCargoVolume) (L)
+- 前行李箱容積(FrunkCargoVolume) (L)
 
 ## 動力系統
 
 傳動系統和發動機合起來即為動力系統（powertrain）
 
-- 動力形式/動力系統 Engine System?, Propulsion?
+- 動力形式/動力系統 PowerType 
   - 燃料縮寫說明: 
     - 汽: 汽油 Petrol
     - 柴: 柴油 Diesel
@@ -42,7 +41,7 @@
 
 
 - 傳動系統 (Drivetrain)
-  - 變速系統 (Transmission)
+  - 變速系統 (Transmission) 填寫方式 選項,詳細內容
     - 手排
     - 自排
     - 手自排
