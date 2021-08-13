@@ -124,7 +124,7 @@ class ManufacturerList extends Component {
 };
 
 const mapStateToProps = (state) => {
-    console.log('UserId: ' + state.auth.userId)
+    // console.log('UserId: ' + state.auth.userId)
     return { 
         manufacturers: Object.values(state.manufacturers),
         currentUserId: state.auth.userId,
