@@ -168,7 +168,6 @@ const TrimLevelForm = (props) => {
     });
 
     // PowerTrain properties
-
     const {
         value: powerType, 
         valueChangedHandler: powerTypeChangedHandler,
@@ -186,6 +185,153 @@ const TrimLevelForm = (props) => {
         validateValue: doNotCare,
         initialValue: props.initialValues === undefined ? "排," : props.initialValues.transmission 
     });
+
+    const {
+        value: driveWheel, 
+        valueChangedHandler: driveWheelChangedHandler,
+        inputBlurHandler: driveWheelBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? "輪驅動," : props.initialValues.driveWheel 
+    });
+
+    // Engine Properties
+    const {
+        value: engineDisplacement, 
+        valueChangedHandler: engineDisplacementChangedHandler,
+        inputBlurHandler: engineDisplacementBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 0 : props.initialValues.engineDisplacement 
+    });
+
+    const {
+        value: maxTorque, 
+        valueChangedHandler: maxTorqueChangedHandler,
+        inputBlurHandler: maxTorqueBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 0 : props.initialValues.maxTorque 
+    });
+
+    const {
+        value: maxHorsepower, 
+        valueChangedHandler: maxHorsepowerChangedHandler,
+        inputBlurHandler: maxHorsepowerBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 0 : props.initialValues.maxHorsepower 
+    });
+
+    const {
+        value: cityFuelEfficiency, 
+        valueChangedHandler: cityFuelEfficiencyChangedHandler,
+        inputBlurHandler: cityFuelEfficiencyBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 0 : props.initialValues.cityFuelEfficiency 
+    });
+
+    const {
+        value: freewayFuelEfficiency, 
+        valueChangedHandler: freewayFuelEfficiencyChangedHandler,
+        inputBlurHandler: freewayFuelEfficiencyBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 0 : props.initialValues.freewayFuelEfficiency 
+    });
+
+    const {
+        value: averageFuelEfficiency, 
+        valueChangedHandler: averageFuelEfficiencyChangedHandler,
+        inputBlurHandler: averageFuelEfficiencyBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 0 : props.initialValues.averageFuelEfficiency 
+    });
+
+    // Electric Motor properties
+    const {
+        value: batteryCapacity, 
+        valueChangedHandler: batteryCapacityChangedHandler,
+        inputBlurHandler: batteryCapacityBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 0 : props.initialValues.batteryCapacity 
+    });
+
+    const {
+        value: motorTorque, 
+        valueChangedHandler: motorTorqueChangedHandler,
+        inputBlurHandler: motorTorqueBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 0 : props.initialValues.motorTorque 
+    });
+
+    const {
+        value: motorPower, 
+        valueChangedHandler: motorPowerChangedHandler,
+        inputBlurHandler: motorPowerBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 0 : props.initialValues.motorPower 
+    });
+
+    const {
+        value: electricEfficiency, 
+        valueChangedHandler: electricEfficiencyChangedHandler,
+        inputBlurHandler: electricEfficiencyBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 0 : props.initialValues.electricEfficiency 
+    });
+
+    const {
+        value: electricRange, 
+        valueChangedHandler: electricRangeChangedHandler,
+        inputBlurHandler: electricRangeBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 0 : props.initialValues.electricRange 
+    });
+
+    const {
+        value: cityRange, 
+        valueChangedHandler: cityRangeChangedHandler,
+        inputBlurHandler: cityRangeBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 0 : props.initialValues.cityRange 
+    });
+
+    const {
+        value: freewayRange, 
+        valueChangedHandler: freewayRangeChangedHandler,
+        inputBlurHandler: freewayRangeBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 0 : props.initialValues.freewayRange 
+    });
+
+    const {
+        value: combinedRange, 
+        valueChangedHandler: combinedRangeChangedHandler,
+        inputBlurHandler: combinedRangeBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 0 : props.initialValues.combinedRange 
+    });
+
+    const {
+        value: chargingTime, 
+        valueChangedHandler: chargingTimeChangedHandler,
+        inputBlurHandler: chargingTimeBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? '' : props.initialValues.chargingTime 
+    });
+
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -214,8 +360,14 @@ const TrimLevelForm = (props) => {
             wheelbase: Number(wheelbase), weight: Number(weight), standardCargoVolume: Number(standardCargoVolume), 
             fiveSeatsCargoVolume: Number(fiveSeatsCargoVolume), maxCargoVolume: Number(maxCargoVolume), frunkCargoVolume: Number(frunkCargoVolume),
             // PowerTrain properties
-            powerType: Number(powerType), transmission
-
+            powerType: Number(powerType), transmission, driveWheel,
+            // Engine properties
+            engineDisplacement: Number(engineDisplacement), maxTorque: Number(maxTorque), maxHorsepower: Number(maxHorsepower),
+            cityFuelEfficiency: Number(cityFuelEfficiency), freewayFuelEfficiency: Number(freewayFuelEfficiency), averageFuelEfficiency: Number(averageFuelEfficiency),
+            // Electric Motor properties
+            batteryCapacity: Number(batteryCapacity), motorTorque: Number(motorTorque), motorPower: Number(motorPower),
+            electricEfficiency: Number(electricEfficiency), electricRange: Number(electricRange), cityRange: Number(cityRange),
+            freewayRange: Number(freewayRange), combinedRange: Number(combinedRange), chargingTime
         });
     };
 
@@ -482,6 +634,15 @@ const TrimLevelForm = (props) => {
                                 </input>
                             </div>
 
+                            {/* DriveWheel */}
+                            <div className="col-md-4">
+                                <label htmlFor="driveWheel" className="form-label">驅動形式</label>
+                                    
+                                <input type="text" className="form-control" id="driveWheel" 
+                                    value={driveWheel} onChange={driveWheelChangedHandler} onBlur={driveWheelBlurHandler}>
+                                </input>
+                            </div>
+
                             
                         </div>
                     </div>
@@ -505,6 +666,61 @@ const TrimLevelForm = (props) => {
                     aria-labelledby="panelsEngineProperties-heading">
                     <div className="accordion-body">
                         <div className="row">
+
+                            {/* Engine Displacement */}
+                            <div className="col-md-3">
+                                <label htmlFor="engineDisplacement" className="form-label">排氣量(c.c)</label>
+                                    
+                                <input id="engineDisplacement" type="number" className="form-control" 
+                                    value={engineDisplacement} onChange={engineDisplacementChangedHandler} onBlur={engineDisplacementBlurHandler}>
+                                </input>
+                            </div>                            
+
+                            {/* Max Torque */}
+                            <div className="col-md-3">
+                                <label htmlFor="maxTorque" className="form-label">最大扭力(kgm@rpm)</label>
+                                    
+                                <input id="maxTorque" type="number" className="form-control" 
+                                    value={maxTorque} onChange={maxTorqueChangedHandler} onBlur={maxTorqueBlurHandler}>
+                                </input>
+                            </div>     
+
+                            {/* Max Horsepower */}
+                            <div className="col-md-3">
+                                <label htmlFor="maxHorsepower" className="form-label">最大馬力(hp@rpm)</label>
+                                    
+                                <input id="maxHorsepower" type="number" className="form-control" 
+                                    value={maxHorsepower} onChange={maxHorsepowerChangedHandler} onBlur={maxHorsepowerBlurHandler}>
+                                </input>
+                            </div> 
+
+                            {/* City Fuel Efficiency */}
+                            <div className="col-md-3">
+                                <label htmlFor="cityFuelEfficiency" className="form-label">市區油耗(km/L)</label>
+                                    
+                                <input id="cityFuelEfficiency" type="number" className="form-control" 
+                                    value={cityFuelEfficiency} onChange={cityFuelEfficiencyChangedHandler} onBlur={cityFuelEfficiencyBlurHandler}>
+                                </input>
+                            </div> 
+
+                            {/* Freeway Fuel Efficiency */}
+                            <div className="col-md-3">
+                                <label htmlFor="freewayFuelEfficiency" className="form-label">高速油耗(km/L)</label>
+                                    
+                                <input id="freewayFuelEfficiency" type="number" className="form-control" 
+                                    value={freewayFuelEfficiency} onChange={freewayFuelEfficiencyChangedHandler} onBlur={freewayFuelEfficiencyBlurHandler}>
+                                </input>
+                            </div> 
+
+                            {/* Average Fuel Efficiency */}
+                            <div className="col-md-3">
+                                <label htmlFor="averageFuelEfficiency" className="form-label">平均油耗(km/L)</label>
+                                    
+                                <input id="averageFuelEfficiency" type="number" className="form-control" 
+                                    value={averageFuelEfficiency} onChange={averageFuelEfficiencyChangedHandler} onBlur={averageFuelEfficiencyBlurHandler}>
+                                </input>
+                            </div> 
+
                         </div>
                     </div>
                 </div>
@@ -527,6 +743,88 @@ const TrimLevelForm = (props) => {
                     aria-labelledby="panelsElectricMotorProperties-heading">
                     <div className="accordion-body">
                         <div className="row">
+
+                            {/* Battery Capacity */}
+                            <div className="col-md-3">
+                                <label htmlFor="batteryCapacity" className="form-label">電池容量(kWh)</label>
+                                    
+                                <input id="batteryCapacity" type="number" className="form-control" 
+                                    value={batteryCapacity} onChange={batteryCapacityChangedHandler} onBlur={batteryCapacityBlurHandler}>
+                                </input>
+                            </div>
+
+                            {/* Motor Torque */}
+                            <div className="col-md-3">
+                                <label htmlFor="motorTorque" className="form-label">馬達最大扭力(Nm)</label>
+                                    
+                                <input id="motorTorque" type="number" className="form-control" 
+                                    value={motorTorque} onChange={motorTorqueChangedHandler} onBlur={motorTorqueBlurHandler}>
+                                </input>
+                            </div>     
+
+                            {/* Motor Power */}
+                            <div className="col-md-3">
+                                <label htmlFor="motorPower" className="form-label">馬達最大功率(kW)</label>
+                                    
+                                <input id="motorPower" type="number" className="form-control" 
+                                    value={motorPower} onChange={motorPowerChangedHandler} onBlur={motorPowerBlurHandler}>
+                                </input>
+                            </div> 
+
+                            {/* Electric Efficiency */}
+                            <div className="col-md-3">
+                                <label htmlFor="electricEfficiency" className="form-label">電耗(Wh/km)</label>
+                                    
+                                <input id="electricEfficiency" type="number" className="form-control" 
+                                    value={electricEfficiency} onChange={electricEfficiencyChangedHandler} onBlur={electricEfficiencyBlurHandler}>
+                                </input>
+                            </div> 
+
+                            {/* Electric Range */}
+                            <div className="col-md-3">
+                                <label htmlFor="electricRange" className="form-label">純電行駛里程(km) WLTP?</label>
+                                    
+                                <input id="electricRange" type="number" className="form-control" 
+                                    value={electricRange} onChange={electricRangeChangedHandler} onBlur={electricRangeBlurHandler}>
+                                </input>
+                            </div>
+
+                            {/* City Range */}
+                            <div className="col-md-3">
+                                <label htmlFor="cityRange" className="form-label">市區行駛里程(km)</label>
+                                    
+                                <input id="cityRange" type="number" className="form-control" 
+                                    value={cityRange} onChange={cityRangeChangedHandler} onBlur={cityRangeBlurHandler}>
+                                </input>
+                            </div>
+
+                            {/* Freeway Range */}
+                            <div className="col-md-3">
+                                <label htmlFor="freewayRange" className="form-label">高速行駛里程(km)</label>
+                                    
+                                <input id="freewayRange" type="number" className="form-control" 
+                                    value={freewayRange} onChange={freewayRangeChangedHandler} onBlur={freewayRangeBlurHandler}>
+                                </input>
+                            </div>
+
+                            {/* Combined Range */}
+                            <div className="col-md-3">
+                                <label htmlFor="combinedRange" className="form-label">綜合行駛里程(km)</label>
+                                    
+                                <input id="combinedRange" type="number" className="form-control" 
+                                    value={combinedRange} onChange={combinedRangeChangedHandler} onBlur={combinedRangeBlurHandler}>
+                                </input>
+                            </div> 
+
+                            {/* 充電時間 */}
+                            <div className="col-md-12">
+                                <label htmlFor="chargingTime" className="form-label">充電時間</label>
+                                    
+                                <input type="text" className="form-control" id="chargingTime" 
+                                    value={chargingTime} onChange={chargingTimeChangedHandler} onBlur={chargingTimeBlurHandler}>
+                                </input>
+                            </div>
+
                         </div>
                     </div>
                 </div>

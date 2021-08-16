@@ -11,7 +11,7 @@
 ## 車身外型
 
 - 車身形式 BodyStyle
-- 車門數(X) 
+- (X)車門數 
 - 座位數 Seats 5人
 
 ## 車身尺碼
@@ -41,12 +41,14 @@
 
 
 - 傳動系統 (Drivetrain)
-  - 變速系統 (Transmission) 填寫方式 選項,詳細內容
+  - 變速系統 (Transmission) 
+    - 填寫方式: 選項,詳細內容 (自手排,七速DSG自手排變速箱)
     - 手排
     - 自排
     - 手自排
     - 自手排
   - 傳動方式/驅動形式(DriveWheel)
+    - 填寫方式: 選項,詳細內容
     - 前驅
     - 後驅
     - 四驅
@@ -55,21 +57,21 @@
   - Engine Displacement排氣量(c.c)
   - MaxTorque最大扭力(kgm@rpm)
   - MaxHorsepower最大馬力(hp@rpm)
-  (1 HP = 0.746kW)
-  (1 PS = 0.735kW)
-  (1 HP = 1.015PS)
+    - (1 HP = 0.746kW)
+    - (1 PS = 0.735kW)
+    - (1 HP = 1.015PS)
   - 市區油耗 CityFuelEfficiency
   - 高速油耗 FreewayFuelEfficiency
   - 平均油耗 AverageFuelEfficiency
 - 電能動力 Electric Motor
-  - 馬達能量來源: 電池
-  - 電池種類
+  - (X)馬達能量來源: 電池
+  - (X)電池種類
   - 電池容量 Battery Capacity(kWh)
-  - 電池組總電壓
+  - (X)電池組總電壓
   - 馬達最大功率 TotalPower(kW PS)
   - 馬達最大扭力 TotalTorque(Nm)
-  - 馬達出力(hp/kgm)
-  - 油電綜效輸出
+  - (X)馬達出力(hp/kgm)
+  - (X)油電綜效輸出
   - ElectricEfficiency/VehicleConsumtion
     - 177 Wh/km
   - 純電池里程  Electric Range
@@ -94,7 +96,11 @@ Fastcharge Power (max)	190 kW DC
 Fastcharge Time (46->364 km)	34 min
 Fastcharge Speed	560 km/h
 
-## 輔助安全配備
+## 輔助安全配備 
+  - S-Standard,說明
+  - O-Optional,說明
+  - N-NoEquipped
+
   - ABS-Anti-lock Braking System-防鎖死煞車系統 
   - ASR-Acceleration Stability Retainer-循跡防滑控制系統
   - EBD-Electronic Brakeforce Distribution-電子煞車力道分配系統
