@@ -36,7 +36,7 @@ class CarModelList extends React.Component {
         if (this.props.isAdminUser) {
             return (                
                 <div style={{ textAlign: 'right'}}>
-                    <Link to={`${CARMODELS_ROOT}/new`} className="btn btn-success mb-3"> 
+                    <Link to={`${CARMODELS_ROOT}/new`} className="btn btn-success mb-3 text-nowrap"> 
                         Create CarModel
                     </Link>
                 </div>

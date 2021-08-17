@@ -73,7 +73,7 @@ class TrimLevelList extends React.Component {
         if (this.props.isAdminUser) {
             return (                
                 <div style={{ textAlign: 'right'}}>
-                    <Link to={`${TRIMLEVELS_ROOT}/new`} className="btn btn-success mb-3"> 
+                    <Link to={`${TRIMLEVELS_ROOT}/new`} className="btn btn-success mb-3 text-nowrap"> 
                         Create Trim Level
                     </Link>
                 </div>

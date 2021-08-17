@@ -332,6 +332,224 @@ const TrimLevelForm = (props) => {
         initialValue: props.initialValues === undefined ? '' : props.initialValues.chargingTime 
     });
 
+    // Safety properties
+
+    const {
+        value: antilockBrakingSystem, 
+        valueChangedHandler: antilockBrakingSystemChangedHandler,
+        inputBlurHandler: antilockBrakingSystemBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.antilockBrakingSystem
+    });
+
+    const {
+        value: accelerationStabilityRetainer, 
+        valueChangedHandler: accelerationStabilityRetainerChangedHandler,
+        inputBlurHandler: accelerationStabilityRetainerBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.accelerationStabilityRetainer 
+    });
+
+    const {
+        value: electronicBrakeforceDistribution, 
+        valueChangedHandler: electronicBrakeforceDistributionChangedHandler,
+        inputBlurHandler: electronicBrakeforceDistributionBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.electronicBrakeforceDistribution
+    });
+
+    const {
+        value: brakeAssistSystem, 
+        valueChangedHandler: brakeAssistSystemChangedHandler,
+        inputBlurHandler: brakeAssistSystemBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.brakeAssistSystem
+    });
+
+    const {
+        value: electronicStabilityProgram, 
+        valueChangedHandler: electronicStabilityProgramChangedHandler,
+        inputBlurHandler: electronicStabilityProgramBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.electronicStabilityProgram
+    });
+
+    const {
+        value: cruiseControl, 
+        valueChangedHandler: cruiseControlChangedHandler,
+        inputBlurHandler: cruiseControlBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.cruiseControl
+    });
+
+    const {
+        value: adaptiveCruiseControl, 
+        valueChangedHandler: adaptiveCruiseControlChangedHandler,
+        inputBlurHandler: adaptiveCruiseControlBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.adaptiveCruiseControl
+    });
+
+    const {
+        value: forwardCollisionWarning, 
+        valueChangedHandler: forwardCollisionWarningChangedHandler,
+        inputBlurHandler: forwardCollisionWarningBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.forwardCollisionWarning
+    });
+
+    const {
+        value: automaticEmergencyBraking, 
+        valueChangedHandler: automaticEmergencyBrakingChangedHandler,
+        inputBlurHandler: automaticEmergencyBrakingBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.automaticEmergencyBraking
+    });
+
+    const {
+        value: laneDepartureWarning, 
+        valueChangedHandler: laneDepartureWarningChangedHandler,
+        inputBlurHandler: laneDepartureWarningBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.laneDepartureWarning
+    });
+
+    const {
+        value: laneDepartureRevise, 
+        valueChangedHandler: laneDepartureReviseChangedHandler,
+        inputBlurHandler: laneDepartureReviseBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.laneDepartureRevise
+    });
+
+    const {
+        value: laneKeepingAssistance, 
+        valueChangedHandler: laneKeepingAssistanceChangedHandler,
+        inputBlurHandler: laneKeepingAssistanceBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.laneKeepingAssistance
+    });
+
+    const {
+        value: rearCrossTrafficWarning, 
+        valueChangedHandler: rearCrossTrafficWarningChangedHandler,
+        inputBlurHandler: rearCrossTrafficWarningBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.rearCrossTrafficWarning
+    });
+
+    const {
+        value: blindSpotWarning, 
+        valueChangedHandler: blindSpotWarningChangedHandler,
+        inputBlurHandler: blindSpotWarningBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.blindSpotWarning
+    });
+
+    const {
+        value: reverseAutomaticEmergencyBraking, 
+        valueChangedHandler: reverseAutomaticEmergencyBrakingChangedHandler,
+        inputBlurHandler: reverseAutomaticEmergencyBrakingBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.reverseAutomaticEmergencyBraking
+    });
+
+    const {
+        value: hillStartAssis, 
+        valueChangedHandler: hillStartAssisChangedHandler,
+        inputBlurHandler: hillStartAssisBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.hillStartAssis
+    });
+
+    const {
+        value: hillDescentControl, 
+        valueChangedHandler: hillDescentControlChangedHandler,
+        inputBlurHandler: hillDescentControlBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.hillDescentControl
+    });
+
+
+    const {
+        value: airBagNumbers, 
+        valueChangedHandler: airBagNumbersChangedHandler,
+        inputBlurHandler: airBagNumbersBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.airBagNumbers
+    });
+
+    const {
+        value: isofix, 
+        valueChangedHandler: isofixChangedHandler,
+        inputBlurHandler: isofixBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.isofix
+    });
+
+    const {
+        value: activeParkingAssistance, 
+        valueChangedHandler: activeParkingAssistanceChangedHandler,
+        inputBlurHandler: activeParkingAssistanceBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.activeParkingAssistance
+    });
+
+    const {
+        value: iihsDescription, 
+        valueChangedHandler: iihsDescriptionChangedHandler,
+        inputBlurHandler: iihsDescriptionBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? '' : props.initialValues.iihsDescription
+    });
+
+    const {
+        value: ncapDescription, 
+        valueChangedHandler: ncapDescriptionChangedHandler,
+        inputBlurHandler: ncapDescriptionBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? '' : props.initialValues.ncapDescription
+    });
+
+    const {
+        value: surroundViewCamera, 
+        valueChangedHandler: surroundViewCameraChangedHandler,
+        inputBlurHandler: surroundViewCameraBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.surroundViewCamera
+    });
+
+    const {
+        value: rearViewCamera, 
+        valueChangedHandler: rearViewCameraChangedHandler,
+        inputBlurHandler: rearViewCameraBlurHandler,
+    } = useInput({ 
+        validateValue: doNotCare,
+        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.rearViewCamera
+    });
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -367,7 +585,15 @@ const TrimLevelForm = (props) => {
             // Electric Motor properties
             batteryCapacity: Number(batteryCapacity), motorTorque: Number(motorTorque), motorPower: Number(motorPower),
             electricEfficiency: Number(electricEfficiency), electricRange: Number(electricRange), cityRange: Number(cityRange),
-            freewayRange: Number(freewayRange), combinedRange: Number(combinedRange), chargingTime
+            freewayRange: Number(freewayRange), combinedRange: Number(combinedRange), chargingTime,
+            // Safety properties
+            antilockBrakingSystem, accelerationStabilityRetainer, electronicBrakeforceDistribution,
+            brakeAssistSystem, electronicStabilityProgram, cruiseControl, adaptiveCruiseControl,
+            forwardCollisionWarning, automaticEmergencyBraking, laneDepartureWarning,
+            laneDepartureRevise, laneKeepingAssistance, rearCrossTrafficWarning,
+            blindSpotWarning, reverseAutomaticEmergencyBraking, hillStartAssis, hillDescentControl,
+            airBagNumbers, isofix, activeParkingAssistance, iihsDescription, ncapDescription,
+            surroundViewCamera, rearViewCamera
         });
     };
 
@@ -492,7 +718,7 @@ const TrimLevelForm = (props) => {
                         <div className="row">
                                                         
                             {/* Seats */}
-                            <div className="col-md-2">
+                            <div className="col-md-3">
                                 <label htmlFor="seats" className="form-label">座位數(人)</label>
                                 <input id="seats" type="number" className="form-control" 
                                     value={seats} onChange={seatsChangedHandler} onBlur={seatsBlurHandler}>
@@ -816,7 +1042,7 @@ const TrimLevelForm = (props) => {
                                 </input>
                             </div> 
 
-                            {/* 充電時間 */}
+                            {/* Charging Time */}
                             <div className="col-md-12">
                                 <label htmlFor="chargingTime" className="form-label">充電時間</label>
                                     
@@ -847,6 +1073,225 @@ const TrimLevelForm = (props) => {
                     aria-labelledby="panelsSafetyProperties-heading">
                     <div className="accordion-body">
                         <div className="row">
+
+                            {/* ABS 防鎖死煞車系統 */}
+                            <div className="col-md-4">
+                                <label htmlFor="antilockBrakingSystem" className="form-label">ABS-防鎖死煞車系統</label>
+                                    
+                                <input type="text" className="form-control" id="antilockBrakingSystem" 
+                                    value={antilockBrakingSystem} onChange={antilockBrakingSystemChangedHandler} onBlur={antilockBrakingSystemBlurHandler}>
+                                </input>
+                            </div>
+
+                            {/* ASR 循跡防滑控制系統 */}
+                            <div className="col-md-4">
+                                <label htmlFor="accelerationStabilityRetainer" className="form-label">ASR-循跡防滑控制系統</label>
+                                    
+                                <input type="text" className="form-control" id="accelerationStabilityRetainer" 
+                                    value={accelerationStabilityRetainer} onChange={accelerationStabilityRetainerChangedHandler} onBlur={accelerationStabilityRetainerBlurHandler}>
+                                </input>
+                            </div>
+
+                            {/* EBD 電子煞車力道分配系統 */}
+                            <div className="col-md-4">
+                                <label htmlFor="electronicBrakeforceDistribution" className="form-label">EBD-電子煞車力道分配系統</label>
+                                    
+                                <input type="text" className="form-control" id="electronicBrakeforceDistribution" 
+                                    value={electronicBrakeforceDistribution} onChange={electronicBrakeforceDistributionChangedHandler} 
+                                    onBlur={electronicBrakeforceDistributionBlurHandler}>
+                                </input>
+                            </div>
+
+                            {/* BAS 煞車力道輔助系統 */}
+                            <div className="col-md-4">
+                                <label htmlFor="brakeAssistSystem" className="form-label">BAS-煞車力道輔助系統</label>
+                                    
+                                <input type="text" className="form-control" id="brakeAssistSystem" 
+                                    value={brakeAssistSystem} onChange={brakeAssistSystemChangedHandler} onBlur={brakeAssistSystemBlurHandler}>
+                                </input>
+                            </div>
+
+                            {/* ESP 車身動態穩定系統 */}
+                            <div className="col-md-4">
+                                <label htmlFor="electronicStabilityProgram" className="form-label">ESP-車身動態穩定系統</label>
+                                    
+                                <input type="text" className="form-control" id="electronicStabilityProgram" 
+                                    value={electronicStabilityProgram} onChange={electronicStabilityProgramChangedHandler} 
+                                    onBlur={electronicStabilityProgramBlurHandler}>
+                                </input>
+                            </div>
+
+                            {/* 定速 */}
+                            <div className="col-md-4">
+                                <label htmlFor="cruiseControl" className="form-label">定速</label>
+                                    
+                                <input type="text" className="form-control" id="cruiseControl" 
+                                    value={cruiseControl} onChange={cruiseControlChangedHandler} onBlur={cruiseControlBlurHandler}>
+                                </input>
+                            </div>
+
+                            {/* ACC 主動車距巡航控制系統 */}
+                            <div className="col-md-4">
+                                <label htmlFor="adaptiveCruiseControl" className="form-label">ACC-主動車距巡航控制系統</label>
+                                    
+                                <input type="text" className="form-control" id="adaptiveCruiseControl" 
+                                    value={adaptiveCruiseControl} onChange={adaptiveCruiseControlChangedHandler} onBlur={adaptiveCruiseControlBlurHandler}>
+                                </input>
+                            </div>
+
+                            {/* FCW 前方碰撞警示 */}
+                            <div className="col-md-4">
+                                <label htmlFor="forwardCollisionWarning" className="form-label">FCW-前方碰撞警示</label>
+                                    
+                                <input type="text" className="form-control" id="forwardCollisionWarning" 
+                                    value={forwardCollisionWarning} onChange={forwardCollisionWarningChangedHandler} onBlur={forwardCollisionWarningBlurHandler}>
+                                </input>
+                            </div>
+                            
+                            {/* AEB 自動緊急煞車 */}
+                            <div className="col-md-4">
+                                <label htmlFor="automaticEmergencyBraking" className="form-label">AEB-自動緊急煞車</label>
+                                    
+                                <input type="text" className="form-control" id="automaticEmergencyBraking" 
+                                    value={automaticEmergencyBraking} onChange={automaticEmergencyBrakingChangedHandler} onBlur={automaticEmergencyBrakingBlurHandler}>
+                                </input>
+                            </div>
+
+                            {/* LDW 車道偏離警示 */}
+                            <div className="col-md-4">
+                                <label htmlFor="laneDepartureWarning" className="form-label">LDW-車道偏離警示</label>
+                                    
+                                <input type="text" className="form-control" id="laneDepartureWarning" 
+                                    value={laneDepartureWarning} onChange={laneDepartureWarningChangedHandler} onBlur={laneDepartureWarningBlurHandler}>
+                                </input>
+                            </div>
+
+                            {/* LDR 車道偏離修正 */}
+                            <div className="col-md-4">
+                                <label htmlFor="laneDepartureRevise" className="form-label">LDR-車道偏離修正</label>
+                                    
+                                <input type="text" className="form-control" id="laneDepartureRevise" 
+                                    value={laneDepartureRevise} onChange={laneDepartureReviseChangedHandler} onBlur={laneDepartureReviseBlurHandler}>
+                                </input>
+                            </div>                                                                                    
+
+                            {/* LKA 車道維持 */}
+                            <div className="col-md-4">
+                                <label htmlFor="laneKeepingAssistance" className="form-label">LKA-車道維持</label>
+                                    
+                                <input type="text" className="form-control" id="laneKeepingAssistance" 
+                                    value={laneKeepingAssistance} onChange={laneKeepingAssistanceChangedHandler} onBlur={laneKeepingAssistanceBlurHandler}>
+                                </input>
+                            </div>
+
+                            {/* RCTA 後方車側警示 */}
+                            <div className="col-md-4">
+                                <label htmlFor="rearCrossTrafficWarning" className="form-label">RCTA-後方車側警示</label>
+                                    
+                                <input type="text" className="form-control" id="rearCrossTrafficWarning" 
+                                    value={rearCrossTrafficWarning} onChange={rearCrossTrafficWarningChangedHandler} onBlur={rearCrossTrafficWarningBlurHandler}>
+                                </input>
+                            </div>  
+
+                            {/* BSW 盲點偵測警示 */}
+                            <div className="col-md-4">
+                                <label htmlFor="blindSpotWarning" className="form-label">BSW-盲點偵測警示</label>
+                                    
+                                <input type="text" className="form-control" id="blindSpotWarning" 
+                                    value={blindSpotWarning} onChange={blindSpotWarningChangedHandler} onBlur={blindSpotWarningBlurHandler}>
+                                </input>
+                            </div>    
+
+                            {/* RAEB 後方車流自動煞車 */}
+                            <div className="col-md-4">
+                                <label htmlFor="reverseAutomaticEmergencyBraking" className="form-label">RAEB-後方車流自動煞車</label>
+                                    
+                                <input type="text" className="form-control" id="reverseAutomaticEmergencyBraking" 
+                                    value={reverseAutomaticEmergencyBraking} onChange={reverseAutomaticEmergencyBrakingChangedHandler} onBlur={reverseAutomaticEmergencyBrakingBlurHandler}>
+                                </input>
+                            </div>    
+
+                            {/* HSA 斜坡起步輔助 */}
+                            <div className="col-md-4">
+                                <label htmlFor="hillStartAssis" className="form-label">HSA-斜坡起步輔助</label>
+                                    
+                                <input type="text" className="form-control" id="hillStartAssis" 
+                                    value={hillStartAssis} onChange={hillStartAssisChangedHandler} onBlur={hillStartAssisBlurHandler}>
+                                </input>
+                            </div>    
+
+                            {/* HDC 陡坡緩降系統 */}
+                            <div className="col-md-4">
+                                <label htmlFor="hillDescentControl" className="form-label">HDC-陡坡緩降系統</label>
+                                    
+                                <input type="text" className="form-control" id="hillDescentControl" 
+                                    value={hillDescentControl} onChange={hillDescentControlChangedHandler} onBlur={hillDescentControlBlurHandler}>
+                                </input>
+                            </div>     
+
+                            {/* AirBagNumbers */}
+                            <div className="col-md-4">
+                                <label htmlFor="airBagNumbers" className="form-label">氣囊總數</label>
+                                    
+                                <input type="text" className="form-control" id="airBagNumbers" 
+                                    value={airBagNumbers} onChange={airBagNumbersChangedHandler} onBlur={airBagNumbersBlurHandler}>
+                                </input>
+                            </div>    
+
+                            {/* ISOFIX */}
+                            <div className="col-md-4">
+                                <label htmlFor="isofix" className="form-label">ISOFIX</label>
+                                    
+                                <input type="text" className="form-control" id="isofix" 
+                                    value={isofix} onChange={isofixChangedHandler} onBlur={isofixBlurHandler}>
+                                </input>
+                            </div>  
+
+                            {/* Active Parking Assistance 自動停車 */}
+                            <div className="col-md-4">
+                                <label htmlFor="activeParkingAssistance" className="form-label">自動停車</label>
+                                    
+                                <input type="text" className="form-control" id="activeParkingAssistance" 
+                                    value={activeParkingAssistance} onChange={activeParkingAssistanceChangedHandler} onBlur={activeParkingAssistanceBlurHandler}>
+                                </input>
+                            </div>    
+
+                            {/* IIHS */}
+                            <div className="col-md-4">
+                                <label htmlFor="iihsDescription" className="form-label">IIHS</label>
+                                    
+                                <input type="text" className="form-control" id="iihsDescription" 
+                                    value={iihsDescription} onChange={iihsDescriptionChangedHandler} onBlur={iihsDescriptionBlurHandler}>
+                                </input>
+                            </div>  
+
+                            {/* NCAP */}
+                            <div className="col-md-4">
+                                <label htmlFor="ncapDescription" className="form-label">NCAP</label>
+                                    
+                                <input type="text" className="form-control" id="ncapDescription" 
+                                    value={ncapDescription} onChange={ncapDescriptionChangedHandler} onBlur={ncapDescriptionBlurHandler}>
+                                </input>
+                            </div>    
+
+                            {/* 環景 */}
+                            <div className="col-md-4">
+                                <label htmlFor="surroundViewCamera" className="form-label">環景360度</label>
+                                    
+                                <input type="text" className="form-control" id="surroundViewCamera" 
+                                    value={surroundViewCamera} onChange={surroundViewCameraChangedHandler} onBlur={surroundViewCameraBlurHandler}>
+                                </input>
+                            </div>                                                     
+
+                            {/* 倒車顯影 */}
+                            <div className="col-md-4">
+                                <label htmlFor="rearViewCamera" className="form-label">倒車顯影</label>
+                                    
+                                <input type="text" className="form-control" id="rearViewCamera" 
+                                    value={rearViewCamera} onChange={rearViewCameraChangedHandler} onBlur={rearViewCameraBlurHandler}>
+                                </input>
+                            </div>
+
                         </div>
                     </div>
                 </div>

@@ -170,40 +170,43 @@ class CarModelShow extends React.Component {
         // <div>{carmodel.mainImage}</div>  
 
         return (
-            <div className="d-flex align-content-start flex-nowrap flex-row flex-sm-row">
-                {/* {this.renderVideos(this.state.videos)} */}
-                <div className="d-inline-flex flex-column col-sm-4 ">
-                    <h1 className="fs-2 fw-bold">{name}</h1>
-                    <h5>
-                        <a href={officialUrl} target="_blank">官網</a> 
-                    </h5>
-                             {/* <div className="">
-                                  
-                                <span className="text-muted mx-2">別稱: {_.join(carmodel.alias, ',')}</span>
-                            </div>
-                            <h6 className="card-text"><small className="text-muted">發布日期: {carmodel.releaseDate}</small></h6> */}
-                    <span className="badge bg-primary me-2">{BODY_STYLES_ZH[bodyStyle]}</span>
-                    <h2>{bodyStyle}</h2>
-                    <h5>{isArchived}</h5>
-                    {/* <h5>{manufacturerId}</h5> */}
-                    <h5>
-                        <a href={`https://www.youtube.com/results?search_query=${name}+%E8%A9%A6%E9%A7%95`} target="_blank">更多影片</a> 
-                    </h5>
 
-                    
-                </div>
+            <div className="container">
 
-                <div className="container col-sm-8">
-                    {this.renderVideosTmp()}
+                <div className="row">
+                    <div className="col-md-4">
+                        <h1 className="fs-2 fw-bold">{name}</h1>
+                        <h5>
+                            <a href={officialUrl} target="_blank">官網</a> 
+                        </h5>
+                                {/* <div className="">
+                                    
+                                    <span className="text-muted mx-2">別稱: {_.join(carmodel.alias, ',')}</span>
+                                </div>
+                                <h6 className="card-text"><small className="text-muted">發布日期: {carmodel.releaseDate}</small></h6> */}
+                        <span className="badge bg-primary me-2">{BODY_STYLES_ZH[bodyStyle]}</span>
+                        <h2>{bodyStyle}</h2>
+                        <h5>{isArchived}</h5>
+                        {/* <h5>{manufacturerId}</h5> */}
+                        <h5>
+                            <a href={`https://www.youtube.com/results?search_query=${name}+%E8%A9%A6%E9%A7%95`} target="_blank">更多影片</a> 
+                        </h5>
+                    </div>
                 
+                    <div className="col-md-8">
+                        {this.renderVideosTmp()}
+                        {/* {this.renderVideos(this.state.videos)} */}
+                    </div>
+
                 </div>
 
-                <div className="container col-12 col-sm-12" >
-                    <TrimLevelList />
+                <div className="row">
+                    <div className="col-12">
+                        <TrimLevelList />
+                    </div>
                 </div>
-               
-                {/* https://www.youtube.com/results?search_query=fabia+%E8%A9%A6%E9%A7%95 */}
             </div>
+            
         );
     }
     
@@ -213,7 +216,7 @@ const mapStateToProps = (state, ownProps) => {
     // console.log(ownProps);
     // console.log(state);
 
-    const tmpCarModel = _.find(state.carmodels, { name: ownProps.match.params.carmodelName});
+    const tmpCarModel = _.find(state.carmodels, { name: ownProps.match.params.carmodelName });
     // console.log(tmpCarModel);
     return { 
         carmodel: tmpCarModel,

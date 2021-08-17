@@ -29,7 +29,7 @@ class ManufacturerList extends Component {
         if (this.props.isAdminUser) {
             return (
                 <div className="mx-2 my-2 d-flex justify-content-center">
-                    <Link to={`${MANUFACTURERS_ROOT}/new`} className="btn btn-success mb-3"> 
+                    <Link to={`${MANUFACTURERS_ROOT}/new`} className="btn btn-success mb-3 text-nowrap"> 
                         Create Manufacturer
                     </Link>
                 </div>
