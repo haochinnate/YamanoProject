@@ -1,8 +1,10 @@
 import React from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchCarmodelByName } from '../../../actions';
 import youtube from '../../../apis/youtube';
+import { CARS_DB_ROOT } from '../../../consts/url'
 import { BODY_STYLES_ZH } from '../../../consts/bodyStyles';
 import TrimLevelList from '../trimlevels/TrimLevelList';
 
@@ -157,7 +159,7 @@ class CarModelShow extends React.Component {
         }
         
         const { name, bodyStyle, officialUrl, isArchived, 
-            manufacturerId, alias, releaseDate, yearsInfo, mainImage} = this.props.carmodel;
+            alias, releaseDate, yearsInfo } = this.props.carmodel;
 
         // <div>{carmodel.name}</div>
         // <div>{carmodel.bodyStyle}</div>
@@ -173,27 +175,58 @@ class CarModelShow extends React.Component {
 
             <div className="container">
 
-                <div className="row">
-                    <div className="col-md-4">
-                        <h1 className="fs-2 fw-bold">{name}</h1>
-                        <h5>
-                            <a href={officialUrl} target="_blank">官網</a> 
-                        </h5>
-                                {/* <div className="">
-                                    
-                                    <span className="text-muted mx-2">別稱: {_.join(carmodel.alias, ',')}</span>
-                                </div>
-                                <h6 className="card-text"><small className="text-muted">發布日期: {carmodel.releaseDate}</small></h6> */}
-                        <span className="badge bg-primary me-2">{BODY_STYLES_ZH[bodyStyle]}</span>
-                        <h2>{bodyStyle}</h2>
-                        <h5>{isArchived}</h5>
-                        {/* <h5>{manufacturerId}</h5> */}
-                        <h5>
-                            <a href={`https://www.youtube.com/results?search_query=${name}+%E8%A9%A6%E9%A7%95`} target="_blank">更多影片</a> 
-                        </h5>
+                <div className="row align-items-center">
+                    <div className="col-md-4 ">
+                        <div className="d-flex flex-column align-items-center">
+
+                            <div className="fs-2 fw-bold">{name}</div>
+
+                            <div className="fs-4 my-1 text-muted">
+                                <div>別稱: {_.join(alias, ',')}</div>
+                            </div>
+                               
+                        <span className="badge bg-primary my-1">{BODY_STYLES_ZH[bodyStyle]}</span>
+
+                        <div className="fs-5 my-1">
+                            <div>
+                                <i className="fas fa-calendar"></i>
+                                發表日期: {releaseDate}
+                            </div>
+                        </div>
+
+                        <div className="fs-5 my-1">
+                            <div>
+                                <i className="fas fa-archive"></i>
+                                { isArchived === false ? "現行車款" : "已下市" }
+                            </div>
+                        </div>
+                        
+                        <div className="fs-5 my-1">
+                            <Link to={`${CARS_DB_ROOT}/${this.props.match.params.manufacturerName}`} className="fs-5 secondary">
+                               <i className="fas fa-chevron-left" style={{ color: 'gray' }}></i>
+
+                                {this.props.match.params.manufacturerName}
+                            </Link>
+                        </div>
+
+                        <div className="fs-5 my-1">
+                            <a href={officialUrl} target="_blank">
+                                <i className="fas fa-link" style={{ color: 'gray' }}></i>
+                                {this.props.match.params.manufacturerName}官網
+                            </a> 
+                        </div>
+
+                        <div className="fs-5 my-1">
+                            <a href={`https://www.youtube.com/results?search_query=${name}+%E8%A9%A6%E9%A7%95`} target="_blank">
+                                <i className="fab fa-youtube" style={{ color: 'red' }}></i>
+                                更多試駕影片
+                            </a> 
+                        </div>
+                        </div>
+
                     </div>
                 
-                    <div className="col-md-8">
+                    <div className="max-vh-10 col-md-8">
                         {this.renderVideosTmp()}
                         {/* {this.renderVideos(this.state.videos)} */}
                     </div>

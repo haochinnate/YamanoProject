@@ -39,8 +39,6 @@ class ManufacturerList extends Component {
 
     renderManufacturers() {
         return this.props.manufacturers.map(manufacturer => {
-            // const imageSource = require(escape('../../../images/manufacturers/skoda.png'));
-            // const imageSource = require(escape('./images/manufacturers/skoda.PNG'));
             return (
                 // <div className="col col-12 col-sm-6 col-md-4 col-lg-2" key={manufacturer.id}>
                     
@@ -61,17 +59,19 @@ class ManufacturerList extends Component {
                 //     </div>
                 //     {this.renderAdmin(manufacturer)}
                 // </div>
-                <div className="col my-2" key={manufacturer.id}>
+                // style={{ width: '18rem', height: '18rem' }}
+                <div className="col-6 col-md-3 my-2" key={manufacturer.id}>
                     
                     <div className="card" >
-                        <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="text-center" style={{ width: '18rem', height: '18rem' }}>
+                        <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="text-center" 
+                            >
                             <img src={window.location.origin + `/images/manufacturers/${manufacturer.name}.png`}
                                 className="card-img-top img-fluid"  alt={manufacturer.name}/>
                         </Link>
                     
                         <div className="card-body">
                             <div className="text-center">
-                                <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="fs-4 text-nowrap">
+                                <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="fs-4">
                                     {manufacturer.name === manufacturer.chineseName 
                                         ? manufacturer.name
                                         : `${manufacturer.name}(${manufacturer.chineseName})`}
@@ -107,12 +107,7 @@ class ManufacturerList extends Component {
                     </div>
                 </div>
 
-                {/* <div className="row row-cols-1 row-cols-sm-2 row-cols-md-6 row-cols-lg-8"> */}
-                {/* <div class="d-lg-none">hide on screens wider than lg</div>
-                <div class="d-none d-lg-block">hide on screens smaller than lg</div> */}
-                {/* <div className="row">
-                    {this.renderManufacturers()}
-                </div> */}
+                {/*  */}
                 <div className="d-flex row row-cols-1 row-cols-sm-auto justify-content-center">
                     {this.renderManufacturers()}
                 </div>

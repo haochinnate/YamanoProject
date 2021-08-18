@@ -58,6 +58,7 @@ class CarModelList extends React.Component {
                     <div className="card" style={{width: '18rem'}}>
                         <Link className="text-center" to={`/cars/${this.props.manufacturer.name}/${carmodel.name}`}>
                             {/* {carmodel.mainImage} */}
+                            {/* <i className="fas fa-car"></i> */}
                             <img src={window.location.origin + '/images/icons/car.png'} 
                                 alt={carmodel.name} className="card-img-top w-50"></img>
                         </Link>
