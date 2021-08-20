@@ -14,7 +14,7 @@ class TrimLevelCreate extends Component {
     render() {
         return (
             <div>
-                <h3>Create a carmodel</h3>
+                <h3>Create a TrimLevel</h3>
                 <TrimLevelForm onSubmit={this.onSubmit}/>
             </div>
         )

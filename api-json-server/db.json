@@ -46,6 +46,207 @@
       "chineseName": "福斯",
       "level": "一般",
       "id": 7
+    },
+    {
+      "name": "Aston Martin",
+      "officialUrl": "https://www.yunsanmotors.com/astonmartin/",
+      "level": "豪華",
+      "chineseName": "Aston Martin",
+      "id": 8
+    },
+    {
+      "officialUrl": "https://www.yunsanmotors.com/bentley/",
+      "name": "Bentley",
+      "chineseName": "賓利",
+      "level": "豪華",
+      "id": 9
+    },
+    {
+      "officialUrl": "https://www.bmw.com.tw/zh/index.html",
+      "level": "豪華",
+      "name": "BMW",
+      "chineseName": "BMW",
+      "id": 10
+    },
+    {
+      "officialUrl": "https://www.citroen.com.tw/",
+      "name": "CITROEN",
+      "chineseName": "CITROEN",
+      "level": "一般",
+      "id": 11
+    },
+    {
+      "name": "DS",
+      "chineseName": "DS",
+      "level": "一般",
+      "id": 12
+    },
+    {
+      "officialUrl": "https://taiwan.ferraridealers.com/en_gb/",
+      "level": "豪華",
+      "name": "Ferrari",
+      "chineseName": "法拉利",
+      "id": 13
+    },
+    {
+      "name": "Ford",
+      "chineseName": "福特",
+      "level": "一般",
+      "officialUrl": "https://www.ford.com.tw/",
+      "id": 14
+    },
+    {
+      "name": "Honda",
+      "chineseName": "本田",
+      "level": "一般",
+      "officialUrl": "https://www.honda-taiwan.com.tw/",
+      "id": 15
+    },
+    {
+      "name": "Hyundai",
+      "chineseName": "現代",
+      "level": "一般",
+      "officialUrl": "https://www.hyundai-motor.com.tw/",
+      "id": 16
+    },
+    {
+      "name": "INFINITI",
+      "officialUrl": "https://www.infiniti.com.tw/",
+      "level": "豪華",
+      "chineseName": "INFINITI",
+      "id": 17
+    },
+    {
+      "name": "KIA",
+      "chineseName": "起亞",
+      "level": "一般",
+      "officialUrl": "https://www.kia.com.tw/",
+      "id": 18
+    },
+    {
+      "name": "Lamborghini",
+      "officialUrl": "https://www.lamborghini.com/en-en/ownership/dealer-locator/lamborghini-taipei",
+      "level": "豪華",
+      "chineseName": "藍寶堅尼",
+      "id": 19
+    },
+    {
+      "officialUrl": "https://www.landrover.tw/",
+      "name": "Land Rover",
+      "chineseName": "Land Rover",
+      "level": "豪華",
+      "id": 20
+    },
+    {
+      "name": "Lexus",
+      "chineseName": "凌志",
+      "officialUrl": "https://www.lexus.com.tw/index.aspx",
+      "level": "豪華",
+      "id": 21
+    },
+    {
+      "name": "Luxgen",
+      "level": "一般",
+      "officialUrl": "https://www.luxgen-motor.com.tw/",
+      "chineseName": "納智捷",
+      "id": 22
+    },
+    {
+      "level": "豪華",
+      "officialUrl": "https://www.maserati.com/tw/zh",
+      "chineseName": "瑪莎拉蒂",
+      "name": "Maserati",
+      "id": 23
+    },
+    {
+      "name": "McLaren",
+      "chineseName": "麥拉倫",
+      "level": "豪華",
+      "officialUrl": "https://www.yunsanmotors.com/mclaren/",
+      "id": 24
+    },
+    {
+      "name": "MINI",
+      "chineseName": "MINI",
+      "level": "豪華",
+      "officialUrl": "https://www.mini.com.tw/zh_TW/home.html",
+      "id": 25
+    },
+    {
+      "officialUrl": "https://www.mitsubishi-motors.com.tw/",
+      "name": "Mitsubishi",
+      "chineseName": "三菱",
+      "level": "一般",
+      "id": 26
+    },
+    {
+      "name": "Nissan",
+      "chineseName": "日產",
+      "level": "一般",
+      "officialUrl": "https://new.nissan.com.tw/nissan",
+      "id": 27
+    },
+    {
+      "officialUrl": "https://www.peugeot.com.tw/",
+      "name": "Peugeot",
+      "level": "一般",
+      "chineseName": "寶獅",
+      "id": 28
+    },
+    {
+      "name": "Porsche",
+      "chineseName": "保時捷",
+      "level": "豪華",
+      "officialUrl": "https://www.porsche.com/taiwan/zh-tw/",
+      "id": 29
+    },
+    {
+      "officialUrl": "https://www.rolls-roycemotorcars.com/taipei/zh_TW/showroom.html",
+      "chineseName": "勞斯萊斯",
+      "name": "Rolls-Royce",
+      "level": "豪華",
+      "id": 30
+    },
+    {
+      "name": "smart",
+      "chineseName": "smart",
+      "level": "豪華",
+      "id": 31
+    },
+    {
+      "name": "SsangYong",
+      "chineseName": "雙龍",
+      "level": "一般",
+      "officialUrl": "https://www.ssangyong.tw/",
+      "id": 32
+    },
+    {
+      "name": "Subaru",
+      "officialUrl": "https://www.subaru.asia/tw/zh/home/",
+      "chineseName": "速霸陸",
+      "level": "一般",
+      "id": 33
+    },
+    {
+      "officialUrl": "https://www.taiwansuzuki.com.tw/",
+      "level": "一般",
+      "name": "Suzuki",
+      "chineseName": "金鈴",
+      "id": 34
+    },
+    {
+      "name": "Tesla",
+      "chineseName": "特斯拉",
+      "level": "豪華",
+      "officialUrl": "https://www.tesla.com/zh_tw",
+      "id": 35
+    },
+    {
+      "officialUrl": "https://www.toyota.com.tw/",
+      "name": "Toyota",
+      "chineseName": "豐田",
+      "level": "一般",
+      "id": 36
     }
   ],
   "carmodels": [
