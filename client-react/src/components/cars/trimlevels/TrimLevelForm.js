@@ -494,7 +494,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: airBagNumbersBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N,' : props.initialValues.airBagNumbers
+        initialValue: props.initialValues === undefined ? '' : props.initialValues.airBagNumbers
     });
 
     const {
@@ -553,7 +553,7 @@ const TrimLevelForm = (props) => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        console.log('onSubmit in TrimLevelForm');
+        // console.log('onSubmit in TrimLevelForm');
         // console.log(formValues);
 
         if (!enteredNameIsvalid || !enteredPriceIsvalid 

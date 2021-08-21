@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { TRIMLEVELS_ROOT } from '../../../consts/url';
 import { BODY_STYLES_ZH } from '../../../consts/bodyStyles';
+import { fetchTrimLevelsByCarmodel } from '../../../actions';
 
 
 
@@ -13,8 +14,10 @@ class TrimLevelList extends React.Component {
         // console.log('TrimLevelList componentDidMount');
 
         if (this.props.carmodel) {
+            console.log('TrimLevelList-componentDidMount');
             // console.log(this.props.carmodel);
             this.props.fetchTrimLevelsByCarmodel(this.props.carmodel);
+            console.log(this.props.trimlevels);
         }
     }
 
@@ -96,19 +99,18 @@ class TrimLevelList extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    // console.log(ownProps.match)
+    // console.log(ownProps.carmodel)
     // console.log('mapStateToProps');
     // console.log(state.carmodels)
     return { 
-        // carmodels:  Object.values(
-        // _.pickBy(state.carmodels, 
-        //     (carmodel) => {
-        //         return String(carmodel.manufacturerId) === String(ownProps.manufacturer.id);
-        //     }
-        // )),
+        trimlevels:  Object.values(
+            _.pickBy(state.trimlevels, 
+                (trimlevel) => {
+                    return String(trimlevel.carmodelId) === String(ownProps.carmodel.id);
+                }
+            )),
         isAdminUser: state.auth.isAdminUser
     }
 };
 
-export default connect(mapStateToProps, {  })(TrimLevelList);
-// export default TrimLevelList;
+export default connect(mapStateToProps, { fetchTrimLevelsByCarmodel })(TrimLevelList);

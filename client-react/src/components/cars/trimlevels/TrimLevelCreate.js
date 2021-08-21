@@ -8,7 +8,7 @@ class TrimLevelCreate extends Component {
     onSubmit = (formValues) => {
         console.log('onSubmit in TrimLevelCreate');
         console.log(formValues);
-        // this.props.createTrimLevel(formValues);
+        this.props.createTrimLevel(formValues);
     }
 
     render() {

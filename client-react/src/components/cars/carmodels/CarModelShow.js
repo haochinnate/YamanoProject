@@ -71,7 +71,7 @@ class CarModelShow extends React.Component {
                     alt={video.snippet.title}>
                 </img> */}
                     <div className="ratio ratio-16x9" >
-                        <iframe allowfullscreen
+                        <iframe allowFullScreen
                             title="精銳小兵 令國產車汗顏！Škoda Fabia 1.0 TSI" 
                             src={`https://www.youtube.com/embed/ffjN93Bcvuo`}/>
                     </div>
@@ -235,7 +235,7 @@ class CarModelShow extends React.Component {
 
                 <div className="row">
                     <div className="col-12">
-                        <TrimLevelList />
+                        <TrimLevelList carmodel={this.props.carmodel}/>
                     </div>
                 </div>
             </div>
