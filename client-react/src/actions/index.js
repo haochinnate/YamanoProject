@@ -84,6 +84,8 @@ export const createCarmodel = (formValues) => async (dispatch) => {
     const response = await carmodels.post('/carmodels', formValues);
 
     dispatch({ type: CREATE_CARMODEL, payload: response.data });
+
+    history.push('/cars');
 };
 
 export const fetchCarmodels = () => async (dispatch) => {
@@ -177,6 +179,7 @@ export const fetchTrimLevelByName = (manufacturerName, carmodleName, trimlevelNa
 };
 
 export const editTrimLevel = (id, formValues) => async (dispatch) => {
+    // console.log(formValues);
     const response = await carmodels.patch(`/trimlevels/${id}`, formValues);
 
     dispatch({ type: EDIT_TRIMLEVEL, payload: response.data });

@@ -7,14 +7,14 @@ import TrimLevelForm from './TrimLevelForm'
 class TrimLevelEdit extends React.Component {
 
     componentDidMount() {
-        // this.props.fetchTrimLevel(this.props.match.params.id);
+        this.props.fetchTrimLevel(this.props.match.params.id);
     }
 
     onSubmit = (formValues) => {
         console.log('onSubmit in TrimLevelEdit');
-        console.log(formValues);
+        // console.log(formValues);
 
-        // this.props.editTrimLevel(this.props.match.params.id);
+        this.props.editTrimLevel(this.props.match.params.id, formValues);
     };
 
     render() {
@@ -25,12 +25,28 @@ class TrimLevelEdit extends React.Component {
         return (
             <div>
                 <h3 className="my-2 fw-bold">Edit a trimlevel</h3>
-                <TrimLevelForm
-                    initialValues={_.pick(
-                        this.props.trimlevel,
-                        'name', 
-                        'isArchived'
-                    )}
+                <TrimLevelForm initialValues={_.pick(
+                    this.props.trimlevel,
+                    // Basic properties
+                    'name', 'price', 'isArchived', 'manufacturerId', 'carmodelId',
+                    // BodySpec properties
+                    'bodyStyle', 'seats', 'length', 'width', 'height',
+                    'wheelbase', 'weight', 'standardCargoVolume', 'fiveSeatsCargoVolume', 'maxCargoVolume', 'frunkCargoVolume',
+                    // PowerTrain properties
+                    'powerType', 'transmission', 'driveWheel',
+                    // Engine properties
+                    'engineDisplacement', 'maxTorque', 'maxHorsepower', 'cityFuelEfficiency', 'freewayFuelEfficiency', 'averageFuelEfficiency',
+                    // Electric Motor properties
+                    'batteryCapacity', 'motorTorque', 'motorPower',
+                    'electricEfficiency', 'electricRange', 'cityRange', 'freewayRange', 'combinedRange', 'chargingTime',
+                    // Safety properties
+                    'antilockBrakingSystem', 'accelerationStabilityRetainer', 'electronicBrakeforceDistribution',
+                    'brakeAssistSystem', 'electronicStabilityProgram', 'cruiseControl', 'adaptiveCruiseControl',
+                    'forwardCollisionWarning', 'automaticEmergencyBraking', 'laneDepartureWarning',
+                    'laneDepartureRevise', 'laneKeepingAssistance', 'rearCrossTrafficWarning',
+                    'blindSpotWarning', 'reverseAutomaticEmergencyBraking', 'hillStartAssis', 'hillDescentControl',
+                    'airBagNumbers', 'isofix', 'activeParkingAssistance', 'iihsDescription', 'ncapDescription',
+                    'surroundViewCamera', 'rearViewCamera')}
                     onSubmit={this.onSubmit}/>
             </div>
         )

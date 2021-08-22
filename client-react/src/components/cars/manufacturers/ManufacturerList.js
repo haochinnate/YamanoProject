@@ -122,7 +122,7 @@ const mapStateToProps = (state) => {
     // console.log('UserId: ' + state.auth.userId)
     return { 
         manufacturers: Object.values(state.manufacturers),
-        currentUserId: state.auth.userId,
+        // currentUserId: state.auth.userId,
         isAdminUser: state.auth.isAdminUser
     };
 };
