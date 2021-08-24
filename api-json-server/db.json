@@ -33,13 +33,15 @@
       "name": "Mercedes-Benz",
       "chineseName": "賓士",
       "level": "豪華",
-      "id": 5
+      "id": 5,
+      "officialUrl": "https://www.mercedes-benz.com.tw"
     },
     {
       "name": "Jaguar",
       "chineseName": "捷豹",
       "level": "豪華",
-      "id": 6
+      "id": 6,
+      "officialUrl": "https://www.jaguar.tw/"
     },
     {
       "name": "Volkswagen",
@@ -309,6 +311,18 @@
       "yearsInfo": "",
       "mainImage": "",
       "id": 5
+    },
+    {
+      "name": "Fabia Combi",
+      "bodyStyle": "2",
+      "officialUrl": "https://www.skoda.com.tw/models/the-new-fabia/the-new-fabia-combi",
+      "isArchived": "",
+      "manufacturerId": 1,
+      "alias": "",
+      "releaseDate": "",
+      "yearsInfo": "",
+      "mainImage": "",
+      "id": 6
     }
   ],
   "trimlevels": [
@@ -369,8 +383,8 @@
       "activeParkingAssistance": "N,",
       "iihsDescription": "",
       "ncapDescription": "",
-      "surroundViewCamera": "S/O/N,",
-      "rearViewCamera": "S/O/N,",
+      "surroundViewCamera": "N,",
+      "rearViewCamera": "S,",
       "id": 1
     },
     {
@@ -430,8 +444,8 @@
       "activeParkingAssistance": "N,",
       "iihsDescription": "",
       "ncapDescription": "",
-      "surroundViewCamera": "S/O/N,",
-      "rearViewCamera": "S/O/N,",
+      "surroundViewCamera": "N,",
+      "rearViewCamera": "S,",
       "id": 2
     },
     {

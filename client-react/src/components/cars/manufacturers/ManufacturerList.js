@@ -59,8 +59,8 @@ class ManufacturerList extends Component {
                 //     </div>
                 //     {this.renderAdmin(manufacturer)}
                 // </div>
-                // style={{ width: '18rem', height: '18rem' }}
-                <div className="col-6 col-md-3 my-2" key={manufacturer.id}>
+                // style={{ width: '18rem', height: '18rem' }} justify-content-stretch
+                <div className="col-6 col-md-2 my-2" key={manufacturer.id}>
                     
                     <div className="card" >
                         <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="text-center" 
@@ -71,12 +71,12 @@ class ManufacturerList extends Component {
                     
                         <div className="card-body">
                             <div className="text-center">
-                                <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="fs-4">
+                                <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="fs-5">
                                     {manufacturer.name === manufacturer.chineseName 
                                         ? manufacturer.name
                                         : `${manufacturer.name}(${manufacturer.chineseName})`}
                                 </Link>
-                                <div className="fs-6">
+                                <div className="fs-8">
                                     <a href={manufacturer.officialUrl} target="_blank">官網</a>   
                                 </div>
                             </div>
@@ -107,8 +107,8 @@ class ManufacturerList extends Component {
                     </div>
                 </div>
 
-                {/*  */}
-                <div className="d-flex row row-cols-1 row-cols-sm-auto justify-content-center">
+                {/*  d-flex row-cols-1 row-cols-sm-auto */}
+                <div className="row justify-content-center">
                     {this.renderManufacturers()}
                 </div>
 

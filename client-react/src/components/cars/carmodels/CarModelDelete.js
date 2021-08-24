@@ -28,8 +28,8 @@ class CarModelDelete extends React.Component{
         if (!this.props.carmodel) {
             return 'Are you sure you want to delete this carmodel?'
         }
-
-        return `Are you sure you want to delete the carmodel with title: ${this.props.carmodel.title}`
+        // console.log(this.props.carmodel)
+        return `Are you sure you want to delete the carmodel with title: ${this.props.carmodel.name}?`
     }
 
     render() {
@@ -39,7 +39,7 @@ class CarModelDelete extends React.Component{
                 title="Delete Carmodel"
                 content={this.renderContent()}
                 actions={this.renderActions()}
-                onDismiss={() => history.push('/')}
+                onDismiss={() => history.goBack()}
             />
         );
     }
