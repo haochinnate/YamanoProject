@@ -20,13 +20,15 @@ class CarModelList extends React.Component {
     renderAdmin(carmodel) {
         if (this.props.isAdminUser) {
             return (
-                <div className="text-center">
-                    <Link to={`${CARMODELS_ROOT}/edit/${carmodel.id}`} className="btn btn-primary m-1">
-                        Edit
-                    </Link>
-                    <Link to={`${CARMODELS_ROOT}/delete/${carmodel.id}`} className="btn btn-danger m-1">
-                        Delete
-                    </Link>
+                <div className="card-footer">
+                    <div className="text-center">
+                        <Link to={`${CARMODELS_ROOT}/edit/${carmodel.id}`} className="btn btn-primary m-1">
+                            Edit
+                        </Link>
+                        <Link to={`${CARMODELS_ROOT}/delete/${carmodel.id}`} className="btn btn-danger m-1">
+                            Delete
+                        </Link>
+                    </div>
                 </div>
             );
         }
@@ -82,9 +84,7 @@ class CarModelList extends React.Component {
                             {/* <span className="badge bg-danger">汽油</span> */}
                         </div>
 
-                        <div className="card-footer">
-                            {this.renderAdmin(carmodel)}
-                        </div>
+                        {this.renderAdmin(carmodel)}
                     </div>
                 </div>
 

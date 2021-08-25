@@ -13,6 +13,8 @@ class ManufacturerList extends Component {
     renderAdmin(manufacturer) {
         if (this.props.isAdminUser) {
             return (
+                <div className="card-footer">
+
                 <div className="text-center">
                     <Link to={`${MANUFACTURERS_ROOT}/edit/${manufacturer.id}`} className="btn btn-primary m-1">
                         Edit
@@ -20,6 +22,7 @@ class ManufacturerList extends Component {
                     <Link to={`${MANUFACTURERS_ROOT}/delete/${manufacturer.id}`} className="btn btn-danger m-1">
                         Delete
                     </Link>
+                </div>
                 </div>
             );
         }
@@ -40,51 +43,40 @@ class ManufacturerList extends Component {
     renderManufacturers() {
         return this.props.manufacturers.map(manufacturer => {
             return (
-                // <div className="col col-12 col-sm-6 col-md-4 col-lg-2" key={manufacturer.id}>
+                // style={{ width: '18rem', height: '18rem' }} justify-content-stretch  img-fluid
+                // , width: 'auto', height: 'auto' 
+                // col-6 col-sm-3 col-md-2
+                <div className="my-2" key={manufacturer.id}>
                     
-                //     <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="text-center">
-                //         <img src={window.location.origin + `/images/manufacturers/${manufacturer.name}.png`}
-                //             className="img-fluid ratio ratio-1-1" alt={manufacturer.name}/>
-                //     </Link>
-
-                //     <div className="text-center">
-                //         <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="fs-4 text-nowrap">
-                //             {manufacturer.name === manufacturer.chineseName 
-                //                 ? manufacturer.name
-                //                 : `${manufacturer.name}(${manufacturer.chineseName})`}
-                //         </Link>
-                //         <div className="fs-6">
-                //             <a href={manufacturer.officialUrl} target="_blank">官網</a>   
-                //         </div>
-                //     </div>
-                //     {this.renderAdmin(manufacturer)}
-                // </div>
-                // style={{ width: '18rem', height: '18rem' }} justify-content-stretch
-                <div className="col-6 col-md-2 my-2" key={manufacturer.id}>
-                    
-                    <div className="card" >
-                        <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="text-center" 
-                            >
+                    <div className="card h-100" >
+                        <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="text-center" >
                             <img src={window.location.origin + `/images/manufacturers/${manufacturer.name}.png`}
-                                className="card-img-top img-fluid"  alt={manufacturer.name}/>
+                                className="card-img-top" alt={manufacturer.name}
+                                style={{ maxHeight: '100px', maxWidth:'100%', width: 'auto', height: 'auto' }}/>
                         </Link>
                     
                         <div className="card-body">
+                            
                             <div className="text-center">
-                                <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="fs-5">
+                                <Link to={`${CARS_DB_ROOT}/${manufacturer.name}`} className="fs-4 card-title"
+                                    >
                                     {manufacturer.name === manufacturer.chineseName 
                                         ? manufacturer.name
                                         : `${manufacturer.name}(${manufacturer.chineseName})`}
                                 </Link>
-                                <div className="fs-8">
-                                    <a href={manufacturer.officialUrl} target="_blank">官網</a>   
+                                
+                                <div>
+                                    <a href={manufacturer.officialUrl} target="_blank">
+                                        <i className="fas fa-link" style={{ color: 'gray' }}></i>
+                                        官網
+                                    </a> 
                                 </div>
                             </div>
                         </div>
                     
-                        <div className="card-footer">
-                            {this.renderAdmin(manufacturer)}
-                        </div>
+                        {/* Edit and Delete button will show in card-footer */}
+                        {this.renderAdmin(manufacturer)}
+                           
                     </div>
 
                 </div>
@@ -107,11 +99,11 @@ class ManufacturerList extends Component {
                     </div>
                 </div>
 
-                {/*  d-flex row-cols-1 row-cols-sm-auto */}
-                <div className="row justify-content-center">
+                {/* d-flex card-group row-cols-sm-4 row-cols-md-6*/}
+                <div className="row row-cols-2 row-cols-sm-auto  justify-content-center ">
                     {this.renderManufacturers()}
                 </div>
-
+                
                 {this.renderCreate()}
             </div>
         )
