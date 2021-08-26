@@ -63,7 +63,7 @@ const TrimLevelForm = (props) => {
         valueChangedHandler: isArchivedChangedHandler,
         inputBlurHandler: isArchivedBlurHandler,
     } = useInput({ 
-        validateValue: doNotCare, initialValue: false,
+        validateValue: doNotCare,
         initialValue: props.initialValues === undefined ? false : props.initialValues.isArchived 
     });
 
