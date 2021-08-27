@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import TrimLevelItem from './TrimLevelItem';
 
 const FilterResults = (props) => {
 
@@ -11,14 +12,18 @@ const FilterResults = (props) => {
         return (
             <li key={level.id} className="list-group-item">
                 {level.name}
+                <TrimLevelItem level={level}/>
             </li>
         );
     });
 
     return (
-        <ul className="list-group mb-4">
-            {trimlevelElements}
-        </ul>
+        <div className="container">
+            <ul className="list-group mb-4">
+                {trimlevelElements}
+            </ul>
+        </div>
+
     )
 }
 

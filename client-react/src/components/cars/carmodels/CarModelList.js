@@ -70,7 +70,7 @@ class CarModelList extends React.Component {
                             <h4 className="card-text text-danger fs-4">xxx.x萬 ~ xxx.x 萬</h4>
                             
                             {/* <div className="">
-                                <a href={carmodel.officialUrl} target="_blank">官網</a>   
+                                <a href={carmodel.officialUrl} target="_blank" rel="noreferrer noopener">官網</a>   
                                 <span className="text-muted mx-2">別稱: {_.join(carmodel.alias, ',')}</span>
                             </div>
                             <h6 className="card-text"><small className="text-muted">發布日期: {carmodel.releaseDate}</small></h6> */}

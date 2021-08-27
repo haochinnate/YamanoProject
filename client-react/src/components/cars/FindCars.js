@@ -15,7 +15,8 @@ const FindCars = (props) => {
     const [levels, setLevels] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(2);
+    const [itemsPerPage] = useState(1);
+    // const [itemsPerPage, setItemsPerPage] = useState(1);
 
 
     const onSubmit = (formValues) => {
@@ -61,8 +62,9 @@ const FindCars = (props) => {
             <div className="row my-2">
                 <FilterResults levels={currentLevels} loading={loading}/>
                 <Pagination itemsPerPage={itemsPerPage} 
-                    totalItems={levels.length} 
-                    paginate={paginate}/>
+                    totalItems={levels.length}
+                    paginate={paginate}
+                    activePage={currentPage}/>
             </div>
         </div>
     )

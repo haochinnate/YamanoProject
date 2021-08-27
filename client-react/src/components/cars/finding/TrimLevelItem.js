@@ -1,9 +1,11 @@
 import React from 'react'
 
-const TrimLevelItem = () => {
+const TrimLevelItem = (props) => {
+    const { level } = props;
     return (
         <div>
-            
+            <h5>{level.name}</h5>
+            <h5>{level.price}</h5>
         </div>
     )
 }

@@ -66,7 +66,7 @@ class ManufacturerList extends Component {
                                 </Link>
                                 
                                 <div>
-                                    <a href={manufacturer.officialUrl} target="_blank">
+                                    <a href={manufacturer.officialUrl} target="_blank" rel="noreferrer noopener">
                                         <i className="fas fa-link" style={{ color: 'gray' }}></i>
                                         官網
                                     </a> 

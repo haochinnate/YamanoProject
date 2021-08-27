@@ -177,56 +177,100 @@ class CarModelShow extends React.Component {
 
                 <div className="row align-items-center">
                     <div className="col-md-4 ">
-                        <div className="d-flex flex-column align-items-center">
+                        <div className="d-flex flex-column">
 
-                            <div className="fs-2 fw-bold">{name}</div>
+                            <div className="d-flex flex-row justify-content-start">
+                                <div className="fs-6 my-1">
+                                    <Link to={`${CARS_DB_ROOT}/${this.props.match.params.manufacturerName}`} className="fs-5 secondary">
+                                    <i className="fas fa-chevron-left" style={{ color: 'gray' }}></i>
 
-                            <span className="badge bg-primary my-1 fs-5">{BODY_STYLES_ZH[bodyStyle]}</span>
-
-                            <div className="fs-6 my-1 text-muted">
-                                <div>別稱: {_.join(alias, ',')}</div>
-                            </div>
-                               
-
-                            <div className="fs-5 my-1">
-                                <div>
-                                    <i className="fas fa-calendar"></i>
-                                    發表日期: {releaseDate}
+                                        {this.props.match.params.manufacturerName}
+                                    </Link>
                                 </div>
                             </div>
 
-                            <div className="fs-5 my-1">
-                                <div>
-                                    <i className="fas fa-archive"></i>
-                                    { isArchived === false ? "現行車款" : "已下市" }
+                            <div className="d-flex flex-row justify-content-center">
+                                <div className="fs-2 fw-bold">{name}</div>
+                            </div>
+
+                            <div className="d-flex flex-row justify-content-center">
+                                <span className="badge bg-primary my-1 fs-5">{BODY_STYLES_ZH[bodyStyle]}</span>
+                            </div>
+                            
+                            <div className="d-flex flex-row justify-content-center">
+                                <div className="fs-6 my-1 text-muted">別稱: {_.join(alias, ',')}</div>
+                            </div>
+
+                        </div>
+
+                        <div className="d-flex flex-column align-items-stretch">
+                            <div class="row">
+                                <div class="col-4 text-end">
+                                    <div className="fs-5 my-1">
+                                        <i className="fas fa-calendar"></i>
+                                    </div>
+                                </div>
+                                <div class="col-8 text-start">
+                                    <div className="fs-5 my-1">
+                                        發表日期: {releaseDate}
+                                    </div>
                                 </div>
                             </div>
-                        
-                            <div className="fs-5 my-1">
-                                <Link to={`${CARS_DB_ROOT}/${this.props.match.params.manufacturerName}`} className="fs-5 secondary">
-                                <i className="fas fa-chevron-left" style={{ color: 'gray' }}></i>
+                            <div class="row">
+                                <div class="col-4 text-end">
+                                    <div className="fs-5 my-1">
+                                        <i className="fas fa-archive"></i>
+                                    </div>
+                                </div>
 
-                                    {this.props.match.params.manufacturerName}
-                                </Link>
+                                <div class="col-8 text-start">
+                                    <div className="fs-5 my-1">
+                                        { isArchived === false ? "現行車款" : "已下市" }
+                                  </div>
+                                </div>
                             </div>
 
-                            <div className="fs-5 my-1">
-                                <a href={officialUrl} target="_blank">
-                                    <i className="fas fa-link" style={{ color: 'gray' }}></i>
-                                    {this.props.match.params.manufacturerName}官網
-                                </a> 
+                            <div class="row">
+                                <div class="col-4 text-end">
+                                    <div className="fs-5 my-1">
+                                        <a href={officialUrl} target="_blank" rel="noreferrer noopener">
+                                            <i className="fas fa-link" style={{ color: 'gray' }}></i>
+                                        </a> 
+                                    </div>
+                                </div>
+
+                                <div class="col-8 text-start">
+                                    <div className="fs-5 my-1">
+                                        <a href={officialUrl} target="_blank" rel="noreferrer noopener">
+                                            {this.props.match.params.manufacturerName}官網
+                                        </a> 
+                                    </div>
+                                </div>
                             </div>
 
-                            <div className="fs-5 my-1">
-                                <a href={`https://www.youtube.com/results?search_query=${name}+%E8%A9%A6%E9%A7%95`} target="_blank">
-                                    <i className="fab fa-youtube" style={{ color: 'red' }}></i>
-                                    更多試駕影片
-                                </a> 
+                            <div class="row">
+                                <div class="col-4 text-end">
+                                    <div className="fs-5 my-1">
+                                        <a href={`https://www.youtube.com/results?search_query=${name}+%E8%A9%A6%E9%A7%95`} 
+                                            target="_blank" rel="noreferrer noopener">
+                                            <i className="fab fa-youtube" style={{ color: 'red' }}></i>
+                                        </a> 
+                                    </div>
+                                </div>
+
+                                <div class="col-8 text-start">
+                                    <div className="fs-5 my-1">
+                                        <a href={`https://www.youtube.com/results?search_query=${name}+%E8%A9%A6%E9%A7%95`} 
+                                            target="_blank" rel="noreferrer noopener">
+                                            更多試駕影片
+                                        </a> 
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                     </div>
-                
+
                     <div className="max-vh-10 col-md-8">
                         {this.renderVideosTmp()}
                         {/* {this.renderVideos(this.state.videos)} */}
