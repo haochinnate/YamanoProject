@@ -1,30 +1,98 @@
 import React, { useState } from 'react';
 import useInput from '../../../hooks/useInput';
+import { useForm } from 'react-hook-form';
+import { BODY_STYLES_ZH } from '../../../consts/bodyStyles';
+import { POWER_TYPES_ZH } from '../../../consts/powerTypes';
+import { BUDGET_RANGES } from '../../../consts/budgetRanges';
 
-const isNotEmpty = value => String(value).trim() !== '';
-const doNotCare = () => true;
+const Condition_MinPrice = "minPrice";
+const Condition_MaxPrice = "maxPrice";
+const Condition_MinLength = "minLength";
+const Condition_MaxLength = "maxLength";
+const Condition_MinCargoVolume = "minCargoVolume";
+const Condition_MinHorsePower = "minHorsePower";
+// const Condition_MinWidth = "minWidth";
+// const Condition_MaxWidth = "maxWidth";
+// const Condition_MinHeight = "minHeight";
+// const Condition_MaxHeight = "maxHeight";
+
 
 const FilterConditionForm = (props) => {
 
-    const {
-        value: isArchived, 
-        valueChangedHandler: isArchivedChangedHandler,
-        inputBlurHandler: isArchivedBlurHandler,
-    } = useInput({ 
-        validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? false : props.initialValues.isArchived 
-    });
+    const { register, setValue, getValues, handleSubmit, watch, formState: { errors } } = useForm();
 
-    const onSubmit = (event) => {
-        event.preventDefault();
-        // console.log(formValues);
+    // console.log(watch("minPrice"));
 
-        props.onSubmit({
-            maxLength: 6000,
-            minLength: 100,
-            maxHeight: 3000,
-            minHeight: 0
+    // const {
+    //     value: isArchived, 
+    //     valueChangedHandler: isArchivedChangedHandler,
+    //     inputBlurHandler: isArchivedBlurHandler,
+    // } = useInput({ 
+    //     validateValue: doNotCare,
+    //     initialValue: props.initialValues === undefined ? false : props.initialValues.isArchived 
+    // });
+
+    const renderQuickBudgetRanges = () => {
+        const budgetRangeButtons = Object.keys(BUDGET_RANGES).map((key) => [Number(key), BUDGET_RANGES[key]]);
+    
+        return budgetRangeButtons.map(budgetRange => {
+            return (
+                <React.Fragment>
+                    <label className="badge bg-danger mx-1" 
+                        onClick={() => {
+                            // console.log(`${budgetRange[1].min}萬 ~ ${budgetRange[1].max}萬`);
+                            setValue(Condition_MinPrice, budgetRange[1].min);
+                            setValue(Condition_MaxPrice, budgetRange[1].max);
+                        }}>
+                        {`${budgetRange[1].min}萬 ~ ${budgetRange[1].max}萬`}
+                    </label>
+                </React.Fragment>
+            );
         });
+    };
+
+    const renderFilterPowerTypes = () => {
+        const powerTypesToggleButtons = Object.keys(POWER_TYPES_ZH).map((key) => [Number(key), POWER_TYPES_ZH[key]]);
+    
+        return powerTypesToggleButtons.map(powerType => {
+            return (
+                <React.Fragment>
+                    <input type="checkbox" className="btn-check" id={`btn-check-powertype-${powerType[0]}`}
+                        autoComplete="off" {...register(`powerType${powerType[0]}`)}></input>
+                    <label className="btn btn-outline-primary" htmlFor={`btn-check-powertype-${powerType[0]}`}>{powerType[1]}</label>
+                </React.Fragment>
+            );
+        });
+    };
+
+    const renderFilterBodyStyles = () => {
+        const bodyStyleToggleButtons = Object.keys(BODY_STYLES_ZH).map((key) => [Number(key), BODY_STYLES_ZH[key]]);
+    
+        return bodyStyleToggleButtons.map(bodyStyle => {
+            return (
+                <React.Fragment>
+                    <input type="checkbox" className="btn-check" id={`btn-check-bodystyle-${bodyStyle[0]}`}
+                        autoComplete="off" {...register(`bodyStyle${bodyStyle[0]}`)}></input>
+                    <label className="btn btn-outline-primary" htmlFor={`btn-check-bodystyle-${bodyStyle[0]}`}>{bodyStyle[1]}</label>
+                </React.Fragment>
+            );
+        });
+    };
+
+    // const onSubmit = (event) => {
+    const onSubmit = (data) => {
+        // event.preventDefault();
+        console.log('onSubmit in Form');
+        console.log(data["minPrice"]);
+        console.log(data.maxPrice);
+
+        props.onSubmit(data);
+        // props.onSubmit({
+        //     maxLength: 6000,
+        //     minLength: 100,
+        //     maxHeight: 3000,
+        //     minHeight: 0
+        // });
 
         // props.onSubmit(formValues);
     };
@@ -33,7 +101,7 @@ const FilterConditionForm = (props) => {
         <div>
             <div className="accordion-item">
                 <h2 className="accordion-header" id="panelsFilterConditions-heading">
-                    <button className="accordion-button" type="button" 
+                    <button className="accordion-button fs-3" type="button" 
                         data-bs-toggle="collapse" data-bs-target="#panelsFilterConditions-content" 
                         aria-expanded="true" aria-controls="panelsFilterConditions-content">
                         條件
@@ -44,52 +112,117 @@ const FilterConditionForm = (props) => {
                     aria-labelledby="panelsFilterConditions-heading">
                     <div className="accordion-body">
                        
-                        <form className="row" onSubmit={onSubmit}>
+                        <form className="row" onSubmit={handleSubmit(onSubmit)}>
 
+                            {/* Min Price & Max Price */}
+                            <div className="row">
+                                <label className="form-label col-auto fs-4" htmlFor="minPrice">預算(萬元):</label>
 
-                            {/* Min Price */}
-                            
-                            {/* Max Price */}
-
-                            {/* <div className="col-auto">
-                                <label htmlFor="price" className="form-label">預算</label>
-                                <input id="price" type="number" className="form-control" 
-                                    value={price} onChange={priceChangedHandler} onBlur={priceBlurHandler}>
-                                </input>
-                                
-
-
-                            </div> */}
-
-                            {/* Min Length */}
-                            {/* Max Length */}
-                            
-                            {/* Min Width */}
-                            {/* Max Width */}
-
-                            {/* Min Height */}
-                            {/* Max Height */}
-
-
-                            <div>
-                                <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off"></input>
-                                <label class="btn btn-outline-primary" htmlFor="btn-check-outlined">Single toggle</label>
+                                <div className="col">
+                                    <input type="number" defaultValue="70" className="form-control"  {...register(Condition_MinPrice)} />
+                                    <span>~</span>
+                                    <input type="number" defaultValue="130" className="form-control" {...register(Condition_MaxPrice)}/>
+                                </div>
                             </div>
-                            
-                            {/* 
-                            
-                            bodyStyle, 數個checkbox 或是用 
-                            排氣量, 2 handle slider
-                            燃料/動力形式/能源, 數個 checkbox
-                            乘客數/座位數, 兩個 checkbox 5人以下, 6人以上
-                            配備/配備, 一個配備 一個 checkbox
-                            動力(馬力),  2 handle slider */}
 
+                            {/* Quick Budget Ranges */}
+                            <div className="row">
+                                <label className="form-label col-auto fs-6" htmlFor="minPrice">快速預算</label>
+                                
+                                <div className="col">
+                                    {renderQuickBudgetRanges()}
+                                </div>
+                            </div>
+
+                            {/* Min Length & Max Length */}
+                            <div className="row">
+                                <label className="form-label col-auto fs-4" htmlFor="minPrice">車長(mm):</label>
+
+                                <div className="col">
+                                    <input type="number" defaultValue="0" className="form-control" 
+                                        {...register(Condition_MinLength, { required: true, min: 0, max: 6000})} />
+                                    {errors[Condition_MinLength] && <span>This field is required</span>}
+
+                                    <span>~</span>
+
+                                    <input type="number" defaultValue="6000" className="form-control" 
+                                        {...register(Condition_MaxLength, { required: true, min: 0, max: 6000 })} />
+                                    {errors[Condition_MaxLength] && <span>This field is required</span>}
+
+                                    <input type="range" className="form-range" min="0" max="6000" step="10" id="lengthRange" 
+                                        onChange={(event) => { 
+                                            // console.log(event);
+                                            setValue(Condition_MaxLength, event.target.value);
+                                        }}  value={watch(Condition_MaxLength)} ></input>
+                                </div>
+                            </div>
+
+                            {/* Min Width & Max Width (future)*/}
+                            {/* Min Height & Max Height (future)*/}
+
+                            {/* BodyStyles row-cols-auto*/}
+                            <div className="row">
+                                <label className="form-label col-auto fs-4" htmlFor="bodyStyles">車身:</label>
+
+                                <div className="col">
+                                    {renderFilterBodyStyles()}
+                                </div>
+                            </div>
+
+                            {/* Seats 乘客數/座位數*/}
+
+                            {/* StandardCargoVolume 行李箱容積 */}
+                            <div className="row">
+                                <label className="form-label col-auto fs-4" htmlFor="minCargoVolume">行李箱容積至少(L):</label>
+
+                                <div className="col">
+                                    <input type="number" defaultValue="0" className="form-control" 
+                                        {...register(Condition_MinCargoVolume)} />
+
+                                    <input type="range" className="form-range" min="0" max="700" step="10" id="lengthRange" 
+                                        onChange={(event) => { 
+                                            // console.log(event);
+                                            setValue(Condition_MinCargoVolume, event.target.value);
+                                        }}  value={watch(Condition_MinCargoVolume)} ></input>
+                                </div>
+                            </div>
+
+                            {/* PowerType 燃料/動力形式/能源*/}
+                            <div className="row">
+                                <label className="form-label col-auto fs-4" htmlFor="bodyStyles">動力:</label>
+
+                                <div className="col">
+                                    {renderFilterPowerTypes()}
+                                </div>
+                            </div>
+
+                            {/* Engine Displacement 排氣量*/}
+
+                            {/* Horsepower 動力(馬力) */}
+                            <div className="row">
+                                <label className="form-label col-auto fs-4" htmlFor="minHorsePower">馬力至少(hp):</label>
+
+                                <div className="col">
+                                    <input type="number" defaultValue="0" className="form-control" 
+                                        {...register(Condition_MinHorsePower)} />
+
+                                    <input type="range" className="form-range" min="0" max="400" step="10" id="lengthRange" 
+                                        onChange={(event) => { 
+                                            // console.log(event);
+                                            setValue(Condition_MinHorsePower, event.target.value);
+                                        }} value={watch(Condition_MinHorsePower)} ></input>
+                                </div>
+                            </div>
+
+                            {/* Safety */}
+                            
 
                             {/* Submit(Find Car) Button */}
-                            <div className="col-12 text-center">
+                            <div className="col-12 text-center mt-3">
                                 <button className="btn btn-primary" type="submit">找車</button>
                             </div>
+
+                            {/* Reset to default button? */}
                                 
                         </form>
 
