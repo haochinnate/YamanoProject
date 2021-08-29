@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { BODY_STYLES_ZH } from '../../../consts/bodyStyles';
 import { POWER_TYPES_ZH } from '../../../consts/powerTypes';
 import { BUDGET_RANGES } from '../../../consts/budgetRanges';
+import { SEATS_SELECTIONS } from '../../../consts/seatsSelections';
 
 const Condition_MinPrice = "minPrice";
 const Condition_MaxPrice = "maxPrice";
@@ -11,6 +12,10 @@ const Condition_MinLength = "minLength";
 const Condition_MaxLength = "maxLength";
 const Condition_MinCargoVolume = "minCargoVolume";
 const Condition_MinHorsePower = "minHorsePower";
+const Condition_Seats = "seats";
+const Condition_AllDisplacement = "allDisplacement"
+const Condition_MinDisplacement = "minDisplacement";
+const Condition_MaxDisplacement = "maxDisplacement";
 // const Condition_MinWidth = "minWidth";
 // const Condition_MaxWidth = "maxWidth";
 // const Condition_MinHeight = "minHeight";
@@ -22,15 +27,6 @@ const FilterConditionForm = (props) => {
     const { register, setValue, getValues, handleSubmit, watch, formState: { errors } } = useForm();
 
     // console.log(watch("minPrice"));
-
-    // const {
-    //     value: isArchived, 
-    //     valueChangedHandler: isArchivedChangedHandler,
-    //     inputBlurHandler: isArchivedBlurHandler,
-    // } = useInput({ 
-    //     validateValue: doNotCare,
-    //     initialValue: props.initialValues === undefined ? false : props.initialValues.isArchived 
-    // });
 
     const renderQuickBudgetRanges = () => {
         const budgetRangeButtons = Object.keys(BUDGET_RANGES).map((key) => [Number(key), BUDGET_RANGES[key]]);
@@ -58,8 +54,26 @@ const FilterConditionForm = (props) => {
             return (
                 <React.Fragment>
                     <input type="checkbox" className="btn-check" id={`btn-check-powertype-${powerType[0]}`}
-                        autoComplete="off" {...register(`powerType${powerType[0]}`)}></input>
-                    <label className="btn btn-outline-primary" htmlFor={`btn-check-powertype-${powerType[0]}`}>{powerType[1]}</label>
+                        autoComplete="off" {...register(`powerType${powerType[0]}`)} defaultChecked></input>
+                    <label className="btn btn-outline-primary btn-sm" htmlFor={`btn-check-powertype-${powerType[0]}`}>{powerType[1]}</label>
+                </React.Fragment>
+            );
+        });
+    };
+
+    const renderFilterSeatsSelections = () => {
+        const seatsSelections = Object.keys(SEATS_SELECTIONS).map((key) => [Number(key), SEATS_SELECTIONS[key]]);
+    
+        return seatsSelections.map(seatSelection => {
+            return (
+                <React.Fragment>
+                    <div className="form-check form-check-inline">
+                        <input className="form-check-input" type="radio" name="seats" 
+                            id={`seatsRadio${seatSelection[0]}`} value={`${seatSelection[0]}`}
+                            {...register(Condition_Seats, { required: true })} 
+                            defaultChecked={ seatSelection[0] === 0 ? true : false }/>
+                        <label className="form-check-label" htmlFor={`seatsRadio${seatSelection[0]}`}>{seatSelection[1]}</label>
+                    </div>
                 </React.Fragment>
             );
         });
@@ -72,29 +86,75 @@ const FilterConditionForm = (props) => {
             return (
                 <React.Fragment>
                     <input type="checkbox" className="btn-check" id={`btn-check-bodystyle-${bodyStyle[0]}`}
-                        autoComplete="off" {...register(`bodyStyle${bodyStyle[0]}`)}></input>
-                    <label className="btn btn-outline-primary" htmlFor={`btn-check-bodystyle-${bodyStyle[0]}`}>{bodyStyle[1]}</label>
+                        autoComplete="off" {...register(`bodyStyle${bodyStyle[0]}`)} defaultChecked></input>
+                    <label className="btn btn-outline-primary btn-sm" htmlFor={`btn-check-bodystyle-${bodyStyle[0]}`}>{bodyStyle[1]}</label>
                 </React.Fragment>
             );
         });
     };
 
-    // const onSubmit = (event) => {
+    const renderDisplacementSelections = () => {
+        watch(Condition_AllDisplacement);
+        const allDisplacementSetting = getValues(Condition_AllDisplacement);
+        // console.log(allDisplacementSetting);
+        if (allDisplacementSetting === 'false') {
+            return(
+                <div className="col">
+                    <div className="col">
+                        <input type="number" defaultValue="0" step="0.1" className="form-control" 
+                            {...register(Condition_MinDisplacement, { min: 0.0 })} />
+                        <span>~</span>
+                        <input type="number" defaultValue="1.8" step="0.1" className="form-control" 
+                            {...register(Condition_MaxDisplacement, { min: 0.0 })}/>
+                    </div>
+                </div>
+            )
+        }
+    };
+
     const onSubmit = (data) => {
         // event.preventDefault();
         console.log('onSubmit in Form');
-        console.log(data["minPrice"]);
-        console.log(data.maxPrice);
 
-        props.onSubmit(data);
-        // props.onSubmit({
-        //     maxLength: 6000,
-        //     minLength: 100,
-        //     maxHeight: 3000,
-        //     minHeight: 0
-        // });
+        // get selected Body Styles
+        const selectedBodyStyles= [];
+        Object.keys(BODY_STYLES_ZH).forEach(key => {
+            const isSelected = getValues(`bodyStyle${Number(key)}`);
+            // console.log(isSelected);
+            if (isSelected) {
+                selectedBodyStyles.push(key);
+            }
+        });
+        // console.log(selectedBodyStyles);
 
-        // props.onSubmit(formValues);
+        // get selected Power Types
+        const selectedPowerTypes= [];
+        Object.keys(POWER_TYPES_ZH).forEach(key => {
+            const isSelected = getValues(`powerType${Number(key)}`);
+            // console.log(isSelected);
+            if (isSelected) {
+                selectedPowerTypes.push(key);
+            }
+        });
+        // console.log(selectedPowerTypes);
+        
+
+        // props.onSubmit(data);
+        props.onSubmit({
+            minPrice: data[Condition_MinPrice],
+            maxPrice: data[Condition_MaxPrice],
+            minLength: data[Condition_MinLength],
+            maxLength: data[Condition_MaxLength],
+            selectedBodyStyles,
+            selectedPowerTypes, 
+            minCargoVolume: data[Condition_MinCargoVolume],
+            minHorsePower: data[Condition_MinHorsePower],
+            seats: data[Condition_Seats],
+            minDisplacement: getValues(Condition_AllDisplacement) 
+                === 'false' ? data[Condition_MinDisplacement] : "0",
+            maxDisplacement: getValues(Condition_AllDisplacement)
+                === 'false' ? data[Condition_MaxDisplacement] : "10"
+        });
     };
 
     return (
@@ -127,7 +187,7 @@ const FilterConditionForm = (props) => {
 
                             {/* Quick Budget Ranges */}
                             <div className="row">
-                                <label className="form-label col-auto fs-6" htmlFor="minPrice">快速預算</label>
+                                <label className="form-label col-auto fs-6" htmlFor="minPrice">快速預算:</label>
                                 
                                 <div className="col">
                                     {renderQuickBudgetRanges()}
@@ -140,12 +200,14 @@ const FilterConditionForm = (props) => {
 
                                 <div className="col">
                                     <input type="number" defaultValue="0" className="form-control" 
+                                        min="0" max="6000"
                                         {...register(Condition_MinLength, { required: true, min: 0, max: 6000})} />
                                     {errors[Condition_MinLength] && <span>This field is required</span>}
 
                                     <span>~</span>
 
                                     <input type="number" defaultValue="6000" className="form-control" 
+                                        min="0" max="6000"
                                         {...register(Condition_MaxLength, { required: true, min: 0, max: 6000 })} />
                                     {errors[Condition_MaxLength] && <span>This field is required</span>}
 
@@ -170,6 +232,13 @@ const FilterConditionForm = (props) => {
                             </div>
 
                             {/* Seats 乘客數/座位數*/}
+                            <div className="row">
+                                <label className="form-label col-auto fs-4" htmlFor="seats">座位數:</label>
+                                
+                                <div className="col">
+                                    {renderFilterSeatsSelections()}                                  
+                                </div>
+                            </div>
 
                             {/* StandardCargoVolume 行李箱容積 */}
                             <div className="row">
@@ -197,6 +266,29 @@ const FilterConditionForm = (props) => {
                             </div>
 
                             {/* Engine Displacement 排氣量*/}
+                            <div className="row">
+                                <label className="form-label col-auto fs-4" htmlFor="minPrice">排氣量(L):</label>
+
+                                <div className="col">
+                                    <div className="form-check form-check-inline">
+                                        <input className="form-check-input" type="radio" name="allDisplacements" 
+                                            id="allDisplacement" value={true}
+                                            {...register(Condition_AllDisplacement, { required: true })} 
+                                            defaultChecked/>
+                                            <label className="form-check-label" htmlFor="allDisplacement">皆可</label>
+                                    </div>
+
+                                    <div className="form-check form-check-inline">
+                                        <input className="form-check-input" type="radio" name="allDisplacements" 
+                                            id="restrictedDisplacement" value={false}
+                                            {...register(Condition_AllDisplacement, { required: true })}/>
+                                            <label className="form-check-label" htmlFor="restrictedDisplacement">限定</label>
+                                    </div>
+
+                                    {renderDisplacementSelections()}
+
+                                </div>
+                            </div>
 
                             {/* Horsepower 動力(馬力) */}
                             <div className="row">
@@ -215,7 +307,10 @@ const FilterConditionForm = (props) => {
                             </div>
 
                             {/* Safety */}
-                            
+                            <div className="row">
+                                <label className="form-label col-auto fs-4" htmlFor="minPrice">安全配備:</label>
+                                
+                            </div>
 
                             {/* Submit(Find Car) Button */}
                             <div className="col-12 text-center mt-3">

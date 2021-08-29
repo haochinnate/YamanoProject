@@ -50,32 +50,22 @@ DELETE /contacts/{cID}/notes/{nID}
 
 
 ## 篩選條件
-  - UCAR
-    - bodyStyle
-    - price
-    - size
-    - 排氣量
-    - 座位
-    - 產地
-    - 動力
-    - 能源
-    - 配備
-  - 8891
-    - price
-    - bodyStyle
-    - 變速箱形式
-    - 排氣量
-    - 燃料
-    - 乘客數
-    - 車門
-    - 配備
-  - Yahoo
-    - price
-    - bodyStyle
-    - 動力形式
-    - 驅動形式
-    - 座位數
 
+- 價格
+- 車長
+- (X)車寬
+- (X)車高
+- (X)車重
+- bodyStyle 
+- 乘客數/座位數
+- 行李箱容積
+- 燃料/動力形式/能源
+- 排氣量
+- 動力(馬力)
+- (+)配備/配備, 一個配備 一個 checkbox
+- (X)變速箱形式
+- (X)驅動形式
+- (X)產地
 
 
 https://www.ptt.cc/bbs/car/M.1627294142.A.0E0.html
