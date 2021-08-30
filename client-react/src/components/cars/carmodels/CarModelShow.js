@@ -216,6 +216,20 @@ class CarModelShow extends React.Component {
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-4 text-end">
+                                    <div className="fs-5 my-1">
+                                        <i className="fas fa-calendar"></i>
+                                    </div>
+                                </div>
+                                <div class="col-8 text-start">
+                                    <div className="fs-5 my-1">
+                                        年式資訊: {yearsInfo}
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-4 text-end">
                                     <div className="fs-5 my-1">

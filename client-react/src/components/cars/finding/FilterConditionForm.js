@@ -5,6 +5,7 @@ import { BODY_STYLES_ZH } from '../../../consts/bodyStyles';
 import { POWER_TYPES_ZH } from '../../../consts/powerTypes';
 import { BUDGET_RANGES } from '../../../consts/budgetRanges';
 import { SEATS_SELECTIONS } from '../../../consts/seatsSelections';
+import { SAFETY_EQUIPMENTS_SELECTIONS } from '../../../consts/safetyEquipmentsSelections';
 
 const Condition_MinPrice = "minPrice";
 const Condition_MaxPrice = "maxPrice";
@@ -34,7 +35,7 @@ const FilterConditionForm = (props) => {
         return budgetRangeButtons.map(budgetRange => {
             return (
                 <React.Fragment>
-                    <label className="badge bg-danger mx-1" 
+                    <label className="badge bg-danger me-1" 
                         onClick={() => {
                             // console.log(`${budgetRange[1].min}萬 ~ ${budgetRange[1].max}萬`);
                             setValue(Condition_MinPrice, budgetRange[1].min);
@@ -55,7 +56,7 @@ const FilterConditionForm = (props) => {
                 <React.Fragment>
                     <input type="checkbox" className="btn-check" id={`btn-check-powertype-${powerType[0]}`}
                         autoComplete="off" {...register(`powerType${powerType[0]}`)} defaultChecked></input>
-                    <label className="btn btn-outline-primary btn-sm" htmlFor={`btn-check-powertype-${powerType[0]}`}>{powerType[1]}</label>
+                    <label className="btn btn-outline-primary btn-sm me-1" htmlFor={`btn-check-powertype-${powerType[0]}`}>{powerType[1]}</label>
                 </React.Fragment>
             );
         });
@@ -87,7 +88,7 @@ const FilterConditionForm = (props) => {
                 <React.Fragment>
                     <input type="checkbox" className="btn-check" id={`btn-check-bodystyle-${bodyStyle[0]}`}
                         autoComplete="off" {...register(`bodyStyle${bodyStyle[0]}`)} defaultChecked></input>
-                    <label className="btn btn-outline-primary btn-sm" htmlFor={`btn-check-bodystyle-${bodyStyle[0]}`}>{bodyStyle[1]}</label>
+                    <label className="btn btn-outline-primary btn-sm me-1" htmlFor={`btn-check-bodystyle-${bodyStyle[0]}`}>{bodyStyle[1]}</label>
                 </React.Fragment>
             );
         });
@@ -110,6 +111,29 @@ const FilterConditionForm = (props) => {
                 </div>
             )
         }
+    };
+
+    const renderSafetyEquipments = () => {
+        const safetyEquipments = Object.keys(SAFETY_EQUIPMENTS_SELECTIONS).map((key) => [Number(key), SAFETY_EQUIPMENTS_SELECTIONS[key]]);
+    
+        return safetyEquipments.map(se => {
+            console.log(se[1].shouldDisplay)
+            if (!se[1].shouldDisplay) {
+                return (
+                    <React.Fragment>
+                    </React.Fragment>
+                )
+            }
+            else {
+                return (
+                    <React.Fragment>
+                        <input type="checkbox" className="btn-check" id={`btn-check-safety-${se[1].propertiesName}`}
+                            autoComplete="off" {...register(`${se[1].propertiesName}`)} defaultChecked={se[1].defaultSelected}></input>
+                        <label className="btn btn-outline-success btn-sm me-1" htmlFor={`btn-check-safety-${se[1].propertiesName}`}>{se[1].displayName}</label>
+                    </React.Fragment>
+                );
+            }
+        });
     };
 
     const onSubmit = (data) => {
@@ -138,7 +162,6 @@ const FilterConditionForm = (props) => {
         });
         // console.log(selectedPowerTypes);
         
-
         // props.onSubmit(data);
         props.onSubmit({
             minPrice: data[Condition_MinPrice],
@@ -308,8 +331,11 @@ const FilterConditionForm = (props) => {
 
                             {/* Safety */}
                             <div className="row">
-                                <label className="form-label col-auto fs-4" htmlFor="minPrice">安全配備:</label>
+                                <label className="form-label col-auto fs-4" htmlFor="safety">安全配備:</label>
                                 
+                                <div className="col">
+                                    {renderSafetyEquipments()}
+                                </div>
                             </div>
 
                             {/* Submit(Find Car) Button */}
