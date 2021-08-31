@@ -11,15 +11,15 @@ const FilterResults = (props) => {
     const trimlevelElements = levels.map((level) =>{
         return (
             <li key={level.id} className="list-group-item">
-                {level.name}
+                {/* {level.name} */}
                 <TrimLevelItem level={level}/>
             </li>
         );
     });
 
     return (
-        <div className="container">
-            <ul className="list-group mb-4">
+        <div className="container" id="filterResults">
+            <ul className="list-group my-3">
                 {trimlevelElements}
             </ul>
         </div>

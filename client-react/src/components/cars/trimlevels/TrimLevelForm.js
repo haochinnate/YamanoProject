@@ -183,7 +183,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: transmissionBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? "排," : props.initialValues.transmission 
+        initialValue: props.initialValues === undefined ? "排()" : props.initialValues.transmission 
     });
 
     const {
@@ -192,7 +192,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: driveWheelBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? "輪驅動," : props.initialValues.driveWheel 
+        initialValue: props.initialValues === undefined ? "輪驅動()" : props.initialValues.driveWheel 
     });
 
     // Engine Properties

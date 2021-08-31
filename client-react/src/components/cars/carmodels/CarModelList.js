@@ -101,7 +101,8 @@ class CarModelList extends React.Component {
                     </div>
                 </div> */}
 
-                <div className="d-flex row row-cols-1 row-cols-sm-auto justify-content-center">
+                {/* row-cols-1 row-cols-sm-auto */}
+                <div className="d-flex row row-cols-auto justify-content-center">
                     {this.renderList()}
                 </div>
                 <div className="mx-2 my-2 d-flex justify-content-center">

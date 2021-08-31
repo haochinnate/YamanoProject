@@ -117,7 +117,7 @@ const FilterConditionForm = (props) => {
         const safetyEquipments = Object.keys(SAFETY_EQUIPMENTS_SELECTIONS).map((key) => [Number(key), SAFETY_EQUIPMENTS_SELECTIONS[key]]);
     
         return safetyEquipments.map(se => {
-            console.log(se[1].shouldDisplay)
+            // console.log(se[1].shouldDisplay)
             if (!se[1].shouldDisplay) {
                 return (
                     <React.Fragment>
@@ -161,6 +161,18 @@ const FilterConditionForm = (props) => {
             }
         });
         // console.log(selectedPowerTypes);
+
+        // get selected safety equipments
+        const selectedSafetyEquipments = [];
+        Object.keys(SAFETY_EQUIPMENTS_SELECTIONS).forEach(key => {
+            if (SAFETY_EQUIPMENTS_SELECTIONS[key].shouldDisplay) {
+                const isSelected = getValues(SAFETY_EQUIPMENTS_SELECTIONS[key].propertiesName);
+                if (isSelected) {
+                    selectedSafetyEquipments.push(SAFETY_EQUIPMENTS_SELECTIONS[key].propertiesName);
+                }
+            }
+        });
+        // console.log(selectedSafetyEquipments);
         
         // props.onSubmit(data);
         props.onSubmit({
@@ -176,7 +188,8 @@ const FilterConditionForm = (props) => {
             minDisplacement: getValues(Condition_AllDisplacement) 
                 === 'false' ? data[Condition_MinDisplacement] : "0",
             maxDisplacement: getValues(Condition_AllDisplacement)
-                === 'false' ? data[Condition_MaxDisplacement] : "10"
+                === 'false' ? data[Condition_MaxDisplacement] : "10",
+            selectedSafetyEquipments
         });
     };
 

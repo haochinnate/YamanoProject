@@ -15,7 +15,7 @@ const FindCars = (props) => {
     const [levels, setLevels] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(1);
+    const [itemsPerPage] = useState(2);
     // const [itemsPerPage, setItemsPerPage] = useState(1);
 
 
