@@ -3,6 +3,9 @@ version: 0.2
 phases:
   pre_build:
     commands:
+      - echo start prebuild
+      - ls
+      - cd ./client-react 
       #installs dependencies into the node_modules/ directory
       - npm install
   build:
