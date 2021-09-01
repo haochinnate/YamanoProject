@@ -97,7 +97,7 @@ class TrimLevelList extends React.Component {
                 </tr>
                 <tr>
                     <th scope="row">動力型式</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{BODY_STYLES_ZH[trimlevel.powerType]}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{POWER_TYPES_ZH[trimlevel.powerType]}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">變速系統</th>

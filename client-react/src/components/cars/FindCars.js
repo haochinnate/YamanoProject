@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import FilterConditionForm from './finding/FilterConditionForm'
@@ -22,6 +23,8 @@ const FindCars = (props) => {
     const onSubmit = (formValues) => {
         console.log("onSubmit in FindCars");
         console.log(formValues);
+
+        // do the filter
     }
 
     // change page
@@ -72,7 +75,7 @@ const FindCars = (props) => {
 
 
 const mapStateToProps = (state) => {
-    console.log(state);
+    // console.log(state);
     return { 
         trimlevels:  Object.values(state.trimlevels), 
         isAdminUser: state.auth.isAdminUser

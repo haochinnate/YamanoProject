@@ -16,7 +16,8 @@ class ManufacturerShow extends React.Component {
             return <div>Loading...</div>
         }
         
-        const { name, chineseName, level, officialUrl, logoUrl} = this.props.manufacturer;
+        // other properties level, officialUrl, logoUrl
+        const { name, chineseName } = this.props.manufacturer;
 
         return (
             <div className="container">

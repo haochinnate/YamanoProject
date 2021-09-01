@@ -6,3 +6,12 @@ export const POWER_TYPES_ZH = {
     5: 'EV(電動車)',
     6: 'MHEV(輕油電混合)'
 };
+
+export const IsEV = (index) => {
+    if (index === 5) {
+        return true;
+    }
+    else {
+        return false;
+    } 
+};
