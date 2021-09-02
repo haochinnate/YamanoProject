@@ -281,7 +281,7 @@ const FilterConditionForm = (props) => {
                                 <label className="form-label col-auto fs-4" htmlFor="minCargoVolume">行李箱容積至少(L):</label>
 
                                 <div className="col">
-                                    <input type="number" defaultValue="0" className="form-control" 
+                                    <input type="number" defaultValue="0" min="0" className="form-control" 
                                         {...register(Condition_MinCargoVolume)} />
 
                                     <input type="range" className="form-range" min="0" max="700" step="10" id="lengthRange" 
