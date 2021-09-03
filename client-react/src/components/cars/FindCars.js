@@ -62,6 +62,7 @@ const FindCars = (props) => {
                 if (t.seats < 6) { return false; }
             }
 
+            // Cargo Volume
             if (t.standardCargoVolume === t.fiveSeatsCargoVolume) {
                 if (t.standardCargoVolume < Number(condition.minCargoVolume)) {
                     return false;
@@ -71,6 +72,42 @@ const FindCars = (props) => {
                 if (t.standardCargoVolume < Number(condition.minCargoVolume)
                     && t.fiveSeatsCargoVolume < Number(condition.minCargoVolume)) {
                     return false;
+                }
+            }
+
+            // power types
+            if (!condition.selectedPowerTypes.includes(String(t.powerType))) {
+                return false;
+            }
+            
+            // Engine Displacement
+            if (t.engineDisplacement > Number(condition.maxDisplacement)*1000 
+                || t.engineDisplacement < Number(condition.minDisplacement)*1000 ) {
+                return false;
+            }
+
+            // horse power, motor power
+            if (t.maxHorsepower < Number(condition.minHorsePower)
+                && t.motorPower < Number(condition.minHorsePower)) {
+                return false;
+            }
+
+            // safety equiplemts
+            // console.log(condition.selectedSafetyEquipments)
+            for (const safetyEquip of condition.selectedSafetyEquipments) {
+                // console.log("Equip: " + safetyEquip)
+                if (safetyEquip === "airBagNumbers")
+                {
+                    if (Number(t[safetyEquip]) < 10 ) {
+                        // console.log(`${safetyEquip} failed`)
+                        return false;
+                    }
+                }
+                else {
+                    if (!t[safetyEquip].startsWith('S')) {
+                        // console.log(`${safetyEquip} failed`)
+                        return false;
+                    }
                 }
             }
 

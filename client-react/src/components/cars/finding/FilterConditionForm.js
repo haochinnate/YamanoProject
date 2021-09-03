@@ -212,26 +212,81 @@ const FilterConditionForm = (props) => {
 
                             {/* Min Price & Max Price */}
                             <div className="row">
-                                <label className="form-label col-auto fs-4" htmlFor="minPrice">預算(萬元):</label>
+                                <div className="col-md-6">
+                                    <div className="row">
+
+                                    <label className="form-label" htmlFor="minPrice">預算(萬元):</label>
+                                        <input type="number" defaultValue="70" id="minPrice"
+                                            className="form-control"  {...register(Condition_MinPrice)} />
+                                        <span>~</span>
+                                        <input type="number" defaultValue="130" aria-describedby="budgetHelpBlock"
+                                            className="form-control" {...register(Condition_MaxPrice)}/>
+
+                                    </div>
+                                </div>
+                                <div id="budgetHelpBlock" class="form-text col-md-6">
+                                    <label className="form-label col-auto fs-6" htmlFor="minPrice">快速預算:</label>
+                                    
+                                    <div className="col">
+                                        {renderQuickBudgetRanges()}
+                                    </div>
+                                </div>
+
+                                    
+                                {/* <label className="form-label col-auto fs-4" htmlFor="minPrice">預算(萬元):</label>
 
                                 <div className="col">
                                     <input type="number" defaultValue="70" className="form-control"  {...register(Condition_MinPrice)} />
                                     <span>~</span>
                                     <input type="number" defaultValue="130" className="form-control" {...register(Condition_MaxPrice)}/>
-                                </div>
+                                </div> */}
                             </div>
 
                             {/* Quick Budget Ranges */}
-                            <div className="row">
+                            {/* <div className="row">
                                 <label className="form-label col-auto fs-6" htmlFor="minPrice">快速預算:</label>
                                 
                                 <div className="col">
                                     {renderQuickBudgetRanges()}
                                 </div>
-                            </div>
+                            </div> */}
 
                             {/* Min Length & Max Length */}
-                            <div className="row">
+                            <div className="row align-baseline">
+                                <div className="col-6 col-sm-3">
+                                    <label className="form-label" htmlFor="minLength">車長(mm):</label>
+
+                                    {/* <div className="col"> */}
+                                        <input type="number" defaultValue="0" className="form-control" 
+                                            min="0" max="6000"
+                                            {...register(Condition_MinLength, { required: true, min: 0, max: 6000})} />
+                                        {errors[Condition_MinLength] && <span>This field is required</span>}
+
+                                        <span>~</span>
+                                    {/* </div> */}
+                                </div>
+
+                                <div className="col-6 col-sm-3">
+                                    <label className="form-label" htmlFor="maxLength">   </label>
+
+                                    <input type="number" defaultValue="6000" className="form-control" 
+                                            min="0" max="6000"
+                                            {...register(Condition_MaxLength, { required: true, min: 0, max: 6000 })} />
+                                        {errors[Condition_MaxLength] && <span>This field is required</span>}
+                                </div>
+
+                                <div className="col-12 col-sm-6">
+                                    <label className="form-label" htmlFor="maxLengthSlider">   </label>
+
+                                    <input type="range" className="form-range" min="0" max="6000" step="10" id="lengthRange" 
+                                            onChange={(event) => { 
+                                                // console.log(event);
+                                                setValue(Condition_MaxLength, event.target.value);
+                                            }}  value={watch(Condition_MaxLength)} ></input>
+                                </div>
+                                
+                            </div>
+                            {/* <div className="row">
                                 <label className="form-label col-auto fs-4" htmlFor="minPrice">車長(mm):</label>
 
                                 <div className="col">
@@ -253,7 +308,7 @@ const FilterConditionForm = (props) => {
                                             setValue(Condition_MaxLength, event.target.value);
                                         }}  value={watch(Condition_MaxLength)} ></input>
                                 </div>
-                            </div>
+                            </div> */}
 
                             {/* Min Width & Max Width (future)*/}
                             {/* Min Height & Max Height (future)*/}
