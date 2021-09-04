@@ -56,7 +56,7 @@ const FilterConditionForm = (props) => {
                 <React.Fragment>
                     <input type="checkbox" className="btn-check" id={`btn-check-powertype-${powerType[0]}`}
                         autoComplete="off" {...register(`powerType${powerType[0]}`)} defaultChecked></input>
-                    <label className="btn btn-outline-primary btn-sm me-1" htmlFor={`btn-check-powertype-${powerType[0]}`}>{powerType[1]}</label>
+                    <label className="btn btn-outline-primary btn-sm m-1" htmlFor={`btn-check-powertype-${powerType[0]}`}>{powerType[1]}</label>
                 </React.Fragment>
             );
         });
@@ -88,7 +88,7 @@ const FilterConditionForm = (props) => {
                 <React.Fragment>
                     <input type="checkbox" className="btn-check" id={`btn-check-bodystyle-${bodyStyle[0]}`}
                         autoComplete="off" {...register(`bodyStyle${bodyStyle[0]}`)} defaultChecked></input>
-                    <label className="btn btn-outline-primary btn-sm me-1" htmlFor={`btn-check-bodystyle-${bodyStyle[0]}`}>{bodyStyle[1]}</label>
+                    <label className="btn btn-outline-primary btn-sm m-1" htmlFor={`btn-check-bodystyle-${bodyStyle[0]}`}>{bodyStyle[1]}</label>
                 </React.Fragment>
             );
         });
@@ -100,15 +100,15 @@ const FilterConditionForm = (props) => {
         // console.log(allDisplacementSetting);
         if (allDisplacementSetting === 'false') {
             return(
-                <div className="col">
-                    <div className="col">
-                        <input type="number" defaultValue="0" step="0.1" className="form-control" 
-                            {...register(Condition_MinDisplacement, { min: 0.0 })} />
-                        <span>~</span>
-                        <input type="number" defaultValue="1.8" step="0.1" className="form-control" 
-                            {...register(Condition_MaxDisplacement, { min: 0.0 })}/>
-                    </div>
-                </div>
+                // <div className="col">
+                <React.Fragment>
+                    <input type="number" defaultValue="0" step="0.1" className="form-control" 
+                        {...register(Condition_MinDisplacement, { min: 0.0 })} />
+                    <div>~</div>
+                    <input type="number" defaultValue="1.8" step="0.1" className="form-control" 
+                        {...register(Condition_MaxDisplacement, { min: 0.0 })}/>
+                </React.Fragment>
+                // </div>
             )
         }
     };
@@ -129,7 +129,7 @@ const FilterConditionForm = (props) => {
                     <React.Fragment>
                         <input type="checkbox" className="btn-check" id={`btn-check-safety-${se[1].propertiesName}`}
                             autoComplete="off" {...register(`${se[1].propertiesName}`)} defaultChecked={se[1].defaultSelected}></input>
-                        <label className="btn btn-outline-success btn-sm me-1" htmlFor={`btn-check-safety-${se[1].propertiesName}`}>{se[1].displayName}</label>
+                        <label className="btn btn-outline-success btn-sm m-1" htmlFor={`btn-check-safety-${se[1].propertiesName}`}>{se[1].displayName}</label>
                     </React.Fragment>
                 );
             }
@@ -211,35 +211,29 @@ const FilterConditionForm = (props) => {
                         <form className="row" onSubmit={handleSubmit(onSubmit)}>
 
                             {/* Min Price & Max Price */}
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="row">
-
-                                    <label className="form-label" htmlFor="minPrice">預算(萬元):</label>
+                            <div className="row align-items-end mb-2">
+                                <div className="col-5 col-sm-3 col-md-2">
+                                        <label className="form-label" htmlFor="minPrice">預算(萬元):</label>
                                         <input type="number" defaultValue="70" id="minPrice"
                                             className="form-control"  {...register(Condition_MinPrice)} />
-                                        <span>~</span>
+                                        
+                                </div>
+                                <div className="col-2 col-sm-1 text-center">
+                                    <span>~</span>
+                                </div>
+                                <div className="col-5 col-sm-3 col-md-2">
                                         <input type="number" defaultValue="130" aria-describedby="budgetHelpBlock"
                                             className="form-control" {...register(Condition_MaxPrice)}/>
-
-                                    </div>
                                 </div>
-                                <div id="budgetHelpBlock" class="form-text col-md-6">
-                                    <label className="form-label col-auto fs-6" htmlFor="minPrice">快速預算:</label>
+
+                                <div id="budgetHelpBlock" class="form-text col-12 col-sm-12 col-md-7">
+                                    <label className="form-label col-auto fs-6" htmlFor="quickBudget">快速預算:</label>
                                     
-                                    <div className="col">
+                                    <div className="col" id="quickBudget">
                                         {renderQuickBudgetRanges()}
                                     </div>
                                 </div>
 
-                                    
-                                {/* <label className="form-label col-auto fs-4" htmlFor="minPrice">預算(萬元):</label>
-
-                                <div className="col">
-                                    <input type="number" defaultValue="70" className="form-control"  {...register(Condition_MinPrice)} />
-                                    <span>~</span>
-                                    <input type="number" defaultValue="130" className="form-control" {...register(Condition_MaxPrice)}/>
-                                </div> */}
                             </div>
 
                             {/* Quick Budget Ranges */}
@@ -252,8 +246,9 @@ const FilterConditionForm = (props) => {
                             </div> */}
 
                             {/* Min Length & Max Length */}
-                            <div className="row align-baseline">
-                                <div className="col-6 col-sm-3">
+                            <div className="row align-items-end mb-2">
+
+                                <div className="col-5 col-sm-3 col-md-2">
                                     <label className="form-label" htmlFor="minLength">車長(mm):</label>
 
                                     {/* <div className="col"> */}
@@ -262,11 +257,14 @@ const FilterConditionForm = (props) => {
                                             {...register(Condition_MinLength, { required: true, min: 0, max: 6000})} />
                                         {errors[Condition_MinLength] && <span>This field is required</span>}
 
-                                        <span>~</span>
                                     {/* </div> */}
                                 </div>
-
-                                <div className="col-6 col-sm-3">
+                                
+                                <div className="col-2 col-sm-1 text-center">
+                                    <span>~</span>
+                                </div>
+                                
+                                <div className="col-5 col-sm-3 col-md-2">
                                     <label className="form-label" htmlFor="maxLength">   </label>
 
                                     <input type="number" defaultValue="6000" className="form-control" 
@@ -274,8 +272,8 @@ const FilterConditionForm = (props) => {
                                             {...register(Condition_MaxLength, { required: true, min: 0, max: 6000 })} />
                                         {errors[Condition_MaxLength] && <span>This field is required</span>}
                                 </div>
-
-                                <div className="col-12 col-sm-6">
+                                
+                                <div className="col-12 col-sm-5 col-md-7">
                                     <label className="form-label" htmlFor="maxLengthSlider">   </label>
 
                                     <input type="range" className="form-range" min="0" max="6000" step="10" id="lengthRange" 
@@ -286,123 +284,124 @@ const FilterConditionForm = (props) => {
                                 </div>
                                 
                             </div>
-                            {/* <div className="row">
-                                <label className="form-label col-auto fs-4" htmlFor="minPrice">車長(mm):</label>
-
-                                <div className="col">
-                                    <input type="number" defaultValue="0" className="form-control" 
-                                        min="0" max="6000"
-                                        {...register(Condition_MinLength, { required: true, min: 0, max: 6000})} />
-                                    {errors[Condition_MinLength] && <span>This field is required</span>}
-
-                                    <span>~</span>
-
-                                    <input type="number" defaultValue="6000" className="form-control" 
-                                        min="0" max="6000"
-                                        {...register(Condition_MaxLength, { required: true, min: 0, max: 6000 })} />
-                                    {errors[Condition_MaxLength] && <span>This field is required</span>}
-
-                                    <input type="range" className="form-range" min="0" max="6000" step="10" id="lengthRange" 
-                                        onChange={(event) => { 
-                                            // console.log(event);
-                                            setValue(Condition_MaxLength, event.target.value);
-                                        }}  value={watch(Condition_MaxLength)} ></input>
-                                </div>
-                            </div> */}
 
                             {/* Min Width & Max Width (future)*/}
                             {/* Min Height & Max Height (future)*/}
 
-                            {/* BodyStyles row-cols-auto*/}
-                            <div className="row">
-                                <label className="form-label col-auto fs-4" htmlFor="bodyStyles">車身:</label>
 
+                            {/* BodyStyles */}
+                            <div className="row mb-2">
                                 <div className="col">
-                                    {renderFilterBodyStyles()}
+                                    <label className="form-label" htmlFor="bodyStyles">車身:</label>
+
+                                    <div id="bodyStyles">
+                                        {renderFilterBodyStyles()}
+                                    </div>
                                 </div>
                             </div>
+
 
                             {/* Seats 乘客數/座位數*/}
-                            <div className="row">
-                                <label className="form-label col-auto fs-4" htmlFor="seats">座位數:</label>
-                                
-                                <div className="col">
-                                    {renderFilterSeatsSelections()}                                  
-                                </div>
-                            </div>
-
                             {/* StandardCargoVolume 行李箱容積 */}
-                            <div className="row">
-                                <label className="form-label col-auto fs-4" htmlFor="minCargoVolume">行李箱容積至少(L):</label>
+                            <div className="row align-items-end mb-2">
 
-                                <div className="col">
-                                    <input type="number" defaultValue="0" min="0" className="form-control" 
-                                        {...register(Condition_MinCargoVolume)} />
+                                <div class="col-sm-6">
+                                    <label className="form-label" htmlFor="seats">座位數:</label>
+                                
+                                    <div id="seats">
+                                        {renderFilterSeatsSelections()}                                  
+                                    </div>
+                                </div>
 
-                                    <input type="range" className="form-range" min="0" max="700" step="10" id="lengthRange" 
+                                <div class="col-sm-3">
+                                    <label className="form-label" htmlFor="minCargoVolume">行李箱容積至少(L):</label>
+
+                                    <div id="minCargoVolume">
+                                        <input type="number" defaultValue="0" min="0" className="form-control" 
+                                            {...register(Condition_MinCargoVolume)} />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <input type="range" className="form-range" min="0" max="700" step="10" id="minCargoVolumeRange" 
                                         onChange={(event) => { 
                                             // console.log(event);
                                             setValue(Condition_MinCargoVolume, event.target.value);
                                         }}  value={watch(Condition_MinCargoVolume)} ></input>
                                 </div>
+
                             </div>
 
-                            {/* PowerType 燃料/動力形式/能源*/}
-                            <div className="row">
-                                <label className="form-label col-auto fs-4" htmlFor="bodyStyles">動力:</label>
 
-                                <div className="col">
+                            {/* PowerType 燃料/動力形式/能源*/}
+                            <div className="row mb-2">
+                                <label className="form-label" htmlFor="bodyStyles">動力:</label>
+
+                                <div id="bodyStyles">
                                     {renderFilterPowerTypes()}
                                 </div>
                             </div>
 
                             {/* Engine Displacement 排氣量*/}
-                            <div className="row">
-                                <label className="form-label col-auto fs-4" htmlFor="minPrice">排氣量(L):</label>
-
-                                <div className="col">
-                                    <div className="form-check form-check-inline">
-                                        <input className="form-check-input" type="radio" name="allDisplacements" 
-                                            id="allDisplacement" value={true}
-                                            {...register(Condition_AllDisplacement, { required: true })} 
-                                            defaultChecked/>
-                                            <label className="form-check-label" htmlFor="allDisplacement">皆可</label>
-                                    </div>
-
-                                    <div className="form-check form-check-inline">
-                                        <input className="form-check-input" type="radio" name="allDisplacements" 
-                                            id="restrictedDisplacement" value={false}
-                                            {...register(Condition_AllDisplacement, { required: true })}/>
-                                            <label className="form-check-label" htmlFor="restrictedDisplacement">限定</label>
-                                    </div>
-
-                                    {renderDisplacementSelections()}
-
-                                </div>
-                            </div>
-
                             {/* Horsepower 動力(馬力) */}
-                            <div className="row">
-                                <label className="form-label col-auto fs-4" htmlFor="minHorsePower">馬力至少(hp):</label>
+                            <div className="row align-items-end mb-2">
 
-                                <div className="col">
-                                    <input type="number" defaultValue="0" className="form-control" 
-                                        {...register(Condition_MinHorsePower)} />
+                                <div className="col-md-3">
+                                    <label className="form-label" htmlFor="engineDisplacement">排氣量(L):</label>
+                                    
+                                    <div id="engineDisplacement">
+                                        <div className="form-check form-check-inline">
+                                            <input className="form-check-input" type="radio" name="allDisplacements" 
+                                                id="allDisplacement" value={true}
+                                                {...register(Condition_AllDisplacement, { required: true })} 
+                                                defaultChecked/>
+                                            <label className="form-check-label" htmlFor="allDisplacement">皆可</label>
+                                        </div>
 
-                                    <input type="range" className="form-range" min="0" max="400" step="10" id="lengthRange" 
+                                        <div className="form-check form-check-inline">
+                                            <input className="form-check-input" type="radio" name="allDisplacements" 
+                                                id="restrictedDisplacement" value={false}
+                                                {...register(Condition_AllDisplacement, { required: true })}/>
+                                            <label className="form-check-label" htmlFor="restrictedDisplacement">限定</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div className="col-md-3">
+                                    <div className="row">
+                                        {renderDisplacementSelections()}
+
+                                    </div>
+                                </div>
+
+                                <div className="col-md-3">
+                                    <label className="form-label" htmlFor="minHorsePower">馬力至少(hp):</label>
+                                    
+                                    <div className="minHorsePower">
+                                        <input type="number" defaultValue="0" className="form-control" 
+                                            {...register(Condition_MinHorsePower)} />
+                                    </div>
+                                </div>
+
+                                <div className="col-md-3">
+                                    <input type="range" className="form-range" min="0" max="400" step="10" id="horsePowerRange" 
                                         onChange={(event) => { 
                                             // console.log(event);
                                             setValue(Condition_MinHorsePower, event.target.value);
                                         }} value={watch(Condition_MinHorsePower)} ></input>
                                 </div>
+
                             </div>
 
                             {/* Safety */}
-                            <div className="row">
-                                <label className="form-label col-auto fs-4" htmlFor="safety">安全配備:</label>
-                                
+                            <div className="row mb-2">
                                 <div className="col">
-                                    {renderSafetyEquipments()}
+                                    <label className="form-label" htmlFor="safety">安全配備:</label>
+
+                                    <div id="safety">
+                                        {renderSafetyEquipments()}
+                                    </div>
                                 </div>
                             </div>
 
