@@ -20,8 +20,9 @@ phases:
 # Include only the files required for your application to run.
 artifacts:
   files:
-    - client-react/public/**/*
-    - client-react/src/**/*
+    - client-react/build/**/*
+    # - client-react/public/**/*
+    # - client-react/src/**/*
     - client-react/package.json
     - client-react/appspec.yml
     - client-react/scripts/**/*
