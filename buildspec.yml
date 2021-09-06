@@ -26,5 +26,5 @@ artifacts:
     - client-react/package.json
     - client-react/appspec.yml
     - client-react/scripts/**/*
-    - api-json-server/db.json
+    - client-react/db.json
     
