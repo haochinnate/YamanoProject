@@ -11,11 +11,11 @@ const authReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case SIGN_IN:
             // var isAdminUser = String(action.payload) === String(process.env.REACT_APP_GOOGLE_USER_ID);
-            var isAdminUser = true;
+            var isAdminUser = false;
     
             return { ...state, isSignedIn: true, userId: action.payload, isAdminUser: isAdminUser }
         case SIGN_OUT:
-            return { ...state, isSignedIn: false, userId: null, isAdminUser: true }
+            return { ...state, isSignedIn: false, userId: null, isAdminUser: false }
         default:
             return state;
     }
