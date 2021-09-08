@@ -277,10 +277,11 @@ const FilterConditionForm = (props) => {
                                     <label className="form-label" htmlFor="maxLengthSlider">   </label>
 
                                     <input type="range" className="form-range" min="0" max="6000" step="10" id="lengthRange" 
-                                            onChange={(event) => { 
-                                                // console.log(event);
-                                                setValue(Condition_MaxLength, event.target.value);
-                                            }}  value={watch(Condition_MaxLength)} ></input>
+                                        defaultValue="6000"
+                                        onChange={(event) => { 
+                                            // console.log(event);
+                                            setValue(Condition_MaxLength, event.target.value);
+                                        }}  value={watch(Condition_MaxLength)} ></input>
                                 </div>
                                 
                             </div>
@@ -324,6 +325,7 @@ const FilterConditionForm = (props) => {
 
                                 <div class="col-sm-3">
                                     <input type="range" className="form-range" min="0" max="700" step="10" id="minCargoVolumeRange" 
+                                        defaultValue="0"
                                         onChange={(event) => { 
                                             // console.log(event);
                                             setValue(Condition_MinCargoVolume, event.target.value);
@@ -385,7 +387,8 @@ const FilterConditionForm = (props) => {
                                 </div>
 
                                 <div className="col-md-3">
-                                    <input type="range" className="form-range" min="0" max="400" step="10" id="horsePowerRange" 
+                                    <input type="range" className="form-range" min="0" max="400" step="10" id="horsePowerRange"
+                                        defaultValue="0"
                                         onChange={(event) => { 
                                             // console.log(event);
                                             setValue(Condition_MinHorsePower, event.target.value);

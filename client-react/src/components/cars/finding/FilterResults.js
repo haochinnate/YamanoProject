@@ -8,6 +8,10 @@ const FilterResults = (props) => {
         return <h2>Loading...</h2>
     }
 
+    if (!levels || levels.length === 0) {
+        return <h2>Not found...</h2>
+    }
+
     const trimlevelElements = levels.map((level) =>{
         return (
             <li key={level.id} className="list-group-item">
