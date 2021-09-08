@@ -9,7 +9,7 @@ import { TRIMLEVELS_ROOT } from '../../consts/url';
 import { BODY_STYLES_ZH } from '../../consts/bodyStyles';
 import { POWER_TYPES_ZH } from '../../consts/powerTypes';
 import { fetchTrimLevels } from '../../actions';
-
+import { SERVERIP } from '../../consts/url';
 
 const FindCars = (props) => {
 
@@ -26,7 +26,7 @@ const FindCars = (props) => {
 
         const fetchLevels = async () => {
             setLoading(true);
-            const res = await axios.get('http://localhost:3001/trimlevels');
+            const res = await axios.get(`http://${SERVERIP}:3001/trimlevels`);
             const filterResult = filterTrimLevels(res.data, formValues);
             setLevels(filterResult);
             setCurrentPage(1);
@@ -143,7 +143,7 @@ const FindCars = (props) => {
     useEffect(() => {
         // const fetchLevels = async () => {
         //     setLoading(true);
-        //     const res = await axios.get('http://localhost:3001/trimlevels');
+        //     const res = await axios.get(`http://${SERVERIP}:3001/trimlevels`);
         //     setLevels(res.data);
         //     setLoading(false);
         // }

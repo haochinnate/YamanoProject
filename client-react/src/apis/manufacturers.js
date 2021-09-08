@@ -1,5 +1,6 @@
 import axios from 'axios';
+import { SERVERIP } from '../consts/url';
 
 export default axios.create({
-    baseURL: 'http://localhost:3001'
+    baseURL: `http://${SERVERIP}:3001`
 });
