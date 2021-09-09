@@ -39,22 +39,19 @@ class CarModelShow extends React.Component {
 
 
     renderVideoItem(video, idx) {
-        console.log(video)
+        // console.log(video)
         const videoItemClass = idx === 0 ? 'carousel-item active' : 'carousel-item';
-        console.log(videoItemClass)
+        // console.log(videoItemClass)
         return (
             <div className={videoItemClass} key={video.id.videoId}>
                 {/* "ffjN93Bcvuo" */}
-                {/* <img src={video.snippet.thumbnails.medium.url} 
-                    className="d-block w-100" 
-                    alt={video.snippet.title}>
-                </img> */}
-                <iframe className="w-100" title={video.snippet.title} src={`https://www.youtube.com/embed/${video.id.videoId}`}/>
+                <div className="ratio ratio-16x9" >
+                    <iframe allowFullScreen title={video.snippet.title} src={`https://www.youtube.com/embed/${video.id.videoId}`}/>
+                </div>
+
                 <div className="carousel-caption d-none d-md-block">
                     <h5>{video.snippet.title}</h5>
-                    {/* 精銳小兵 令國產車汗顏！Škoda Fabia 1.0 TSI */}
                     <p>{video.snippet.description}</p>
-                    {/* 11月小改款上市的Škoda Fabia，車頭與車尾做了微幅的修改，在安全配備上更是做了許多的精進。自1999年上市發表以來，Fabia在全球銷量已經超過400萬輛，除了 ... */}
                 </div>
             </div>
         );
@@ -204,48 +201,48 @@ class CarModelShow extends React.Component {
                         </div>
 
                         <div className="d-flex flex-column align-items-stretch">
-                            <div class="row">
-                                <div class="col-4 text-end">
+                            <div className="row">
+                                <div className="col-4 text-end">
                                     <div className="fs-5 my-1">
                                         <i className="fas fa-calendar"></i>
                                     </div>
                                 </div>
-                                <div class="col-8 text-start">
+                                <div className="col-8 text-start">
                                     <div className="fs-5 my-1">
                                         發表日期: {releaseDate}
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-4 text-end">
+                            <div className="row">
+                                <div className="col-4 text-end">
                                     <div className="fs-5 my-1">
                                         <i className="fas fa-calendar"></i>
                                     </div>
                                 </div>
-                                <div class="col-8 text-start">
+                                <div className="col-8 text-start">
                                     <div className="fs-5 my-1">
                                         年式資訊: {yearsInfo}
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-4 text-end">
+                            <div className="row">
+                                <div className="col-4 text-end">
                                     <div className="fs-5 my-1">
                                         <i className="fas fa-archive"></i>
                                     </div>
                                 </div>
 
-                                <div class="col-8 text-start">
+                                <div className="col-8 text-start">
                                     <div className="fs-5 my-1">
                                         { isArchived === false ? "現行車款" : "已下市" }
                                   </div>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-4 text-end">
+                            <div className="row">
+                                <div className="col-4 text-end">
                                     <div className="fs-5 my-1">
                                         <a href={officialUrl} target="_blank" rel="noreferrer noopener">
                                             <i className="fas fa-link" style={{ color: 'gray' }}></i>
@@ -253,7 +250,7 @@ class CarModelShow extends React.Component {
                                     </div>
                                 </div>
 
-                                <div class="col-8 text-start">
+                                <div className="col-8 text-start">
                                     <div className="fs-5 my-1">
                                         <a href={officialUrl} target="_blank" rel="noreferrer noopener">
                                             {this.props.match.params.manufacturerName}官網
@@ -262,8 +259,8 @@ class CarModelShow extends React.Component {
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-4 text-end">
+                            <div className="row">
+                                <div className="col-4 text-end">
                                     <div className="fs-5 my-1">
                                         <a href={`https://www.youtube.com/results?search_query=${name}+%E8%A9%A6%E9%A7%95`} 
                                             target="_blank" rel="noreferrer noopener">
@@ -272,7 +269,7 @@ class CarModelShow extends React.Component {
                                     </div>
                                 </div>
 
-                                <div class="col-8 text-start">
+                                <div className="col-8 text-start">
                                     <div className="fs-5 my-1">
                                         <a href={`https://www.youtube.com/results?search_query=${name}+%E8%A9%A6%E9%A7%95`} 
                                             target="_blank" rel="noreferrer noopener">
@@ -286,8 +283,8 @@ class CarModelShow extends React.Component {
                     </div>
 
                     <div className="max-vh-10 col-md-8">
-                        {this.renderVideosTmp()}
-                        {/* {this.renderVideos(this.state.videos)} */}
+                        {/* {this.renderVideosTmp()} */}
+                        {this.renderVideos(this.state.videos)}
                     </div>
 
                 </div>

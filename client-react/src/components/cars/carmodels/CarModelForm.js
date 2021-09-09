@@ -32,7 +32,6 @@ const CarModelForm = (props) => {
         isValid: enteredNameIsvalid,
         valueChangedHandler: nameChangedHandler,
         inputBlurHandler: nameBlurHandler,
-        reset: resetNameInput
     } = useInput({ 
         validateValue: isNotEmpty, 
         initialValue: props.initialValues === undefined ? '' : props.initialValues.name 
@@ -44,7 +43,6 @@ const CarModelForm = (props) => {
         isValid: enteredBodyStyleIsvalid,
         valueChangedHandler: bodyStyleChangedHandler,
         inputBlurHandler: bodyStyleBlurHandler,
-        reset: resetBodyStyleInput
     } = useInput({ 
         validateValue: isNotEmpty,
         initialValue: props.initialValues === undefined ? '' : props.initialValues.bodyStyle 
@@ -54,7 +52,6 @@ const CarModelForm = (props) => {
         value: enteredOfficialUrl, 
         valueChangedHandler: officialUrlChangedHandler,
         inputBlurHandler: officialUrlBlurHandler,
-        reset: resetOfficialUrlInput
     } = useInput( { 
         validateValue: doNotCare,
         initialValue: props.initialValues === undefined ? '' : props.initialValues.officialUrl 
@@ -62,14 +59,11 @@ const CarModelForm = (props) => {
 
     const {
         value: enteredIsArchived, 
-        hasError: isArchivedInputHasError,
-        isValid: enteredIsArchivedIsvalid,
         valueChangedHandler: isArchivedChangedHandler,
         inputBlurHandler: isArchivedBlurHandler,
-        reset: resetIsArchivedInput
     } = useInput({ 
-        validateValue: doNotCare, initialValue: false,
-        initialValue: props.initialValues === undefined ? '' : props.initialValues.isArchived 
+        validateValue: doNotCare, 
+        initialValue: props.initialValues === undefined ? false : props.initialValues.isArchived 
     });
 
     const {
@@ -78,7 +72,6 @@ const CarModelForm = (props) => {
         isValid: enteredManufacturerIdIsvalid,
         valueChangedHandler: manufacturerIdChangedHandler,
         inputBlurHandler: manufacturerIdBlurHandler,
-        reset: resetManufacturerIdInput
     } = useInput({ 
         validateValue: isNotEmpty,
         initialValue: props.initialValues === undefined ? '' : props.initialValues.manufacturerId 
@@ -88,7 +81,6 @@ const CarModelForm = (props) => {
         value: enteredAlias, 
         valueChangedHandler: aliasChangedHandler,
         inputBlurHandler: aliasBlurHandler,
-        reset: resetAliasInput
     } = useInput({ 
         validateValue: doNotCare, 
         initialValue: props.initialValues === undefined ? '' : props.initialValues.alias 
@@ -96,11 +88,8 @@ const CarModelForm = (props) => {
 
     const {
         value: enteredReleaseDate, 
-        hasError: releaseDateInputHasError,
-        isValid: enteredReleaseDateIsvalid,
         valueChangedHandler: releaseDateChangedHandler,
         inputBlurHandler: releaseDateBlurHandler,
-        reset: resetReleaseDateInput
     } = useInput({ 
         validateValue: doNotCare,
         initialValue: props.initialValues === undefined ? '' : props.initialValues.releaseDate 
@@ -110,7 +99,6 @@ const CarModelForm = (props) => {
         value: enteredYearsInfo, 
         valueChangedHandler: yearsInfoChangedHandler,
         inputBlurHandler: yearsInfoBlurHandler,
-        reset: resetYearsInfoInput
     } = useInput({ 
         validateValue: doNotCare,
         initialValue: props.initialValues === undefined ? '' : props.initialValues.yearsInfo 
@@ -120,7 +108,6 @@ const CarModelForm = (props) => {
         value: enteredMainImage, 
         valueChangedHandler: mainImageChangedHandler,
         inputBlurHandler: mainImageBlurHandler,
-        reset: resetMainImageInput
     } = useInput({ 
         validateValue: doNotCare,
         initialValue: props.initialValues === undefined ? '' : props.initialValues.mainImage 

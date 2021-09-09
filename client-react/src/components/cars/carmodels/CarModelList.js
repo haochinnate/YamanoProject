@@ -79,9 +79,8 @@ class CarModelList extends React.Component {
 
                             <span className="badge bg-primary me-2">{BODY_STYLES_ZH[carmodel.bodyStyle]}</span>
 
-                            <span className="badge bg-success me-2 ">Level 2</span>
+                            {/* <span className="badge bg-success me-2 ">Level 2</span> */}
 
-                            {/* <span className="badge bg-danger">汽油</span> */}
                         </div>
 
                         {this.renderAdmin(carmodel)}

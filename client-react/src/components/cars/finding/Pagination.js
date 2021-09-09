@@ -15,27 +15,13 @@ const Pagination = (props) => {
                     // className={`page-item ${activePage === number ? "active" : ""}`}
                     <li key={number} className={`page-item ${activePage === number ? "active" : ""}`}>
                         <a onClick={() => paginate(number)} 
-                            className="page-link" href="#">
+                            className="page-link">
                             {number}
                         </a>
                     </li>
                 ))}
             </ul>
         </nav>
-                // {/* <li className="page-item">
-                //             <a className="page-link" href="#" aria-label="Previous">
-                //                 <span aria-hidden="true">&laquo;</span>
-                //             </a>
-                //         </li>
-                //         <li className="page-item"><a className="page-link" href="#">1</a></li>
-                //         <li className="page-item"><a className="page-link" href="#">2</a></li>
-                //         <li className="page-item"><a className="page-link" href="#">3</a></li>
-                //         <li className="page-item">
-                //             <a className="page-link" href="#" aria-label="Next">
-                //                 <span aria-hidden="true">&raquo;</span>
-                //             </a>
-                //         </li>
-                //     </ul>  */}
     )
 }
 

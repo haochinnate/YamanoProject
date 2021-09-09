@@ -3,12 +3,12 @@ import TrimLevelItem from './TrimLevelItem';
 
 const FilterResults = (props) => {
 
-    const { levels, loading } = props;
+    const { levels, loading, found } = props;
     if (loading) {
         return <h2>Loading...</h2>
     }
 
-    if (!levels || levels.length === 0) {
+    if (found && levels.length === 0) {
         return <h2>Not found...</h2>
     }
 
@@ -22,7 +22,7 @@ const FilterResults = (props) => {
     });
 
     return (
-        <div className="container" id="filterResults">
+        <div className="container">
             <ul className="list-group my-3">
                 {trimlevelElements}
             </ul>

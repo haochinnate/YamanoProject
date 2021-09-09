@@ -5,9 +5,6 @@ import FilterConditionForm from './finding/FilterConditionForm'
 import FilterResults from './finding/FilterResults'
 import Pagination from './finding/Pagination';
 import { connect } from 'react-redux';
-import { TRIMLEVELS_ROOT } from '../../consts/url';
-import { BODY_STYLES_ZH } from '../../consts/bodyStyles';
-import { POWER_TYPES_ZH } from '../../consts/powerTypes';
 import { fetchTrimLevels } from '../../actions';
 import { SERVERIP } from '../../consts/url';
 
@@ -15,14 +12,16 @@ const FindCars = (props) => {
 
     const [levels, setLevels] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [findButtonTouched, setFindButtonTouched] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(2);
     // const [itemsPerPage, setItemsPerPage] = useState(1);
 
 
     const onSubmit = (formValues) => {
-        console.log("onSubmit in FindCars");
+        // console.log("onSubmit in FindCars");
         console.log(formValues);
+        setFindButtonTouched(true);
 
         const fetchLevels = async () => {
             setLoading(true);
@@ -98,7 +97,7 @@ const FindCars = (props) => {
                 // console.log("Equip: " + safetyEquip)
                 if (safetyEquip === "airBagNumbers")
                 {
-                    if (Number(t[safetyEquip]) < 10 ) {
+                    if (Number(t[safetyEquip]) < 6 ) {
                         // console.log(`${safetyEquip} failed`)
                         return false;
                     }
@@ -171,7 +170,7 @@ const FindCars = (props) => {
                 <FilterConditionForm onSubmit={onSubmit}/>
             </div>
             <div className="row my-2">
-                <FilterResults levels={currentLevels} loading={loading}/>
+                <FilterResults levels={currentLevels} loading={loading} found={findButtonTouched}/>
                 <Pagination itemsPerPage={itemsPerPage} 
                     totalItems={levels.length}
                     paginate={paginate}

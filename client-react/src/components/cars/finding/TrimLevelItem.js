@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { CARS_DB_ROOT } from '../../../consts/url';

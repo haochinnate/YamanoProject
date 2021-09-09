@@ -187,71 +187,71 @@ class TrimLevelList extends React.Component {
                 </tr>
                 <tr>
                     <th scope="row">ABS-防鎖死煞車系統</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.antilockBrakingSystem}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.antilockBrakingSystem)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">ASR-循跡防滑控制系統</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.accelerationStabilityRetainer}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.accelerationStabilityRetainer)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">EBD-電子煞車力道分配系統</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.electronicBrakeforceDistribution}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.electronicBrakeforceDistribution)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">BAS-煞車力道輔助系統</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.brakeAssistSystem}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.brakeAssistSystem)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">ESP-車身動態穩定系統</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.electronicStabilityProgram}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.electronicStabilityProgram)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">定速</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.cruiseControl}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.cruiseControl)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">ACC-主動車距巡航控制系統</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.adaptiveCruiseControl}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.adaptiveCruiseControl)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">FCW-前方碰撞警示</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.forwardCollisionWarning}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.forwardCollisionWarning)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">AEB-自動緊急煞車</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.automaticEmergencyBraking}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.automaticEmergencyBraking)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">LDW-車道偏離警示</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.laneDepartureWarning}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.laneDepartureWarning)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">LDR-車道偏離修正</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.laneDepartureRevise}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.laneDepartureRevise)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">LKA-車道維持</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.laneKeepingAssistance}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.laneKeepingAssistance)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">RCTA-後方車側警示</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.rearCrossTrafficWarning}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.rearCrossTrafficWarning)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">BSW-盲點偵測警示</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.blindSpotWarning}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.blindSpotWarning)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">RAEB-後方車流自動煞車</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.reverseAutomaticEmergencyBraking}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.reverseAutomaticEmergencyBraking)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">HSA-斜坡起步輔助</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.hillStartAssis}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.hillStartAssis)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">HDC-陡坡緩降系統</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.hillDescentControl}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.hillDescentControl)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">氣囊總數</th>
@@ -259,32 +259,49 @@ class TrimLevelList extends React.Component {
                 </tr>
                 <tr>
                     <th scope="row">ISOFIX</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.isofix}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.isofix)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">自動停車</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.activeParkingAssistance}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.activeParkingAssistance)}</td> ); })}
                 </tr>
-                <tr>
+                {/* <tr>
                     <th scope="row">IIHS</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.iihsDescription}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.iihsDescription)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">NCAP</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.ncapDescription}</td> ); })}
-                </tr>
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.ncapDescription)}</td> ); })}
+                </tr> */}
                 <tr>
                     <th scope="row">環景360度</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.surroundViewCamera}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.surroundViewCamera)}</td> ); })}
                 </tr>
                 <tr>
                     <th scope="row">倒車顯影</th>
-                    {this.props.trimlevels.map(trimlevel => { return ( <td>{trimlevel.rearViewCamera}</td> ); })}
+                    {this.props.trimlevels.map(trimlevel => { return ( <td>{this.trimEquipmentDisplayContent(trimlevel.rearViewCamera)}</td> ); })}
                 </tr>
                 </>
             </tbody>
         );
     }
+
+    trimEquipmentDisplayContent(equipContent) {
+        // S/O/N()
+        if (equipContent.startsWith('S') || equipContent.startsWith('O') || equipContent.startsWith('N')) {
+            if (equipContent.indexOf('(') === equipContent.indexOf(')') - 1) {
+                return equipContent[0];
+            }
+            else {
+                return equipContent;
+            }
+
+        }
+        else {
+            return equipContent;
+        }
+    }
+
 
     renderSpecTable() {
         console.log(this.props.trimlevels);

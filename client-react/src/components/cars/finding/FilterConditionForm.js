@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import useInput from '../../../hooks/useInput';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { BODY_STYLES_ZH } from '../../../consts/bodyStyles';
 import { POWER_TYPES_ZH } from '../../../consts/powerTypes';
@@ -226,7 +225,7 @@ const FilterConditionForm = (props) => {
                                             className="form-control" {...register(Condition_MaxPrice)}/>
                                 </div>
 
-                                <div id="budgetHelpBlock" class="form-text col-12 col-sm-12 col-md-7">
+                                <div id="budgetHelpBlock" className="form-text col-12 col-sm-12 col-md-7">
                                     <label className="form-label col-auto fs-6" htmlFor="quickBudget">快速預算:</label>
                                     
                                     <div className="col" id="quickBudget">
@@ -306,7 +305,7 @@ const FilterConditionForm = (props) => {
                             {/* StandardCargoVolume 行李箱容積 */}
                             <div className="row align-items-end mb-2">
 
-                                <div class="col-sm-6">
+                                <div className="col-sm-6">
                                     <label className="form-label" htmlFor="seats">座位數:</label>
                                 
                                     <div id="seats">
@@ -314,7 +313,7 @@ const FilterConditionForm = (props) => {
                                     </div>
                                 </div>
 
-                                <div class="col-sm-3">
+                                <div className="col-sm-3">
                                     <label className="form-label" htmlFor="minCargoVolume">行李箱容積至少(L):</label>
 
                                     <div id="minCargoVolume">
@@ -323,7 +322,7 @@ const FilterConditionForm = (props) => {
                                     </div>
                                 </div>
 
-                                <div class="col-sm-3">
+                                <div className="col-sm-3">
                                     <input type="range" className="form-range" min="0" max="700" step="10" id="minCargoVolumeRange" 
                                         defaultValue="0"
                                         onChange={(event) => { 
