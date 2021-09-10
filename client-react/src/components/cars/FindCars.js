@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import FilterConditionForm from './finding/FilterConditionForm'
 import FilterResults from './finding/FilterResults'
@@ -10,11 +10,12 @@ import { SERVERIP } from '../../consts/url';
 
 const FindCars = (props) => {
 
+    const changePageScrollTarget = useRef(null);
     const [levels, setLevels] = useState([]);
     const [loading, setLoading] = useState(false);
     const [findButtonTouched, setFindButtonTouched] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(2);
+    const [itemsPerPage] = useState(15);
     // const [itemsPerPage, setItemsPerPage] = useState(1);
 
 
@@ -139,21 +140,27 @@ const FindCars = (props) => {
         setCurrentPage(pageNumber);
     }
 
+    // scroll
+    const executeScroll = () => {
+        console.log('executeScroll')
+        changePageScrollTarget.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+
     useEffect(() => {
-        // const fetchLevels = async () => {
-        //     setLoading(true);
-        //     const res = await axios.get(`http://${SERVERIP}:3001/trimlevels`);
-        //     setLevels(res.data);
-        //     setLoading(false);
-        // }
-   
         // fetchLevels();
-   
+        if (findButtonTouched) {
+            executeScroll();
+            // console.log('useEffect')
+        }
+
         // effect
         return () => {
             // cleanup
         }
-    }, [])
+    }, [currentPage])
 
 
     // console.log('FindCars')
@@ -169,7 +176,7 @@ const FindCars = (props) => {
             <div className="row my-2">
                 <FilterConditionForm onSubmit={onSubmit}/>
             </div>
-            <div className="row my-2">
+            <div className="row my-2" ref={changePageScrollTarget}>
                 <FilterResults levels={currentLevels} loading={loading} found={findButtonTouched}/>
                 <Pagination itemsPerPage={itemsPerPage} 
                     totalItems={levels.length}

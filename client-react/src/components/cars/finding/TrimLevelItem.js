@@ -70,8 +70,8 @@ const TrimLevelItem = (props) => {
 
     return (
         //  w-100 justify-content-between
-        <div className="d-flex flex-column flex-sm-row">
-            <div className="col-12 col-sm-2">
+        <div className="d-flex flex-column flex-sm-row align-items-center">
+            <div className="col-12 col-sm-2 me-1">
                 <Link className="text-center" to={`/cars/${props.manufacturer.name}/${props.carmodel.name}`}>
                     {/* {carmodel.mainImage} */}
                     <img src={window.location.origin + '/images/icons/car.png'} 

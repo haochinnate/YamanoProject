@@ -7,6 +7,7 @@ import { fetchManufacturers } from '../../../actions';
 
 const isNotEmpty = value => String(value).trim() !== '';
 const doNotCare = value => true;
+const equipDefaultString = 'S/O/N/Unknown()'
 
 const TrimLevelForm = (props) => {
 
@@ -340,7 +341,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: antilockBrakingSystemBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.antilockBrakingSystem
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.antilockBrakingSystem
     });
 
     const {
@@ -349,7 +350,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: accelerationStabilityRetainerBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.accelerationStabilityRetainer 
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.accelerationStabilityRetainer 
     });
 
     const {
@@ -358,7 +359,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: electronicBrakeforceDistributionBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.electronicBrakeforceDistribution
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.electronicBrakeforceDistribution
     });
 
     const {
@@ -367,7 +368,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: brakeAssistSystemBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.brakeAssistSystem
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.brakeAssistSystem
     });
 
     const {
@@ -376,7 +377,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: electronicStabilityProgramBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.electronicStabilityProgram
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.electronicStabilityProgram
     });
 
     const {
@@ -385,7 +386,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: cruiseControlBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.cruiseControl
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.cruiseControl
     });
 
     const {
@@ -394,7 +395,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: adaptiveCruiseControlBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.adaptiveCruiseControl
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.adaptiveCruiseControl
     });
 
     const {
@@ -403,7 +404,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: forwardCollisionWarningBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.forwardCollisionWarning
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.forwardCollisionWarning
     });
 
     const {
@@ -412,7 +413,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: automaticEmergencyBrakingBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.automaticEmergencyBraking
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.automaticEmergencyBraking
     });
 
     const {
@@ -421,7 +422,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: laneDepartureWarningBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.laneDepartureWarning
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.laneDepartureWarning
     });
 
     const {
@@ -430,7 +431,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: laneDepartureReviseBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.laneDepartureRevise
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.laneDepartureRevise
     });
 
     const {
@@ -439,7 +440,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: laneKeepingAssistanceBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.laneKeepingAssistance
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.laneKeepingAssistance
     });
 
     const {
@@ -448,7 +449,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: rearCrossTrafficWarningBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.rearCrossTrafficWarning
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.rearCrossTrafficWarning
     });
 
     const {
@@ -457,7 +458,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: blindSpotWarningBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.blindSpotWarning
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.blindSpotWarning
     });
 
     const {
@@ -466,7 +467,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: reverseAutomaticEmergencyBrakingBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.reverseAutomaticEmergencyBraking
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.reverseAutomaticEmergencyBraking
     });
 
     const {
@@ -475,7 +476,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: hillStartAssisBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.hillStartAssis
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.hillStartAssis
     });
 
     const {
@@ -484,7 +485,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: hillDescentControlBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.hillDescentControl
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.hillDescentControl
     });
 
 
@@ -503,7 +504,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: isofixBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.isofix
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.isofix
     });
 
     const {
@@ -512,7 +513,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: activeParkingAssistanceBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.activeParkingAssistance
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.activeParkingAssistance
     });
 
     const {
@@ -539,7 +540,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: surroundViewCameraBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.surroundViewCamera
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.surroundViewCamera
     });
 
     const {
@@ -548,7 +549,7 @@ const TrimLevelForm = (props) => {
         inputBlurHandler: rearViewCameraBlurHandler,
     } = useInput({ 
         validateValue: doNotCare,
-        initialValue: props.initialValues === undefined ? 'S/O/N()' : props.initialValues.rearViewCamera
+        initialValue: props.initialValues === undefined ? equipDefaultString : props.initialValues.rearViewCamera
     });
 
     const onSubmit = (event) => {

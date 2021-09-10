@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchManufacturers } from '../../../actions';
@@ -113,7 +114,8 @@ class ManufacturerList extends Component {
 const mapStateToProps = (state) => {
     // console.log('UserId: ' + state.auth.userId)
     return { 
-        manufacturers: Object.values(state.manufacturers),
+        // manufacturers: Object.values(state.manufacturers),
+        manufacturers: _.sortBy(Object.values(state.manufacturers), 'name'),
         // currentUserId: state.auth.userId,
         isAdminUser: state.auth.isAdminUser
     };

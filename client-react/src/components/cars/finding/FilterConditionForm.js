@@ -213,7 +213,7 @@ const FilterConditionForm = (props) => {
                             <div className="row align-items-end mb-2">
                                 <div className="col-5 col-sm-3 col-md-2">
                                         <label className="form-label" htmlFor="minPrice">預算(萬元):</label>
-                                        <input type="number" defaultValue="70" id="minPrice"
+                                        <input type="number" defaultValue="0" id="minPrice"
                                             className="form-control"  {...register(Condition_MinPrice)} />
                                         
                                 </div>
@@ -221,7 +221,7 @@ const FilterConditionForm = (props) => {
                                     <span>~</span>
                                 </div>
                                 <div className="col-5 col-sm-3 col-md-2">
-                                        <input type="number" defaultValue="130" aria-describedby="budgetHelpBlock"
+                                        <input type="number" defaultValue="2000" aria-describedby="budgetHelpBlock"
                                             className="form-control" {...register(Condition_MaxPrice)}/>
                                 </div>
 
