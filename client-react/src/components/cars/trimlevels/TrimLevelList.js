@@ -15,7 +15,7 @@ class TrimLevelList extends React.Component {
         // console.log('TrimLevelList componentDidMount');
 
         if (this.props.carmodel) {
-            console.log('TrimLevelList-componentDidMount');
+            // console.log('TrimLevelList-componentDidMount');
             // console.log(this.props.carmodel);
             this.props.fetchTrimLevelsByCarmodel(this.props.carmodel);
             // console.log(this.props.trimlevels);
@@ -304,7 +304,7 @@ class TrimLevelList extends React.Component {
 
 
     renderSpecTable() {
-        console.log(this.props.trimlevels);
+        // console.log(this.props.trimlevels);
 
         return (
             <div className="table-responsive">

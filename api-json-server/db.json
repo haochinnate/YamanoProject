@@ -259,9 +259,12 @@
       "officialUrl": "https://www.skoda.com.tw/models/the-new-fabia/the-new-fabia",
       "isArchived": false,
       "manufacturerId": 1,
-      "alias": "小發,發比",
+      "alias": [
+        "小發",
+        "發比"
+      ],
       "releaseDate": "",
-      "yearsInfo": "",
+      "yearsInfo": "2021年式",
       "mainImage": ""
     },
     {
@@ -271,7 +274,9 @@
       "officialUrl": "https://www.skoda.com.tw/models/the-new-karoq/the-new-karoq",
       "isArchived": false,
       "manufacturerId": 1,
-      "alias": [],
+      "alias": [
+        "小熊"
+      ],
       "releaseDate": "",
       "yearsInfo": "",
       "mainImage": ""
@@ -330,7 +335,9 @@
       "officialUrl": "https://www.skoda.com.tw/models/the-new-octavia/the-new-octavia",
       "isArchived": "",
       "manufacturerId": 1,
-      "alias": "",
+      "alias": [
+        "阿塔"
+      ],
       "releaseDate": "",
       "yearsInfo": "",
       "mainImage": "",
