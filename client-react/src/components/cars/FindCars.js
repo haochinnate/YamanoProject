@@ -192,7 +192,6 @@ const mapStateToProps = (state) => {
     // console.log(state);
     return { 
         trimlevels:  Object.values(state.trimlevels), 
-        isAdminUser: state.auth.isAdminUser
     }
 };
 
