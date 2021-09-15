@@ -20,29 +20,25 @@ const Header = () => {
                                 DB
                             </Link>
                         </li>
+
                         <li className="nav-item">
                             <Link to="/" className="nav-link">
-                                Find Cars
+                                找車
                             </Link>
                         </li>
 
-                        {/* <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a className="dropdown-item" href="#">Action</a></li>
-                                <li><a className="dropdown-item" href="#">Another action</a></li>
-                                <li><hr className="dropdown-divider"/></li>
-                                <li><a className="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li> */}
-                        
+                        <li className="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1">養車成本計算</a>
+                            {/* <Link to="/costs" className="nav-link">
+                                養車成本計算
+                            </Link> */}
+                        </li>
                     </ul>
 
                     <form className="d-flex">
                         <GoogleAuth />
                     </form>
+
                     {/* Search area */}
                     {/* <form className="d-flex" style={{visibility: 'hidden'}}>
                         
@@ -53,21 +49,6 @@ const Header = () => {
                 </div>
             </div>
         </nav>
-
-        // <div className="ui secondary pointing menu">
-        //     <Link to="/" className="item">
-        //         Yamano
-        //     </Link>
-        //     <div className="right menu">
-        //         <Link to="/cars" className="item">
-        //             DB
-        //         </Link>
-        //         <Link to="/" className="item">
-        //             Find Cars
-        //         </Link>
-        //         <GoogleAuth />
-        //     </div>
-        // </div> 
     );
 };
 

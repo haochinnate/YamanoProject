@@ -40,7 +40,7 @@ const FilterConditionForm = (props) => {
                             setValue(Condition_MinPrice, budgetRange[1].min);
                             setValue(Condition_MaxPrice, budgetRange[1].max);
                         }}>
-                        {`${budgetRange[1].min}萬 ~ ${budgetRange[1].max}萬`}
+                        {`${budgetRange[1].min} ~ ${budgetRange[1].max}`}
                     </label>
                 </React.Fragment>
             );
@@ -96,20 +96,27 @@ const FilterConditionForm = (props) => {
     const renderDisplacementSelections = () => {
         watch(Condition_AllDisplacement);
         const allDisplacementSetting = getValues(Condition_AllDisplacement);
+        const shouldDisable = allDisplacementSetting !== 'false';
         // console.log(allDisplacementSetting);
-        if (allDisplacementSetting === 'false') {
-            return(
-                // <div className="col">
-                <React.Fragment>
-                    <input type="number" defaultValue="0" step="0.1" className="form-control" 
+        // if (allDisplacementSetting === 'false') {
+        return(
+            <div className="row align-items-end">
+                <div className="col">
+                    <input type="number" defaultValue="0" step="0.1" min="0.0" className="form-control" disabled={shouldDisable}
                         {...register(Condition_MinDisplacement, { min: 0.0 })} />
-                    <div>~</div>
-                    <input type="number" defaultValue="1.8" step="0.1" className="form-control" 
+                </div>
+            
+                <div className="col-auto">
+                    ~
+                </div>
+            
+                <div className="col">
+                    <input type="number" defaultValue="1.8" step="0.1" min="0.0" className="form-control" disabled={shouldDisable}
                         {...register(Condition_MaxDisplacement, { min: 0.0 })}/>
-                </React.Fragment>
-                // </div>
-            )
-        }
+                </div>
+            </div>
+        )    
+        // }
     };
 
     const renderSafetyEquipments = () => {
@@ -195,38 +202,38 @@ const FilterConditionForm = (props) => {
     return (
         <div>
             <div className="accordion-item">
-                <h2 className="accordion-header" id="panelsFilterConditions-heading">
-                    <button className="accordion-button fs-3" type="button" 
+                <h4 className="accordion-header" id="panelsFilterConditions-heading">
+                    <button className="accordion-button fs-4" type="button" 
                         data-bs-toggle="collapse" data-bs-target="#panelsFilterConditions-content" 
                         aria-expanded="true" aria-controls="panelsFilterConditions-content">
                         條件
                     </button>
-                </h2>
+                </h4>
                     
                 <div id="panelsFilterConditions-content" className="accordion-collapse collapse show" 
                     aria-labelledby="panelsFilterConditions-heading">
                     <div className="accordion-body">
                        
-                        <form className="row" onSubmit={handleSubmit(onSubmit)}>
+                        <form className="row justify-content-center" onSubmit={handleSubmit(onSubmit)}>
 
                             {/* Min Price & Max Price */}
                             <div className="row align-items-end mb-2">
-                                <div className="col-5 col-sm-3 col-md-2">
-                                        <label className="form-label" htmlFor="minPrice">預算(萬元):</label>
+                                <div className="col col-xxl-1">
+                                        <label className="form-label text-nowrap" htmlFor="minPrice">預算(萬元):</label>
                                         <input type="number" defaultValue="0" id="minPrice"
                                             className="form-control"  {...register(Condition_MinPrice)} />
                                         
                                 </div>
-                                <div className="col-2 col-sm-1 text-center">
-                                    <span>~</span>
+                                <div className="col-auto text-center">
+                                    ~
                                 </div>
-                                <div className="col-5 col-sm-3 col-md-2">
+                                <div className="col col-xxl-1">
                                         <input type="number" defaultValue="2000" aria-describedby="budgetHelpBlock"
                                             className="form-control" {...register(Condition_MaxPrice)}/>
                                 </div>
 
-                                <div id="budgetHelpBlock" className="form-text col-12 col-sm-12 col-md-7">
-                                    <label className="form-label col-auto fs-6" htmlFor="quickBudget">快速預算:</label>
+                                <div id="budgetHelpBlock" className="form-text col-12 col-xxl-9">
+                                    <label className="form-label text-nowrap col-auto fs-6" htmlFor="quickBudget">快速預算(萬元):</label>
                                     
                                     <div className="col" id="quickBudget">
                                         {renderQuickBudgetRanges()}
@@ -247,8 +254,8 @@ const FilterConditionForm = (props) => {
                             {/* Min Length & Max Length */}
                             <div className="row align-items-end mb-2">
 
-                                <div className="col-5 col-sm-3 col-md-2">
-                                    <label className="form-label" htmlFor="minLength">車長(mm):</label>
+                                <div className="col col-xxl-1">
+                                    <label className="form-label text-nowrap" htmlFor="minLength">車長(mm):</label>
 
                                     {/* <div className="col"> */}
                                         <input type="number" defaultValue="0" className="form-control" 
@@ -259,11 +266,11 @@ const FilterConditionForm = (props) => {
                                     {/* </div> */}
                                 </div>
                                 
-                                <div className="col-2 col-sm-1 text-center">
-                                    <span>~</span>
+                                <div className="col-auto text-center">
+                                    ~
                                 </div>
                                 
-                                <div className="col-5 col-sm-3 col-md-2">
+                                <div className="col col-xxl-1">
                                     <label className="form-label" htmlFor="maxLength">   </label>
 
                                     <input type="number" defaultValue="6000" className="form-control" 
@@ -272,7 +279,7 @@ const FilterConditionForm = (props) => {
                                         {errors[Condition_MaxLength] && <span>This field is required</span>}
                                 </div>
                                 
-                                <div className="col-12 col-sm-5 col-md-7">
+                                <div className="col-12 col-xxl-4">
                                     <label className="form-label" htmlFor="maxLengthSlider">   </label>
 
                                     <input type="range" className="form-range" min="0" max="6000" step="10" id="lengthRange" 
@@ -288,11 +295,21 @@ const FilterConditionForm = (props) => {
                             {/* Min Width & Max Width (future)*/}
                             {/* Min Height & Max Height (future)*/}
 
+                            {/* Seats 乘客數/座位數*/}
+                            <div className="row align-items-baseline mb-2">
+                                {/* <div className="col-12"> */}
+                                    <label className="col-sm-auto col-form-label text-nowrap" htmlFor="seats">座位數:</label>
+                                
+                                    <div id="seats" className="col-sm-10">
+                                        {renderFilterSeatsSelections()}                                  
+                                    </div>
+                                {/* </div> */}
+                            </div>
 
                             {/* BodyStyles */}
                             <div className="row mb-2">
-                                <div className="col">
-                                    <label className="form-label" htmlFor="bodyStyles">車身:</label>
+                                <div className="col-12">
+                                    <label className="form-label text-nowrap" htmlFor="bodyStyles">車身:</label>
 
                                     <div id="bodyStyles">
                                         {renderFilterBodyStyles()}
@@ -301,20 +318,13 @@ const FilterConditionForm = (props) => {
                             </div>
 
 
-                            {/* Seats 乘客數/座位數*/}
                             {/* StandardCargoVolume 行李箱容積 */}
+                            {/* Horsepower 動力(馬力) */}
+                            {/* PowerType 燃料/動力形式/能源*/}
                             <div className="row align-items-end mb-2">
 
-                                <div className="col-sm-6">
-                                    <label className="form-label" htmlFor="seats">座位數:</label>
-                                
-                                    <div id="seats">
-                                        {renderFilterSeatsSelections()}                                  
-                                    </div>
-                                </div>
-
-                                <div className="col-sm-3">
-                                    <label className="form-label" htmlFor="minCargoVolume">行李箱容積至少(L):</label>
+                                <div className="col-3 col-xl-2 col-xxl-1">
+                                    <label className="form-label text-nowrap" htmlFor="minCargoVolume">行李箱容積至少(L):</label>
 
                                     <div id="minCargoVolume">
                                         <input type="number" defaultValue="0" min="0" className="form-control" 
@@ -322,7 +332,7 @@ const FilterConditionForm = (props) => {
                                     </div>
                                 </div>
 
-                                <div className="col-sm-3">
+                                <div className="col-3 col-xl-2 col-xxl-1">
                                     <input type="range" className="form-range" min="0" max="700" step="10" id="minCargoVolumeRange" 
                                         defaultValue="0"
                                         onChange={(event) => { 
@@ -331,24 +341,39 @@ const FilterConditionForm = (props) => {
                                         }}  value={watch(Condition_MinCargoVolume)} ></input>
                                 </div>
 
-                            </div>
-
-
-                            {/* PowerType 燃料/動力形式/能源*/}
-                            <div className="row mb-2">
-                                <label className="form-label" htmlFor="bodyStyles">動力:</label>
-
-                                <div id="bodyStyles">
-                                    {renderFilterPowerTypes()}
+                                <div className="col-3 col-xl-2 col-xxl-1">
+                                    <label className="form-label text-nowrap" htmlFor="minHorsePower">馬力至少(hp):</label>
+                                    
+                                    <div className="minHorsePower">
+                                        <input type="number" defaultValue="0" className="form-control" 
+                                            {...register(Condition_MinHorsePower)} />
+                                    </div>
                                 </div>
+
+                                <div className="col-3 col-xl-2 col-xxl-1">
+                                    <input type="range" className="form-range" min="0" max="400" step="10" id="horsePowerRange"
+                                        defaultValue="0"
+                                        onChange={(event) => { 
+                                            // console.log(event);
+                                            setValue(Condition_MinHorsePower, event.target.value);
+                                        }} value={watch(Condition_MinHorsePower)} ></input>
+                                </div>
+
+                                <div className="col-12 col-xxl-8">
+                                    <label className="form-label text-nowrap" htmlFor="bodyStyles">動力:</label>
+
+                                    <div id="bodyStyles">
+                                        {renderFilterPowerTypes()}
+                                    </div>
+                                </div>  
+
                             </div>
 
                             {/* Engine Displacement 排氣量*/}
-                            {/* Horsepower 動力(馬力) */}
                             <div className="row align-items-end mb-2">
 
-                                <div className="col-md-3">
-                                    <label className="form-label" htmlFor="engineDisplacement">排氣量(L):</label>
+                                <div className="col-sm-auto mb-2">
+                                    <label className="form-label text-nowrap" htmlFor="engineDisplacement">排氣量(L):</label>
                                     
                                     <div id="engineDisplacement">
                                         <div className="form-check form-check-inline">
@@ -365,33 +390,12 @@ const FilterConditionForm = (props) => {
                                                 {...register(Condition_AllDisplacement, { required: true })}/>
                                             <label className="form-check-label" htmlFor="restrictedDisplacement">限定</label>
                                         </div>
-
+                                        
                                     </div>
                                 </div>
 
-                                <div className="col-md-3">
-                                    <div className="row">
-                                        {renderDisplacementSelections()}
-
-                                    </div>
-                                </div>
-
-                                <div className="col-md-3">
-                                    <label className="form-label" htmlFor="minHorsePower">馬力至少(hp):</label>
-                                    
-                                    <div className="minHorsePower">
-                                        <input type="number" defaultValue="0" className="form-control" 
-                                            {...register(Condition_MinHorsePower)} />
-                                    </div>
-                                </div>
-
-                                <div className="col-md-3">
-                                    <input type="range" className="form-range" min="0" max="400" step="10" id="horsePowerRange"
-                                        defaultValue="0"
-                                        onChange={(event) => { 
-                                            // console.log(event);
-                                            setValue(Condition_MinHorsePower, event.target.value);
-                                        }} value={watch(Condition_MinHorsePower)} ></input>
+                                <div className="col-sm-8 col-lg-3">
+                                    {renderDisplacementSelections()}
                                 </div>
 
                             </div>
@@ -399,7 +403,7 @@ const FilterConditionForm = (props) => {
                             {/* Safety */}
                             <div className="row mb-2">
                                 <div className="col">
-                                    <label className="form-label" htmlFor="safety">安全配備:</label>
+                                    <label className="form-label text-nowrap" htmlFor="safety">安全配備:</label>
 
                                     <div id="safety">
                                         {renderSafetyEquipments()}
@@ -408,7 +412,7 @@ const FilterConditionForm = (props) => {
                             </div>
 
                             {/* Submit(Find Car) Button */}
-                            <div className="col-12 text-center mt-3">
+                            <div className="col-12 text-center">
                                 <button className="btn btn-primary" type="submit">找車</button>
                             </div>
 
@@ -419,8 +423,6 @@ const FilterConditionForm = (props) => {
                     </div>
                 </div>
             </div>
-
-            
         </div>
     )
 }
