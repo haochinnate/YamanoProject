@@ -6,7 +6,9 @@ from pathlib import Path, PurePath
 
 logging.basicConfig(level = logging.INFO)
 data_file_root_folder = Path(r'.\automobile\data')
-data_file_makers_folder = data_file_root_folder.joinpath('makers')
+all_models_file = f'AllModels.json'
+all_levels_file = f'AllLevels.json'
+new_models_file = f'NewModels.json'
 
 def quick_test():
     try:        
@@ -47,38 +49,7 @@ def quick_test():
         logging.exception('Error when processing...')
 
 
-def start_from_root():
-    try:    
-        # create folder to store all models of makers    
-        Path(data_file_makers_folder).mkdir(parents=True, exist_ok=True)
 
-        # target_manufacturers_file = 'UcarManufacturers.json' # all manufactures
-        target_manufacturers_file = 'UcarManufacturers_test.json' # just few manufactures for test
-        manufacturers_source_file_fullpath = data_file_root_folder.joinpath(target_manufacturers_file)
-
-        # file to manufacturers objects        
-        all_manufacturers = UCarParser.get_manufacturers_from_file(manufacturers_source_file_fullpath)
-
-        for manufacturer in all_manufacturers:
-            logging.info(f'Current running maker: {manufacturer.name}')
-            models_of_manufacturer = UCarParser.get_models_of_manufacturer(manufacturer) 
-
-            # folder and file to store models of this manufacturer
-            manufacturer_file = data_file_makers_folder.joinpath(f'{manufacturer.name}.json')
-            os.mkdir(data_file_makers_folder.joinpath(f'{manufacturer.name}'))
-
-            # save all models of this manufacturer to file
-            UCarParser.save_models_to_file(manufacturer_file, models_of_manufacturer)
-
-            start_from_models()
-    
-            logging.info(f'Finished running: {manufacturer.name}')
-
-        logging.info(f'crawler finished...')
-    except:
-        logging.exception('Error when processing...')
-
-    return
 
 
 def start_from_models():
@@ -105,6 +76,33 @@ def start_from_models():
                 UCarParser.save_levels_to_file(model_path, levels_of_model)
 
     return
+
+
+def levels_crawler():
+    # get the model objects from all models json file
+    all_models_file_fullpath = data_file_root_folder.joinpath(all_models_file)
+    models = UCarParser.get_models_from_file(all_models_file_fullpath)
+
+    all_levels = []
+
+     # iterate each model to get the levels of that model
+    for model in models:
+        try:
+
+            logging.info(f'    Model: {model.name}')
+            time.sleep(5)
+            levels_of_model = UCarParser.get_levels_of_model(model)
+            all_levels.append(levels_of_model)
+        except:
+            logging.exception(f'Error when processing...{model.name}')
+
+    # file to store all levels
+    all_levels_file_fullpath = data_file_root_folder.joinpath(all_levels_file)
+    # save the levels information to file
+    UCarParser.save_levels_to_file(all_levels_file_fullpath, all_levels)
+
+    return 
+
 
 
 quick_test()
