@@ -21,7 +21,7 @@ class CarModelShow extends React.Component {
         // }
         this.props.fetchCarmodelByName(this.props.match.params.manufacturerName, this.props.match.params.carmodelName);
 
-        // this.fetchVideos(`${this.props.match.params.carmodelName} 試駕`);
+        this.fetchVideos(`${this.props.match.params.carmodelName} 試駕`);
     }
 
     fetchVideos = async (term) => {
